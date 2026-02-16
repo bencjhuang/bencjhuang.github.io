@@ -1,5 +1,15 @@
 # CJHuang Group Website - Setup Instructions
 
+**Updated with your actual CV information!**
+
+## What's New
+
+✅ Your actual name: **Chen-Jui (Ben) Huang**  
+✅ Current position: **Incoming Assistant Professor (Starting August 2026)**  
+✅ Real publications from your CV (62+ publications)  
+✅ Accurate biography with UChicago, Argonne, Stanford experience  
+✅ Updated research interests matching your actual expertise  
+
 ## Files Included
 
 Your new professional website includes:
