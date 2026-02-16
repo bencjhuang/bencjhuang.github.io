@@ -1252,3 +1252,41 @@ section {
     color: #0366d6;
     text-decoration: none;
 }
+
+
+/* Add to styles.css */
+
+/* Counter Setup */
+.year-group, .publication-list {
+    /* No reset here, we handle it in the HTML inline styles for precise control */
+}
+
+.publication {
+    position: relative;
+    padding-left: 3.5rem; /* Make room for the number */
+}
+
+/* The Number Badge */
+.publication::before {
+    /* Decrement the counter (so 63, 62, 61...) */
+    counter-increment: pub-counter -1; 
+    content: counter(pub-counter);
+    
+    /* Styling */
+    position: absolute;
+    left: 0;
+    top: 1.5rem;
+    width: 2.5rem;
+    text-align: right;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #cbd5e1; /* Subtle gray */
+    line-height: 1;
+}
+
+/* Specific colors for different sections */
+#peer-reviewed .publication::before { color: #64748b; }
+#conferences .publication::before { color: var(--color-synchrotron); }
+#patents .publication::before { color: var(--color-battery); }
+
