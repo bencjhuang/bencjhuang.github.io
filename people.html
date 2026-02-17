@@ -10,7 +10,7 @@ ang<!DOCTYPE html>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <nav id="navbar">
+        <nav id="navbar">
         <div class="nav-container">
             <div class="logo">
                 <div class="logo-main">CJHuang Group</div>
@@ -24,8 +24,19 @@ ang<!DOCTYPE html>
                 <li><a href="equipment.html">Equipment</a></li>
                 <li><a href="join.html">Join Us</a></li>
             </ul>
+            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </nav>
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="research.html">Research</a>
+        <a href="people.html" class="active">People</a>
+        <a href="publications.html">Publications</a>
+        <a href="equipment.html">Equipment</a>
+        <a href="join.html">Join Us</a>
+    </div>
 
     <div class="page-header">
         <div class="page-header-content">
@@ -217,30 +228,39 @@ ang<!DOCTYPE html>
         <div class="footer-container">
             <div class="footer-section">
                 <h3>Contact</h3>
-                <p>
-                    Chemical Engineering Department<br>
-                    National Taiwan University of Science and Technology<br>
-                    No. 43, Section 4, Keelung Road<br>
-                    Taipei 10607, Taiwan
-                </p>
+                <p>Chemical Engineering Department<br>
+                National Taiwan University of Science and Technology<br>
+                No. 43, Section 4, Keelung Road<br>
+                Taipei 10607, Taiwan</p>
             </div>
             <div class="footer-section">
                 <h3>Email</h3>
                 <p>
-                    <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a>
+                    <a href="mailto:cjhuang@mail.ntust.edu.tw">cjhuang@mail.ntust.edu.tw</a><br>
+                    <a href="mailto:bencjhuang@uchicago.edu">bencjhuang@uchicago.edu</a>
                 </p>
             </div>
             <div class="footer-section">
                 <h3>Links</h3>
                 <p>
                     <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br>
-                    <a href="https://en.ch.ntust.edu.tw/" target="_blank">Chemical Engineering Dept</a><br>
+                    <a href="https://en.ch.ntust.edu.tw/" target="_blank">Chemical Engineering Dept</a>
+                </p>
+            </div>
+            <div class="footer-section">
+                <h3>Follow Our Research</h3>
+                <p>
+                    <a href="publications.html">Latest Publications</a><br>
+                    <a href="research.html">Research Updates</a><br>
+                    <a href="join.html">Open Positions</a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 CJHuang Group. All rights reserved.
+            &copy; 2026 CJHuang Research Group @ Taiwan Tech | All Rights Reserved
         </div>
     </footer>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+    <script src="script.js"></script>
 </body>
 </html>
