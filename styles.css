@@ -1584,3 +1584,13 @@ section {
         height: 44px;
     }
 }
+
+/* Conference and Patent sections: add padding to avoid text touching borders */
+#conferences .publication,
+#patents .publication {
+    padding: 1.5rem;
+}
+
+#conferences .publication {
+    padding-left: 1.5rem;
+}
