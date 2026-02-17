@@ -8,19 +8,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Title link styling */
-        .pub-title a {
-            color: var(--color-primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-        .pub-title a:hover {
-            color: var(--color-accent);
-            text-decoration: underline;
-        }
-    </style>
 </head>
 <body>
     <nav id="navbar">
@@ -60,6 +47,8 @@
     </div>
 
     <main>
+
+        <!-- Stats -->
         <section>
             <div class="pub-stats">
                 <div class="stat-card"><div class="stat-number">41</div><div class="stat-label">h-index</div></div>
@@ -71,7 +60,8 @@
             </div>
         </section>
 
-        <section>
+        <!-- Peer-Reviewed Articles — id="peer-reviewed" triggers counter-reset: pub-counter 64 -->
+        <section id="peer-reviewed">
             <div class="section-header"><h2>Peer-Reviewed Articles</h2></div>
 
             <div class="year-group">
@@ -296,7 +286,8 @@
 
         </section>
 
-        <section>
+        <!-- Conference Presentations — id="conferences" hides the number counter -->
+        <section id="conferences">
             <div class="section-header"><h2>Conference Presentations</h2></div>
             <div class="publication-list">
 
@@ -363,7 +354,8 @@
             </div>
         </section>
 
-        <section>
+        <!-- Patents — id="patents" hides the number counter -->
+        <section id="patents">
             <div class="section-header"><h2>Patents</h2></div>
             <div class="publication-list">
                 <div class="publication" style="background: var(--color-bg-alt);">
@@ -379,6 +371,7 @@
             </div>
         </section>
 
+        <!-- Research Profiles -->
         <section>
             <div class="section-header"><h2>Research Profiles</h2></div>
             <div class="profile-links">
@@ -388,6 +381,7 @@
                 <a href="https://github.com/bencjhuang" class="profile-link" target="_blank"><div class="profile-icon">💻</div><div>GitHub</div></a>
             </div>
         </section>
+
     </main>
 
     <footer>
@@ -398,15 +392,33 @@
             </div>
             <div class="footer-section">
                 <h3>Email</h3>
-                <p><a href="/cdn-cgi/l/email-protection#a3c0c9cbd6c2cdc4e3cec2cacf8dcdd7d6d0d78dc6c7d68dd7d4"><span class="__cf_email__" data-cfemail="60030a0815010e07200d01090c4e0e141513144e0504154e1417">[email&#160;protected]</span></a><br><a href="/cdn-cgi/l/email-protection#2446414a474e4c51454a436451474c4d4745434b0a414051"><span class="__cf_email__" data-cfemail="c2a0a7aca1a8aab7a3aca582b7a1aaaba1a3a5adeca7a6b7">[email&#160;protected]</span></a></p>
+                <p>
+                    <a href="mailto:cjhuang@mail.ntust.edu.tw">cjhuang@mail.ntust.edu.tw</a><br>
+                    <a href="mailto:bencjhuang@uchicago.edu">bencjhuang@uchicago.edu</a>
+                </p>
             </div>
             <div class="footer-section">
                 <h3>Links</h3>
-                <p><a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br><a href="https://www.che.ntust.edu.tw/?Lang=en" target="_blank">Chemical Engineering Dept</a><br><a href="https://github.com/bencjhuang" target="_blank">GitHub Profile</a></p>
+                <p>
+                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br>
+                    <a href="https://www.che.ntust.edu.tw/?Lang=en" target="_blank">Chemical Engineering Dept</a><br>
+                    <a href="https://github.com/bencjhuang" target="_blank">GitHub Profile</a>
+                </p>
             </div>
             <div class="footer-section">
                 <h3>Follow Our Research</h3>
-                <p><a href="publications.html">Latest Publications</a><br><a href="index.html">Research Updates</a><br><a href="join.html">Open Positions</a></p>
+                <p>
+                    <a href="publications.html">Latest Publications</a><br>
+                    <a href="index.html">Research Updates</a><br>
+                    <a href="join.html">Open Positions</a>
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 CJHuang Research Group @ Taiwan Tech | All Rights Reserved
+        </div>
+    </footer>
+
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
     <script src="script.js"></script>
 </body>
