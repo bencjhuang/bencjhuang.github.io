@@ -29,7 +29,39 @@ body {
     line-height: 1.6;
     background: var(--color-bg);
     overflow-x: hidden;
+    text-align: justify;
+    hyphens: auto;
 }
+/* ── Alignment overrides (prevent justify on non-paragraph elements) ── */
+h1, h2, h3, h4, h5, h6 { text-align: left; }
+.hero-content h1,
+.hero-content,
+.hero-subtitle,
+.research-tags,
+.page-header,
+.page-header h1,
+.page-header p,
+.pub-stats,
+.stat-card,
+.join-cta,
+.join-cta h2,
+.join-cta p,
+.contact-cta,
+.footer-bottom { text-align: center; }
+
+nav, .nav-links, .logo,
+.pub-venue, .pub-year, .pub-impact, .pub-status, .pub-links,
+.year-label, .cta-button, .profile-links,
+.footer-section h3,
+.member-name, .member-role, .member-email,
+.news-category, .news-date,
+.pi-title, .pi-affiliation,
+.position-header, .position-badge,
+.quick-nav-card h3,
+.equipment-status,
+.equipment-info h3 { text-align: left; }
+
+
 
 /* Navigation */
 nav {
@@ -210,6 +242,7 @@ nav.scrolled {
     font-family: var(--font-mono);
     font-weight: 500;
     letter-spacing: 0.02em;
+    color: white;
 }
 
 .tag.battery {
@@ -1292,44 +1325,8 @@ section {
 
 
 /* ════════════════════════════════════════════
-   ADDITIONS: mobile nav, back-to-top, equipment,
-   justified text, title link styles
+   HAMBURGER MENU, MOBILE NAV, BACK-TO-TOP
    ════════════════════════════════════════════ */
-
-/* Justified body text */
-body {
-    text-align: justify;
-    hyphens: auto;
-}
-
-/* Keep headings, nav, buttons, centered items left/center */
-h1, h2, h3, h4, h5, h6,
-nav, .nav-links, .logo,
-.section-header, .section-header h2,
-.hero-content, .hero h1, .hero-subtitle,
-.research-tags, .tag,
-.page-header, .page-header h1, .page-header p,
-.pub-stats, .stat-card, .stat-label,
-.pub-venue, .pub-links, .pub-year, .pub-impact, .pub-status,
-.year-label, .cta-button,
-.join-cta, .join-cta h2, .join-cta p,
-.contact-cta, .profile-links,
-.footer-bottom, .footer-section h3,
-.member-name, .member-role, .member-email,
-.news-category, .news-date,
-.pi-title, .pi-affiliation,
-.position-header, .position-badge,
-.quick-nav-card, .quick-nav-card h3 {
-    text-align: left;
-}
-
-.hero-content, .page-header,
-.page-header h1, .page-header p,
-.pub-stats, .stat-card, .join-cta,
-.contact-cta, .footer-bottom,
-.research-tags {
-    text-align: center;
-}
 
 /* ── Hamburger Button ── */
 .hamburger {
@@ -1548,7 +1545,7 @@ nav, .nav-links, .logo,
     border: 1px solid var(--color-battery);
 }
 
-/* ── Responsive (mobile) ── */
+/* ── Responsive (mobile ≤768px) ── */
 @media (max-width: 768px) {
     .nav-links { display: none; }
     .hamburger { display: flex; }
