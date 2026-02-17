@@ -1290,8 +1290,22 @@ section {
 /* Add to styles.css */
 
 /* Counter Setup */
-.year-group, .publication-list {
-    /* No reset here, we handle it in the HTML inline styles for precise control */
+/* Reset counter on the peer-reviewed section so it starts at 63 and counts down */
+#peer-reviewed {
+    counter-reset: pub-counter 64;
+}
+
+/* Conferences and Patents: simple sequential counter, not numbered */
+#conferences .publication::before,
+#patents .publication::before {
+    content: none;
+    display: none;
+}
+
+/* Conference and patent cards: remove left padding since no number */
+#conferences .publication,
+#patents .publication {
+    padding-left: 0;
 }
 
 .publication {
