@@ -89,3 +89,25 @@ if (sections.length > 0) {
         });
     });
 }
+
+// News Category Filter
+document.addEventListener('DOMContentLoaded', function() {
+    const filterSelect = document.getElementById('news-category-filter');
+    const newsItems = document.querySelectorAll('.news-item');
+
+    if (filterSelect) {
+        filterSelect.addEventListener('change', function() {
+            const selectedCategory = this.value;
+
+            newsItems.forEach(item => {
+                const itemCategory = item.getAttribute('data-category');
+                
+                if (selectedCategory === 'all' || selectedCategory === itemCategory) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+    }
+});
