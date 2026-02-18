@@ -11,7 +11,7 @@
     --color-synchrotron: #9b59b6;
     --color-battery: #27ae60;
     
-    --font-display: 'Work Sans', sans-serif;
+    --font-display: 'Inter', sans-serif;    
     --font-mono: 'JetBrains Mono', monospace;
     
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
