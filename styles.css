@@ -585,8 +585,8 @@ section {
     align-items: center;
     justify-content: center;
     /* Use exact pixels for height to force uniformity */
-    height: 28px !important; 
-    min-width: 120px !important;
+    height: 30px !important; 
+    min-width: 140px !important;
     padding: 0 15px !important;
     border-radius: 14px !important;
     font-family: var(--font-mono) !important;
@@ -605,10 +605,37 @@ section {
     display: none !important;
 }
 
-.badge-cat.announcement { background: #e3f2fd; color: #1565c0; }
-.badge-cat.award { background: #fff3e0; color: #e65100; }
-.badge-cat.pub-label { background: #f3e5f5; color: #6a1b9a; }
-.badge-cat.activity { background: #e8f5e9; color: #2e7d32; }
+/* ═══════════════════════════════════════════════════════════
+   COHESIVE COLOR PALETTE FOR NEWS BADGES
+   ═══════════════════════════════════════════════════════════ */
+
+/* Announcement - Matches your Primary Blue */
+.badge-cat.announcement { 
+    background: rgba(26, 77, 143, 0.1) !important; 
+    color: var(--color-primary) !important;
+    border: 1px solid rgba(26, 77, 143, 0.2) !important;
+}
+
+/* Award - Matches your Secondary Orange/Gold */
+.badge-cat.award { 
+    background: rgba(230, 126, 34, 0.1) !important; 
+    color: var(--color-secondary) !important;
+    border: 1px solid rgba(230, 126, 34, 0.2) !important;
+}
+
+/* Publication - Matches your Synchrotron Purple */
+.badge-cat.pub-label { 
+    background: rgba(155, 89, 182, 0.1) !important; 
+    color: var(--color-synchrotron) !important;
+    border: 1px solid rgba(155, 89, 182, 0.2) !important;
+}
+
+/* Activity - Matches your Battery Green */
+.badge-cat.activity { 
+    background: rgba(39, 174, 96, 0.1) !important; 
+    color: var(--color-battery) !important;
+    border: 1px solid rgba(39, 174, 96, 0.2) !important;
+}
 
 /* Hidden class for filtering */
 .news-item.hidden {
