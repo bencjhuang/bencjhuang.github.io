@@ -575,6 +575,61 @@ section {
     color: var(--color-text-light);
     line-height: 1.7;
 }
+/* ═══════════════════════════════════════════════════════════
+   NEWS CATEGORY BADGES - COMPLETE FIX
+   Replace your entire news category CSS section with this
+   ═══════════════════════════════════════════════════════════ */
+
+/* Base news category style - EXACTLY THE SAME SIZE FOR ALL */
+.news-category {
+    display: inline-flex !important;  /* Force flex display */
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 1rem;
+    background: var(--color-bg-alt);
+    border-radius: 15px;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    margin-top: 1rem;
+    min-width: 140px;
+    height: 26px;  /* Fixed height */
+    line-height: 1;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+/* Prevent publication counter from affecting news categories */
+.news-item .news-category::before {
+    content: none !important;
+    display: none !important;
+}
+
+/* Category-specific colors only - NO sizing changes */
+.news-category.announcement {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.news-category.award {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.news-category.publication {
+    background: #f3e5f5;
+    color: #6a1b9a;
+}
+
+.news-category.activity {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* Hidden class for filtering */
+.news-item.hidden {
+    display: none;
+}
 
 /* News Filter Dropdown */
 .news-filter {
@@ -612,50 +667,6 @@ section {
     box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.1);
 }
 
-.news-category {
-    display: inline-block;
-    padding: 0.3rem 0.8rem;
-    background: var(--color-bg-alt);
-    border-radius: 15px;
-    font-size: 0.75rem;
-    font-family: var(--font-mono);
-    margin-top: 1rem;
-    color: var(--color-primary);
-    min-width: 140px;
-    text-align: center;
-    line-height: 1; /* Fixed line height */
-    height: 24px; /* Fixed height */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Prevent publication counter from affecting news categories */
-.news-item .news-category::before {
-    content: none !important;
-    display: none !important;
-}
-
-/* Category-specific colors */
-.news-category.announcement {
-    background: #e3f2fd;
-    color: #1565c0;
-}
-
-.news-category.award {
-    background: #fff3e0;
-    color: #e65100;
-}
-
-.news-category.publication {
-    background: #f3e5f5;
-    color: #6a1b9a;
-}
-
-.news-category.activity {
-    background: #e8f5e9;
-    color: #2e7d32;
-}
 
 /* Hidden class for filtering */
 .news-item.hidden {
