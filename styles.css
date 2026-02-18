@@ -577,56 +577,38 @@ section {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   NEWS CATEGORY BADGES - FIXED SIZE
+   ISOLATED NEWS BADGES - FIXES SIZE INCONSISTENCY
    ═══════════════════════════════════════════════════════════ */
 
-/* Base news category style - Ensures uniform size */
-.news-category {
-    display: inline-flex !important; 
+.badge-cat {
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    padding: 0.4rem 1rem;
-    background: var(--color-bg-alt);
-    border-radius: 15px;
-    font-size: 0.75rem;
-    font-family: var(--font-mono);
-    font-weight: 600;
-    margin-top: 1rem;
-    /* This ensures badges with long or short text stay the same width */
-    min-width: 140px; 
-    height: 28px; 
-    line-height: 1;
-    text-align: center;
-    box-sizing: border-box;
+    /* Use exact pixels for height to force uniformity */
+    height: 28px !important; 
+    min-width: 120px !important;
+    padding: 0 15px !important;
+    border-radius: 14px !important;
+    font-family: var(--font-mono) !important;
+    font-size: 0.7rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    margin-top: 1rem !important;
+    /* This kills the bibliography counter interference */
+    counter-increment: none !important;
 }
 
-/* Important: This prevents the publication counter from your 
-   publications page from adding a number/space to news items */
-.news-item .news-category::before {
+/* Ensure no "::before" content (like the paper numbers) appears here */
+.badge-cat::before {
     content: none !important;
     display: none !important;
 }
 
-/* Category-specific colors only - No sizing changes here */
-.news-category.announcement {
-    background: #e3f2fd;
-    color: #1565c0;
-}
-
-.news-category.award {
-    background: #fff3e0;
-    color: #e65100;
-}
-
-.news-category.publication {
-    background: #f3e5f5;
-    color: #6a1b9a;
-}
-
-.news-category.activity {
-    background: #e8f5e9;
-    color: #2e7d32;
-}
+.badge-cat.announcement { background: #e3f2fd; color: #1565c0; }
+.badge-cat.award { background: #fff3e0; color: #e65100; }
+.badge-cat.pub-label { background: #f3e5f5; color: #6a1b9a; }
+.badge-cat.activity { background: #e8f5e9; color: #2e7d32; }
 
 /* Hidden class for filtering */
 .news-item.hidden {
