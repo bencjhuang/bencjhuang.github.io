@@ -739,6 +739,7 @@ section {
     color: var(--color-primary);
     margin-bottom: 0.8rem;
     font-weight: 600;
+    text-align: center;  
 }
 
 .quick-nav-card p {
