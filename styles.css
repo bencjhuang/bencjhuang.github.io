@@ -576,12 +576,6 @@ section {
     line-height: 1.7;
 }
 
-/* Prevent publication counter from affecting news categories */
-.news-item .news-category::before {
-    content: none !important;
-    display: none !important;
-}
-
 /* News Filter Dropdown */
 .news-filter {
     display: flex;
@@ -629,7 +623,7 @@ section {
     color: var(--color-primary);
     min-width: 140px;
     text-align: center;
-    line-height: 1.2; /* Fixed line height */
+    line-height: 1; /* Fixed line height */
     height: 24px; /* Fixed height */
     display: inline-flex;
     align-items: center;
