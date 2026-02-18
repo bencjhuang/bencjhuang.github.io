@@ -575,14 +575,14 @@ section {
     color: var(--color-text-light);
     line-height: 1.7;
 }
+
 /* ═══════════════════════════════════════════════════════════
-   NEWS CATEGORY BADGES - COMPLETE FIX
-   Replace your entire news category CSS section with this
+   NEWS CATEGORY BADGES - FIXED SIZE
    ═══════════════════════════════════════════════════════════ */
 
-/* Base news category style - EXACTLY THE SAME SIZE FOR ALL */
+/* Base news category style - Ensures uniform size */
 .news-category {
-    display: inline-flex !important;  /* Force flex display */
+    display: inline-flex !important; 
     align-items: center;
     justify-content: center;
     padding: 0.4rem 1rem;
@@ -592,20 +592,22 @@ section {
     font-family: var(--font-mono);
     font-weight: 600;
     margin-top: 1rem;
-    min-width: 140px;
-    height: 26px;  /* Fixed height */
+    /* This ensures badges with long or short text stay the same width */
+    min-width: 140px; 
+    height: 28px; 
     line-height: 1;
     text-align: center;
     box-sizing: border-box;
 }
 
-/* Prevent publication counter from affecting news categories */
+/* Important: This prevents the publication counter from your 
+   publications page from adding a number/space to news items */
 .news-item .news-category::before {
     content: none !important;
     display: none !important;
 }
 
-/* Category-specific colors only - NO sizing changes */
+/* Category-specific colors only - No sizing changes here */
 .news-category.announcement {
     background: #e3f2fd;
     color: #1565c0;
