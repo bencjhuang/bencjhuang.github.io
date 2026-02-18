@@ -11,9 +11,8 @@
     --color-synchrotron: #9b59b6;
     --color-battery: #27ae60;
     
-    --font-display: 'Inter', sans-serif;    
-    --font-mono: 'JetBrains Mono', monospace;
-    
+    --font-display: 'Inter', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;    
+    --font-mono: 'JetBrains Mono', 'Noto Sans TC', monospace;    
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
