@@ -587,6 +587,12 @@ section {
     color: var(--color-primary);
 }
 
+/* Prevent publication counter from affecting news categories */
+.news-item .news-category::before {
+    content: none !important;
+    display: none !important;
+}
+
 /* News Filter Dropdown */
 .news-filter {
     display: flex;
