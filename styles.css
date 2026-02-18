@@ -626,9 +626,20 @@ section {
     font-size: 0.75rem;
     font-family: var(--font-mono);
     margin-top: 1rem;
+    color: var(--color-primary);
     min-width: 140px;
     text-align: center;
-    color: var(--color-primary);
+    line-height: 1.2; /* Fixed line height */
+    height: 24px; /* Fixed height */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Prevent publication counter from affecting news categories */
+.news-item .news-category::before {
+    content: none !important;
+    display: none !important;
 }
 
 /* Category-specific colors */
