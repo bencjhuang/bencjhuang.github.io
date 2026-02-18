@@ -109,32 +109,76 @@
             </div>
         </section>
 
+        <!-- Latest News -->
         <section id="news">
             <div class="section-header">
                 <h2>Latest News</h2>
             </div>
-            <div class="news-item">
-                <div class="news-date">Aug 2026</div>
-                <h3>Prof. Huang Joining Taiwan Tech</h3>
-                <p>Prof. Chen-Jui (Ben) Huang will be joining the Department of Chemical Engineering at
-                National Taiwan University of Science and Technology (Taiwan Tech) as an Assistant Professor.</p>
-                <span class="news-category">ANNOUNCEMENT</span>
+            
+            <!-- Filter Dropdown -->
+            <div class="news-filter">
+                <label for="news-category-filter">Filter by:</label>
+                <select id="news-category-filter">
+                    <option value="all">All News</option>
+                    <option value="announcement">Announcements</option>
+                    <option value="award">Awards & Grants</option>
+                    <option value="publication">Publications</option>
+                    <option value="activity">Activities</option>
+                </select>
             </div>
-            <div class="news-grid">
-                <div class="news-item">
+        
+            <div class="news-grid" id="news-grid">
+                <div class="news-item" data-category="announcement">
+                    <div class="news-date">Aug 2026</div>
+                    <h3>Prof. Huang Joining Taiwan Tech</h3>
+                    <p>
+                        Prof. Chen-Jui (Ben) Huang will be joining the Department of Chemical Engineering at 
+                        National Taiwan University of Science and Technology (Taiwan Tech) as an Assistant Professor.
+                    </p>
+                    <span class="news-category announcement">ANNOUNCEMENT</span>
+                </div>
+        
+                <div class="news-item" data-category="announcement">
                     <div class="news-date">Feb 2026</div>
                     <h3>New Lab Website Launched</h3>
-                    <p>We have officially launched our new lab website! Explore our research, meet our team,
-                    and learn about opportunities to join us starting August 2026.</p>
-                    <span class="news-category">WEBSITE</span>
+                    <p>
+                        We have officially launched our new lab website! Explore our research, meet our team, 
+                        and learn about opportunities to join us starting August 2026.
+                    </p>
+                    <span class="news-category announcement">ANNOUNCEMENT</span>
                 </div>
-                <div class="news-item">
+        
+                <div class="news-item" data-category="publication">
                     <div class="news-date">Jan 2025</div>
                     <h3>Paper Published in ACS Energy Letters</h3>
-                    <p>Our work on "X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State
-                    Battery at Pouch Cell Level" has been published in ACS Energy Letters.</p>
-                    <span class="news-category">PUBLICATION</span>
+                    <p>
+                        Our work on "X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State 
+                        Battery at Pouch Cell Level" has been published in ACS Energy Letters.
+                    </p>
+                    <span class="news-category publication">PUBLICATION</span>
                 </div>
+        
+                <!-- Example Award item - add your own -->
+                <!-- <div class="news-item" data-category="award">
+                    <div class="news-date">Dec 2024</div>
+                    <h3>Research Grant Awarded</h3>
+                    <p>
+                        Prof. Huang received a research grant from the National Science and Technology Council 
+                        to support all-solid-state battery research.
+                    </p>
+                    <span class="news-category award">AWARD & GRANT</span>
+                </div> -->
+        
+                <!-- Example Activity item - add your own -->
+                <!-- <div class="news-item" data-category="activity">
+                    <div class="news-date">Nov 2024</div>
+                    <h3>Conference Presentation at ECS Meeting</h3>
+                    <p>
+                        Our team presented new findings on lithium-sulfur batteries at the 
+                        Electrochemical Society Fall Meeting in San Diego.
+                    </p>
+                    <span class="news-category activity">ACTIVITY</span>
+                </div> -->
             </div>
         </section>
 
