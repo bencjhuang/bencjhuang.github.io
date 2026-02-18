@@ -587,6 +587,68 @@ section {
     color: var(--color-primary);
 }
 
+/* News Filter Dropdown */
+.news-filter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.news-filter label {
+    font-weight: 500;
+    color: var(--color-text);
+}
+
+.news-filter select {
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--color-border);
+    border-radius: 5px;
+    background: white;
+    color: var(--color-text);
+    font-size: 0.95rem;
+    font-family: var(--font-display);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.news-filter select:hover {
+    border-color: var(--color-primary);
+}
+
+.news-filter select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(26, 77, 143, 0.1);
+}
+
+/* Category-specific colors */
+.news-category.announcement {
+    background: #e3f2fd;
+    color: #1565c0;
+}
+
+.news-category.award {
+    background: #fff3e0;
+    color: #e65100;
+}
+
+.news-category.publication {
+    background: #f3e5f5;
+    color: #6a1b9a;
+}
+
+.news-category.activity {
+    background: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* Hidden class for filtering */
+.news-item.hidden {
+    display: none;
+}
+
 /* Quick Navigation Grid */
 .quick-nav-grid {
     display: grid;
