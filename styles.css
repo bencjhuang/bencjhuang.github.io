@@ -637,6 +637,33 @@ section {
     border: 1px solid rgba(39, 174, 96, 0.2) !important;
 }
 
+/* Base hover transition */
+.badge-cat {
+    transition: all 0.3s ease !important;
+    cursor: default; /* Keeps it feeling like a label, not a button */
+}
+
+/* Hover States */
+.badge-cat.announcement:hover {
+    background: rgba(26, 77, 143, 0.2) !important;
+    box-shadow: 0 0 10px rgba(26, 77, 143, 0.2);
+}
+
+.badge-cat.award:hover {
+    background: rgba(230, 126, 34, 0.2) !important;
+    box-shadow: 0 0 10px rgba(230, 126, 34, 0.2);
+}
+
+.badge-cat.pub-label:hover {
+    background: rgba(155, 89, 182, 0.2) !important;
+    box-shadow: 0 0 10px rgba(155, 89, 182, 0.2);
+}
+
+.badge-cat.activity:hover {
+    background: rgba(39, 174, 96, 0.2) !important;
+    box-shadow: 0 0 10px rgba(39, 174, 96, 0.2);
+}
+
 /* Hidden class for filtering */
 .news-item.hidden {
     display: none;
