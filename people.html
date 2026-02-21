@@ -47,7 +47,16 @@ ang<!DOCTYPE html>
         </div>
     </div>
 
+    <!-- People Tab Navigation -->
+    <div class="people-tabs" id="people-tabs">
+        <button class="people-tab active" data-tab="pi">Principal Investigator</button>
+        <button class="people-tab" data-tab="members">Current Members</button>
+        <button class="people-tab" data-tab="alumni">Alumni</button>
+    </div>
+
     <main>
+        <!-- ===== TAB: PI ===== -->
+        <div class="tab-panel active" id="tab-pi">
         <section>
             <div class="section-header">
                 <h2>Principal Investigator</h2>
@@ -133,7 +142,7 @@ ang<!DOCTYPE html>
                             </li>
                             <li>
                                 <div class="cv-main">Postdoctoral Researcher</div>
-                                <div class="cv-sub">Taiwan Tech, Chemical Engineering Department (台科大化工系) &nbsp;|&nbsp; 2022–2023</div>
+                                <div class="cv-sub">Chemical Engineering Department, Taiwan Tech (台科大化工系) &nbsp;|&nbsp; 2022–2023</div>
                                 <div class="cv-sub">Supervisor: Prof. Bing Joe Hwang</div>
                             </li>
                             <li>
@@ -146,7 +155,10 @@ ang<!DOCTYPE html>
                 </div>
             </div>
         </section>
+        </div><!-- end tab-pi -->
 
+        <!-- ===== TAB: CURRENT MEMBERS ===== -->
+        <div class="tab-panel" id="tab-members">
         <section>
             <div class="section-header">
                 <h2>Graduate Students</h2>
@@ -237,6 +249,10 @@ ang<!DOCTYPE html>
             </div>
         </section>
 
+        </div><!-- end tab-members -->
+
+        <!-- ===== TAB: ALUMNI ===== -->
+        <div class="tab-panel" id="tab-alumni">
         <section>
             <div class="section-header">
                 <h2>Alumni</h2>
@@ -249,6 +265,8 @@ ang<!DOCTYPE html>
                 </p>
             </div>
         </section>
+
+        </div><!-- end tab-alumni -->
 
         <section>
             <div class="join-cta">
@@ -300,5 +318,19 @@ ang<!DOCTYPE html>
     </footer>
     <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
     <script src="script.js"></script>
+    <script>
+        const tabs = document.querySelectorAll('.people-tab');
+        const panels = document.querySelectorAll('.tab-panel');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                panels.forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+                window.scrollTo({ top: document.getElementById('people-tabs').offsetTop - 80, behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
