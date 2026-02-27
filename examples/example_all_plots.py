@@ -16,8 +16,8 @@ import numpy as np
 import sys
 import os
 
-# Allow running from the examples/ folder directly
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", ".."))
+# Allow running from the examples/ folder without installing the package
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
 from echem_plots.style import apply_style
 from echem_plots.plots import (
