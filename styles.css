@@ -566,10 +566,15 @@ section:last-child { margin-bottom: 0; }
 }
 .research-card:hover .research-image img { transform: scale(1.03); }
 
-/* Per-card zoom — for images with lots of empty bg around the subject */
-.research-image--zoom { padding: 0.4rem; }
-.research-image--zoom img { transform: scale(1.44); }
-.research-card:hover .research-image--zoom img { transform: scale(1.48); }
+/* Per-card zoom — for images with lots of empty bg around the subject.
+   Tune per-card via inline style: style="--zoom: 1.2; --zoom-hover: 1.24;" */
+.research-image--zoom {
+    padding: 0.4rem;
+    --zoom: 1.44;
+    --zoom-hover: 1.48;
+}
+.research-image--zoom img { transform: scale(var(--zoom)); }
+.research-card:hover .research-image--zoom img { transform: scale(var(--zoom-hover)); }
 
 /* Legacy emoji-icon header — kept for any old markup, but disabled visually */
 .research-icon { display: none; }
