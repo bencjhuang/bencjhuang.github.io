@@ -3,177 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gallery | CJHuang Group @ Taiwan Tech</title>
+    <title>Gallery · CJHuang Group</title>
+    <meta name="description" content="Lab equipment, research, and group activities at the CJHuang Group, Taiwan Tech.">
+    <link rel="canonical" href="https://bencjhuang.github.io/gallery.html">
+
+    <!-- Open Graph / social cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gallery · CJHuang Group">
+    <meta property="og:description" content="Lab equipment, beamline visits, and research figures from the CJHuang Group at Taiwan Tech.">
+    <meta property="og:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+    <meta property="og:url" content="https://bencjhuang.github.io/gallery.html">
+    <meta property="og:site_name" content="CJHuang Group">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Gallery · CJHuang Group">
+    <meta name="twitter:description" content="Lab, research, and group life.">
+    <meta name="twitter:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .gallery-filter {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 32px;
-        }
-
-        .gallery-filter-btn {
-            padding: 8px 20px;
-            border: 2px solid var(--color-primary);
-            background: transparent;
-            color: var(--color-primary);
-            border-radius: 24px;
-            font-family: var(--font-display);
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .gallery-filter-btn:hover,
-        .gallery-filter-btn.active {
-            background: var(--color-primary);
-            color: white;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            position: relative;
-            border-radius: 10px;
-            overflow: hidden;
-            background: var(--color-bg-alt);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.14);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .gallery-item .gallery-caption {
-            padding: 12px 16px;
-        }
-
-        .gallery-item .gallery-caption p {
-            font-size: 0.88rem;
-            color: var(--color-text-light);
-            margin: 0;
-            text-align: left;
-        }
-
-        .gallery-item .gallery-caption span {
-            display: inline-block;
-            margin-top: 6px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: var(--color-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .gallery-placeholder {
-            width: 100%;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, var(--color-bg-alt), #e9ecef);
-            color: var(--color-text-light);
-            font-size: 0.85rem;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Lightbox */
-        .lightbox {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0,0,0,0.88);
-            z-index: 2000;
-            align-items: center;
-            justify-content: center;
-            padding: 24px;
-        }
-
-        .lightbox.open {
-            display: flex;
-        }
-
-        .lightbox img {
-            max-width: 90vw;
-            max-height: 85vh;
-            object-fit: contain;
-            border-radius: 8px;
-            box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-        }
-
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 28px;
-            font-size: 2rem;
-            color: white;
-            background: none;
-            border: none;
-            cursor: pointer;
-            line-height: 1;
-            opacity: 0.8;
-            transition: var(--transition);
-        }
-
-        .lightbox-close:hover {
-            opacity: 1;
-        }
-
-        .lightbox-caption {
-            position: absolute;
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 0.9rem;
-            opacity: 0.85;
-            text-align: center;
-            max-width: 600px;
-        }
-
-        .coming-soon-banner {
-            text-align: center;
-            padding: 48px 24px;
-            background: var(--color-bg-alt);
-            border-radius: 12px;
-            margin-bottom: 32px;
-            border: 2px dashed var(--color-border);
-        }
-
-        .coming-soon-banner p {
-            color: var(--color-text-light);
-            margin-top: 8px;
-            text-align: center;
-        }
-    </style>
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-main">CJHuang Group</div>
-                <div class="logo-sub">@ Taiwan Tech</div>
+                <div class="logo-sub">Taiwan Tech · NTUST</div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -182,14 +39,13 @@
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="equipment.html">Equipment</a></li>
                 <li><a href="gallery.html" class="active">Gallery</a></li>
-                <li><a href="join.html">Join Us</a></li>
+                <li><a href="join.html">Join</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
     </nav>
-
     <div class="mobile-menu" id="mobile-menu">
         <a href="index.html">Home</a>
         <a href="research.html">Research</a>
@@ -197,232 +53,183 @@
         <a href="publications.html">Publications</a>
         <a href="equipment.html">Equipment</a>
         <a href="gallery.html" class="active">Gallery</a>
-        <a href="join.html">Join Us</a>
+        <a href="join.html">Join</a>
     </div>
 
-    <div class="page-header">
-        <div class="page-header-content">
-            <h1>Gallery</h1>
-            <p>Lab life, equipment, conferences, and research highlights</p>
-        </div>
-    </div>
+    <header class="page-header">
+        <span class="page-eyebrow">Gallery</span>
+        <h1>Lab, research, and group life</h1>
+        <p>Equipment, beamline visits, conferences, and the occasional group photo.</p>
+    </header>
 
-    <main>
-
-        <!-- Filter buttons -->
+    <main id="main-content">
         <section>
-            <div class="gallery-filter">
+            <!-- Filter chips -->
+            <div class="gallery-filters" role="tablist">
                 <button class="gallery-filter-btn active" data-filter="all">All</button>
-                <button class="gallery-filter-btn" data-filter="lab">Lab & Equipment</button>
+                <button class="gallery-filter-btn" data-filter="lab">Lab &amp; equipment</button>
                 <button class="gallery-filter-btn" data-filter="research">Research</button>
                 <button class="gallery-filter-btn" data-filter="conference">Conferences</button>
-                <button class="gallery-filter-btn" data-filter="group">Group Activities</button>
+                <button class="gallery-filter-btn" data-filter="group">Group activities</button>
             </div>
 
-            <div class="coming-soon-banner">
-                <h3>Gallery Coming Soon</h3>
-                <p>Photos will be added as the lab is established in August 2026. Check back for updates!</p>
-            </div>
+            <p class="gallery-empty-note">
+                More photos will be added as the lab is established and the group grows.
+            </p>
 
-            <!-- Gallery grid — add real photos here by replacing placeholder divs with <img> tags -->
+            <!-- Grid: real images only. Drop in more <article class="gallery-item"> blocks as you have them. -->
             <div class="gallery-grid" id="gallery-grid">
 
-                <!-- Lab & Equipment -->
-                <div class="gallery-item" data-category="lab">
-                    <img src="image/g-gb.jpg" alt="Argon Glovebox">
+                <article class="gallery-item" data-category="lab">
+                    <img loading="lazy" decoding="async" src="image/g-gb.jpg" alt="Argon-filled glovebox">
                     <div class="gallery-caption">
-                        <p>Argon-filled glovebox for inert atmosphere cell assembly</p>
-                        <span>Lab & Equipment</span>
+                        <span class="gallery-caption__tag">Lab</span>
+                        <p>Argon-filled glovebox for inert-atmosphere cell assembly.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="gallery-item" data-category="lab">
-                    <img src="image/g-vsp300.jpg" alt="Potentiostat VSP300">
+                <article class="gallery-item" data-category="lab">
+                    <img loading="lazy" decoding="async" src="image/g-vsp300.jpg" alt="Biologic VSP-300 potentiostat">
                     <div class="gallery-caption">
-                        <p>Biologic VSP300 potentiostat for electrochemical characterization</p>
-                        <span>Lab & Equipment</span>
+                        <span class="gallery-caption__tag">Lab</span>
+                        <p>Biologic VSP-300 potentiostat for electrochemical characterization.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="gallery-item" data-category="lab">
-                    <img src="image/g-cycler.jpg" alt="Battery Cycler">
+                <article class="gallery-item" data-category="lab">
+                    <img loading="lazy" decoding="async" src="image/g-cycler.jpg" alt="Multi-channel battery cycler">
                     <div class="gallery-caption">
-                        <p>Multi-channel battery cycler for long-term cycling experiments</p>
-                        <span>Lab & Equipment</span>
+                        <span class="gallery-caption__tag">Lab</span>
+                        <p>Multi-channel battery cycler for long-term cycling experiments.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="gallery-item" data-category="lab">
-                    <img src="image/thinky.png" alt="Thinky Mixer">
+                <article class="gallery-item" data-category="lab">
+                    <img loading="lazy" decoding="async" src="image/thinky.png" alt="Thinky planetary mixer">
                     <div class="gallery-caption">
-                        <p>Thinky planetary centrifugal mixer for electrode slurry preparation</p>
-                        <span>Lab & Equipment</span>
+                        <span class="gallery-caption__tag">Lab</span>
+                        <p>Thinky planetary centrifugal mixer for slurry preparation.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="gallery-item" data-category="lab">
-                    <img src="image/cip.svg" alt="CIP Schematic">
+                <article class="gallery-item" data-category="lab">
+                    <img loading="lazy" decoding="async" src="image/cip.svg" alt="Cold isostatic press schematic">
                     <div class="gallery-caption">
-                        <p>Cold isostatic pressing (CIP) schematic for solid-state electrolyte densification</p>
-                        <span>Lab & Equipment</span>
+                        <span class="gallery-caption__tag">Lab</span>
+                        <p>Cold isostatic pressing for solid-electrolyte densification.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="gallery-item" data-category="lab">
-                    <img src="image/pm200.jpg" alt="Ball Mill">
+                <article class="gallery-item" data-category="lab">
+                    <img loading="lazy" decoding="async" src="image/pm200.jpg" alt="Retsch PM 200 ball mill">
                     <div class="gallery-caption">
-                        <p>Ball mill for solid-state synthesis and mixing</p>
-                        <span>Lab & Equipment</span>
+                        <span class="gallery-caption__tag">Lab</span>
+                        <p>Retsch PM 200 ball mill for solid-state synthesis and mixing.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- Research placeholders -->
-                <div class="gallery-item" data-category="research">
-                    <div class="gallery-placeholder">
-                        🔬 Research images coming soon
-                    </div>
+                <!-- Research figures + beamline photos -->
+                <article class="gallery-item" data-category="research">
+                    <img loading="lazy" decoding="async" src="image/hero-beamline.jpg" alt="Synchrotron beamline control room with monitors and X-ray data">
                     <div class="gallery-caption">
-                        <p>Synchrotron X-ray measurements at NSRRC</p>
-                        <span>Research</span>
+                        <span class="gallery-caption__tag">Research</span>
+                        <p>At the synchrotron beamline — running X-ray experiments and monitoring data live.</p>
                     </div>
-                </div>
+                </article>
 
-                <div class="gallery-item" data-category="research">
-                    <div class="gallery-placeholder">
-                        ⚛️ Research images coming soon
-                    </div>
+                <article class="gallery-item" data-category="research">
+                    <img loading="lazy" decoding="async" src="image/research-assb.jpg" alt="3D rendering of an all-solid-state battery test cell">
                     <div class="gallery-caption">
-                        <p>Operando XAS experiments at the Advanced Photon Source</p>
-                        <span>Research</span>
+                        <span class="gallery-caption__tag">Research</span>
+                        <p>Custom all-solid-state pouch cell — designed for synchrotron tomography.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- Conference placeholders -->
-                <div class="gallery-item" data-category="conference">
-                    <div class="gallery-placeholder">
-                        🎤 Conference photos coming soon
-                    </div>
+                <article class="gallery-item" data-category="research">
+                    <img loading="lazy" decoding="async" src="image/research-anodefree.jpg" alt="Cell-architecture comparison for anode-free Li metal characterization">
                     <div class="gallery-caption">
-                        <p>Conference presentations and meetings</p>
-                        <span>Conferences</span>
+                        <span class="gallery-caption__tag">Research</span>
+                        <p>Anode-free Li metal — failure-mode isolation across cell architectures.</p>
                     </div>
-                </div>
+                </article>
 
-                <!-- Group activity placeholders -->
-                <div class="gallery-item" data-category="group">
-                    <div class="gallery-placeholder">
-                        👥 Group photos coming soon
-                    </div>
+                <article class="gallery-item" data-category="research">
+                    <img loading="lazy" decoding="async" src="image/research-operando.jpg" alt="Six in-situ and operando battery cell designs">
                     <div class="gallery-caption">
-                        <p>Group activities and outings</p>
-                        <span>Group Activities</span>
+                        <span class="gallery-caption__tag">Research</span>
+                        <p><i>In-situ</i> / <i>operando</i> cell designs for X-ray, optical, and Raman characterization.</p>
                     </div>
-                </div>
+                </article>
+
+                <article class="gallery-item" data-category="research">
+                    <img loading="lazy" decoding="async" src="image/research-xct.jpg" alt="Synchrotron X-ray tomography of an all-solid-state pouch cell">
+                    <div class="gallery-caption">
+                        <span class="gallery-caption__tag">Research</span>
+                        <p>Pouch-cell synchrotron XCT — slice imaging through to 3D segmented reconstruction.</p>
+                    </div>
+                </article>
 
             </div>
         </section>
 
-        <!-- CTA -->
         <section>
             <div class="join-cta">
-                <h2>Want to Be Part of Our Story?</h2>
-                <p>We are actively recruiting graduate students and postdocs to join our group in August 2026.</p>
-                <a href="join.html" class="cta-button">Join Us</a>
+                <h2>Want to be part of the next chapter?</h2>
+                <p>The group is recruiting graduate students and undergraduate researchers for August 2026.</p>
+                <a href="join.html" class="cta-button">
+                    See open positions
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
             </div>
         </section>
-
     </main>
 
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3>CJHuang Group</h3>
                 <p>
-                    Chemical Engineering Department<br>
+                    Department of Chemical Engineering<br>
                     National Taiwan University of Science and Technology<br>
                     No. 43, Section 4, Keelung Road<br>
                     Taipei 10607, Taiwan
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Email</h3>
+                <h3>Contact</h3>
+                <p><a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a></p>
+            </div>
+            <div class="footer-section">
+                <h3>Affiliations</h3>
                 <p>
-                    <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a>
+                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank" rel="noopener">Taiwan Tech</a><br>
+                    <a href="https://en.ch.ntust.edu.tw/" target="_blank" rel="noopener">Chemical Engineering</a>
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Links</h3>
+                <h3>Group</h3>
                 <p>
-                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br>
-                    <a href="https://en.ch.ntust.edu.tw/" target="_blank">Chemical Engineering Dept</a><br>
-                </p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Our Research</h3>
-                <p>
-                    <a href="publications.html">Latest Publications</a><br>
-                    <a href="research.html">Research Updates</a><br>
-                    <a href="join.html">Open Positions</a>
+                    <a href="publications.html">Publications</a><br>
+                    <a href="research.html">Research</a><br>
+                    <a href="join.html">Open positions</a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 CJHuang Research Group @ Taiwan Tech | All Rights Reserved
+            © 2026 CJHuang Research Group · Taiwan Tech
         </div>
     </footer>
 
     <!-- Lightbox -->
-    <div class="lightbox" id="lightbox">
-        <button class="lightbox-close" id="lightbox-close">&times;</button>
-        <img src="" alt="" id="lightbox-img">
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close">×</button>
+        <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Previous image">‹</button>
+        <img class="lightbox-img" src="" alt="" id="lightbox-img">
+        <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Next image">›</button>
         <div class="lightbox-caption" id="lightbox-caption"></div>
     </div>
 
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
     <script src="script.js"></script>
-    <script>
-        // Gallery filter
-        const filterBtns = document.querySelectorAll('.gallery-filter-btn');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
-                galleryItems.forEach(item => {
-                    item.style.display = (filter === 'all' || item.dataset.category === filter) ? 'block' : 'none';
-                });
-            });
-        });
-
-        // Lightbox — only for real images, not placeholders
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightbox-img');
-        const lightboxCaption = document.getElementById('lightbox-caption');
-
-        galleryItems.forEach(item => {
-            const img = item.querySelector('img');
-            if (!img) return;
-            item.addEventListener('click', () => {
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightboxCaption.textContent = item.querySelector('.gallery-caption p')?.textContent || '';
-                lightbox.classList.add('open');
-            });
-        });
-
-        document.getElementById('lightbox-close').addEventListener('click', () => {
-            lightbox.classList.remove('open');
-        });
-
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) lightbox.classList.remove('open');
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') lightbox.classList.remove('open');
-        });
-    </script>
 </body>
 </html>

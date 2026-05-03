@@ -1,20 +1,36 @@
-ang<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>People | CJHuang Group @ Taiwan Tech</title>
+    <title>People · CJHuang Group</title>
+    <meta name="description" content="The CJHuang Group at Taiwan Tech: PI Chen-Jui (Ben) Huang and a recruiting group launching August 2026.">
+    <link rel="canonical" href="https://bencjhuang.github.io/people.html">
+
+    <!-- Open Graph / social cards -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="People · CJHuang Group">
+    <meta property="og:description" content="Prof. Chen-Jui (Ben) Huang and the team. Currently recruiting graduate and undergraduate researchers for the August 2026 launch.">
+    <meta property="og:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+    <meta property="og:url" content="https://bencjhuang.github.io/people.html">
+    <meta property="og:site_name" content="CJHuang Group">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="People · CJHuang Group">
+    <meta name="twitter:description" content="Meet the PI. Group members starting August 2026.">
+    <meta name="twitter:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-        <nav id="navbar">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-main">CJHuang Group</div>
-                <div class="logo-sub">@ Taiwan Tech</div>
+                <div class="logo-sub">Taiwan Tech · NTUST</div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -23,9 +39,9 @@ ang<!DOCTYPE html>
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="equipment.html">Equipment</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="join.html">Join Us</a></li>
+                <li><a href="join.html">Join</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -37,81 +53,77 @@ ang<!DOCTYPE html>
         <a href="publications.html">Publications</a>
         <a href="equipment.html">Equipment</a>
         <a href="gallery.html">Gallery</a>
-        <a href="join.html">Join Us</a>
+        <a href="join.html">Join</a>
     </div>
 
-    <div class="page-header">
-        <div class="page-header-content">
-            <h1>Our Team</h1>
-            <p>Meet the researchers advancing battery science and technology</p>
-        </div>
+    <header class="page-header">
+        <span class="page-eyebrow">People</span>
+        <h1>The team</h1>
+        <p>The PI today, a research group from August 2026.</p>
+    </header>
+
+    <div class="people-tabs" id="people-tabs" role="tablist">
+        <button class="people-tab active" data-tab="pi" role="tab" aria-selected="true">Principal Investigator</button>
+        <button class="people-tab" data-tab="members" role="tab" aria-selected="false">Members</button>
+        <button class="people-tab" data-tab="alumni" role="tab" aria-selected="false">Alumni</button>
     </div>
 
-    <!-- People Tab Navigation -->
-    <div class="people-tabs" id="people-tabs">
-        <button class="people-tab active" data-tab="pi">Principal Investigator</button>
-        <button class="people-tab" data-tab="members">Current Members</button>
-        <button class="people-tab" data-tab="alumni">Alumni</button>
-    </div>
-
-    <main>
-        <!-- ===== TAB: PI ===== -->
-        <div class="tab-panel active" id="tab-pi">
-        <section>
-            <div class="section-header">
-                <h2>Principal Investigator</h2>
-            </div>
-            
+    <main id="main-content">
+        <!-- ═══════════════════════════════════════════════════
+             TAB · PRINCIPAL INVESTIGATOR
+             ═══════════════════════════════════════════════════ -->
+        <section class="tab-panel active" id="tab-pi" role="tabpanel">
             <div class="pi-profile">
                 <div class="pi-photo">
-                    <img src="image/Ben.JPG" alt="Dr. Chen-Jui (Ben) Huang" style="width: 100%; max-width: 300px; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                    <img fetchpriority="high" decoding="async" src="image/Ben.JPG" alt="Chen-Jui (Ben) Huang">
                 </div>
                 <div class="pi-info">
-                    <h2>Chen-Jui (Ben) Huang (黃貞睿), Ph.D.</h2>
-                    <div class="pi-title">Incoming Assistant Professor, Chemical Engineering</div>
-                    <div class="pi-affiliation">National Taiwan University of Science and Technology (Starting August 2026)</div>
-                    
+                    <h2>Chen-Jui (Ben) Huang <span class="pi-name-cn">黃貞睿</span>, Ph.D.</h2>
+                    <div class="pi-title">Incoming Assistant Professor · Chemical Engineering</div>
+                    <div class="pi-affiliation">National Taiwan University of Science and Technology (NTUST) — starting August 2026</div>
+
                     <div class="pi-contact">
-                        <p><strong>Email:</strong> <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a></p>
-                        <p><strong>Office:</strong> Chemical Engineering Department, Taiwan Tech</p>
-                        <p><strong>Links:</strong>
-                            <a href="https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en" target="_blank">Google Scholar</a> |
-                            <a href="https://orcid.org/0000-0001-8338-1424" target="_blank">ORCID</a> |
-                            <a href="https://www.linkedin.com/in/chen-jui-ben-huang-b25267a1" target="_blank">LinkedIn</a>
+                        <p><strong>Email</strong> <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a></p>
+                        <p><strong>Office</strong> Department of Chemical Engineering, Taiwan Tech</p>
+                        <p class="pi-links">
+                            <a href="https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+                            <span class="dot">·</span>
+                            <a href="https://orcid.org/0000-0001-8338-1424" target="_blank" rel="noopener">ORCID</a>
+                            <span class="dot">·</span>
+                            <a href="https://www.linkedin.com/in/chen-jui-ben-huang-b25267a1" target="_blank" rel="noopener">LinkedIn</a>
                         </p>
                     </div>
 
                     <div class="pi-bio">
                         <h3>Biography</h3>
                         <p>
-                            Dr. Chen-Jui Huang (黃貞睿) will be joining the Department of Chemical Engineering at National Taiwan University of Science and Technology (Taiwan Tech) 
-                            as an Assistant Professor in August 2026. He is currently a Postdoctoral Researcher at 
-                            the Pritzker School of Molecular Engineering, The University of Chicago, working with 
-                            Prof. Ying Shirley Meng, and a Resident Associate in the Imaging Group at Argonne 
-                            National Laboratory's Advanced Photon Source.
+                            Ben Huang joins Taiwan Tech's Department of Chemical Engineering as Assistant Professor in
+                            August 2026. He is currently a Postdoctoral Researcher at the Pritzker School of Molecular
+                            Engineering, University of Chicago, working with Prof. Ying Shirley Meng, and a Resident
+                            Associate in the Imaging Group at Argonne's Advanced Photon Source.
                         </p>
                         <p>
-                            Dr. Huang received his Ph.D. in Chemical Engineering from Taiwan Tech in 2021 under the supervision of Prof. Bing Joe Hwang, 
-                            with a dissertation on "Exploring Electrochemical Energy Materials by in-operando/situ 
-                            Spectroscopy and Imaging Techniques." He also spent one year as a visiting student researcher 
-                            at Stanford University in Prof. Hongjie Dai's group (2016-2017).
+                            He completed his Ph.D. in Chemical Engineering at Taiwan Tech in 2021 under Prof. Bing Joe
+                            Hwang, with a dissertation on probing electrochemical energy materials by
+                            <i>in-operando/situ</i> spectroscopy and imaging. He spent a year as a visiting student
+                            researcher in Prof. Hongjie Dai's group at Stanford (2016–2017).
                         </p>
                         <p>
-                            His research expertise spans advanced battery materials, synchrotron X-ray characterization 
-                            (XRD, XAS, XPS, tomography), and <i>in-situ/operando</i> techniques. He has extensive experience leading 
-                            collaborative research projects funded by industry (LG Energy Solution, BMW) and government 
-                            agencies, and has mentored over 20 graduate and undergraduate students.
+                            His expertise spans advanced battery materials, synchrotron X-ray characterization
+                            (XRD, XAS, XPS, tomography), and <i>in-situ/operando</i> techniques. He has led
+                            collaborative research projects funded by industry (LG Energy Solution, BMW) and government
+                            agencies, and mentored more than twenty graduate and undergraduate students.
                         </p>
                     </div>
 
                     <div class="pi-research">
-                        <h3>Research Interests</h3>
+                        <h3>Research interests</h3>
                         <ul>
-                            <li>All-Solid-State Battery Materials and Interfaces</li>
-                            <li>Anode-Free Lithium Metal Batteries</li>
-                            <li><i>operando/in-situ</i> Synchrotron X-ray Spectroscopy (XAS, XRD, XPS)</li>
-                            <li>X-ray Micro-Computed Tomography (µXCT) and 3D Imaging</li>
-                            <li>Transmission X-ray Microscopy (TXM)</li>
+                            <li>All-solid-state battery materials and interfaces</li>
+                            <li>Anode-free lithium metal batteries</li>
+                            <li><i>Operando</i> / <i>in-situ</i> synchrotron X-ray spectroscopy (XAS, XRD, XPS)</li>
+                            <li>X-ray micro-computed tomography (µXCT) and 3D imaging</li>
+                            <li>Transmission X-ray microscopy (TXM)</li>
                         </ul>
                     </div>
 
@@ -119,164 +131,156 @@ ang<!DOCTYPE html>
                         <h3>Education</h3>
                         <ul class="cv-list">
                             <li>
-                                <div class="cv-main">Ph.D. in Chemical Engineering</div>
-                                <div class="cv-sub">National Taiwan University of Science and Technology (台科大化工系) &nbsp;|&nbsp; 2016–2021</div>
-                                <div class="cv-sub">Supervisor: Prof. Bing Joe Hwang</div>
+                                <div class="cv-main">Ph.D. · Chemical Engineering</div>
+                                <div class="cv-sub">National Taiwan University of Science and Technology — 2016–2021</div>
+                                <div class="cv-sub">Advisor: Prof. Bing Joe Hwang</div>
                             </li>
                             <li>
-                                <div class="cv-main">B.S. in Chemical Engineering</div>
-                                <div class="cv-sub">National Taiwan University of Science and Technology (台科大化工系) &nbsp;|&nbsp; 2012–2016</div>
+                                <div class="cv-main">B.S. · Chemical Engineering</div>
+                                <div class="cv-sub">National Taiwan University of Science and Technology — 2012–2016</div>
                             </li>
                         </ul>
 
-                        <h3 style="margin-top: 1.5rem;">Experience</h3>
+                        <h3>Experience</h3>
                         <ul class="cv-list">
                             <li>
                                 <div class="cv-main">Postdoctoral Researcher</div>
-                                <div class="cv-sub">Pritzker School of Molecular Engineering, The University of Chicago &nbsp;|&nbsp; 2023–present</div>
-                                <div class="cv-sub">Supervisor: Prof. Ying Shirley Meng</div>
+                                <div class="cv-sub">Pritzker School of Molecular Engineering, University of Chicago — 2023–present</div>
+                                <div class="cv-sub">Advisor: Prof. Ying Shirley Meng</div>
                             </li>
                             <li>
-                                <div class="cv-main">Resident Associate, Imaging Group</div>
-                                <div class="cv-sub">Advanced Photon Source, Argonne National Laboratory &nbsp;|&nbsp; 2024–present</div>
+                                <div class="cv-main">Resident Associate · Imaging Group</div>
+                                <div class="cv-sub">Advanced Photon Source, Argonne National Laboratory — 2024–present</div>
                             </li>
                             <li>
                                 <div class="cv-main">Postdoctoral Researcher</div>
-                                <div class="cv-sub">Chemical Engineering Department, Taiwan Tech (台科大化工系) &nbsp;|&nbsp; 2022–2023</div>
-                                <div class="cv-sub">Supervisor: Prof. Bing Joe Hwang</div>
+                                <div class="cv-sub">Department of Chemical Engineering, Taiwan Tech — 2022–2023</div>
+                                <div class="cv-sub">Advisor: Prof. Bing Joe Hwang</div>
                             </li>
                             <li>
                                 <div class="cv-main">Visiting Student Researcher</div>
-                                <div class="cv-sub">Chemistry Department, Stanford University &nbsp;|&nbsp; 2016–2017</div>
-                                <div class="cv-sub">Supervisor: Prof. Hongjie Dai</div>
+                                <div class="cv-sub">Department of Chemistry, Stanford University — 2016–2017</div>
+                                <div class="cv-sub">Advisor: Prof. Hongjie Dai</div>
                             </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
-        </div><!-- end tab-pi -->
 
-        <!-- ===== TAB: CURRENT MEMBERS ===== -->
-        <div class="tab-panel" id="tab-members">
-        <section>
-            <div class="section-header">
-                <h2>Graduate Students</h2>
+        <!-- ═══════════════════════════════════════════════════
+             TAB · MEMBERS (recruiting + open projects)
+             ═══════════════════════════════════════════════════ -->
+        <section class="tab-panel" id="tab-members" role="tabpanel">
+            <div class="recruiting-notice">
+                <div class="recruiting-notice__eyebrow">Currently recruiting</div>
+                <h2>The first cohort starts August 2026.</h2>
+                <p>
+                    Below are six project areas open for the launch cohort: four for Master's
+                    researchers and two for Taiwan Tech undergraduates. Each describes the kind of
+                    work you'd be doing in your first year. If something matches what you want to
+                    work on, see the Join page or email Ben directly.
+                </p>
+                <div class="recruiting-actions">
+                    <a href="join.html" class="btn btn-primary">
+                        See open positions
+                        <span class="btn-arrow" aria-hidden="true">→</span>
+                    </a>
+                    <a href="mailto:bencjhuang@gmail.com" class="btn-link">
+                        Email Ben directly
+                        <span class="btn-arrow" aria-hidden="true">→</span>
+                    </a>
+                </div>
             </div>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="image/placeholder.jpg" alt="Student Name" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">PhD Student Name</div>
-                        <div class="member-role">PhD Candidate</div>
-                        <p class="member-research">
-                            Research focus on solid-state battery interfaces using operando X-ray 
-                            absorption spectroscopy and electrochemical characterization.
-                        </p>
-                        <div class="member-email"><a href="mailto:student@ntust.edu.tw">student@ntust.edu.tw</a></div>
-                    </div>
-                </div>
 
-                <div class="team-member">
-                    <img src="image/placeholder.jpg" alt="Student Name" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Master's Student Name</div>
-                        <div class="member-role">Master's Student</div>
-                        <p class="member-research">
-                            Investigating solid electrolyte interfaces and electrochemical performance
-                            of all-solid-state batteries.
-                        </p>
-                        <div class="member-email"><a href="mailto:student@ntust.edu.tw">student@ntust.edu.tw</a></div>
-                    </div>
+            <div class="projects-block">
+                <div class="section-header">
+                    <span class="section-eyebrow">Master's · 4 positions</span>
+                    <h2>Open project areas</h2>
                 </div>
-
-                <div class="team-member">
-                    <img src="image/placeholder.jpg" alt="Student Name" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Master's Student Name</div>
-                        <div class="member-role">Master's Student</div>
-                        <p class="member-research">
-                            Developing operando characterization methods for anode-free battery 
-                            architectures using 3D X-ray tomography.
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <span class="project-card__tag">Master's · Open</span>
+                        <h3>Solid-electrolyte interface engineering</h3>
+                        <p>
+                            Optimize the solid–solid interface in sulfide-based ASSBs. Synthesize
+                            composite cathodes, characterize interfacial impedance, and use
+                            <i>operando</i> techniques to track interface evolution during cycling.
                         </p>
-                        <div class="member-email"><a href="mailto:student@ntust.edu.tw">student@ntust.edu.tw</a></div>
-                    </div>
+                    </article>
+
+                    <article class="project-card">
+                        <span class="project-card__tag">Master's · Open</span>
+                        <h3>Anode-free Li metal architectures</h3>
+                        <p>
+                            Develop current-collector treatments and electrolyte formulations that
+                            promote uniform Li plating. Quantify reversibility through coin-cell and
+                            pouch-cell measurements; isolate failure modes with symmetric cells.
+                        </p>
+                    </article>
+
+                    <article class="project-card">
+                        <span class="project-card__tag">Master's · Open</span>
+                        <h3><i>Operando</i> synchrotron spectroscopy</h3>
+                        <p>
+                            Design <i>in-situ</i> cells for synchrotron beamlines and run XAS / XRD
+                            experiments at NSRRC. Correlate spectroscopic signatures with
+                            electrochemical performance — read the chemistry and the curve together.
+                        </p>
+                    </article>
+
+                    <article class="project-card">
+                        <span class="project-card__tag">Master's · Open</span>
+                        <h3>Pouch-cell X-ray tomography</h3>
+                        <p>
+                            Build the synchrotron-tomography workflow for working pouch cells:
+                            sample preparation, beamline acquisition, reconstruction, segmentation,
+                            and quantitative morphology analysis. End-to-end ownership.
+                        </p>
+                    </article>
                 </div>
+            </div>
 
-                <div class="team-member">
-                    <img src="image/placeholder.jpg" alt="Student Name" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Master's Student Name</div>
-                        <div class="member-role">Master's Student</div>
-                        <p class="member-research">
-                            Studying electrode degradation mechanisms in lithium-ion batteries using 
-                            multi-scale characterization techniques.
+            <div class="projects-block">
+                <div class="section-header">
+                    <span class="section-eyebrow">Undergraduate · 2 positions</span>
+                    <h2>Foundational projects</h2>
+                </div>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <span class="project-card__tag">Undergraduate · Open</span>
+                        <h3>Cell assembly &amp; electrochemical testing</h3>
+                        <p>
+                            Hands-on cell building inside the glovebox: slurry prep, electrode
+                            coating, cell stacking, and running the cycler. The foundation for
+                            graduate-level battery research — and good practice if you're considering
+                            grad school.
                         </p>
-                        <div class="member-email"><a href="mailto:student@ntust.edu.tw">student@ntust.edu.tw</a></div>
-                    </div>
+                    </article>
+
+                    <article class="project-card">
+                        <span class="project-card__tag">Undergraduate · Open</span>
+                        <h3>Materials synthesis &amp; characterization</h3>
+                        <p>
+                            Solid-electrolyte synthesis (ball-milling, mechanochemistry) and
+                            bench-top characterization. Learn the workflow from precursor to
+                            tested electrode — the path a battery material takes before it ever
+                            sees a beamline.
+                        </p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section>
-            <div class="section-header">
-                <h2>Undergraduate Researchers</h2>
-            </div>
-            
-            <div class="team-grid">
-                <div class="team-member">
-                    <img src="image/placeholder.jpg" alt="Student Name" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Undergraduate Name</div>
-                        <div class="member-role">Undergraduate Researcher</div>
-                        <p class="member-research">
-                            Assisting with battery cell assembly and electrochemical testing protocols.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="team-member">
-                    <img src="image/placeholder.jpg" alt="Student Name" class="member-photo">
-                    <div class="member-info">
-                        <div class="member-name">Undergraduate Name</div>
-                        <div class="member-role">Undergraduate Researcher</div>
-                        <p class="member-research">
-                            Supporting materials synthesis and characterization experiments.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        </div><!-- end tab-members -->
-
-        <!-- ===== TAB: ALUMNI ===== -->
-        <div class="tab-panel" id="tab-alumni">
-        <section>
-            <div class="section-header">
-                <h2>Alumni</h2>
-            </div>
-            
+        <!-- ═══════════════════════════════════════════════════
+             TAB · ALUMNI
+             ═══════════════════════════════════════════════════ -->
+        <section class="tab-panel" id="tab-alumni" role="tabpanel">
             <div class="alumni-list">
                 <p class="placeholder-text">
-                    Our alumni section will be updated as group members graduate and move on to exciting 
-                    new opportunities in academia and industry.
+                    The alumni list will be populated as members complete their degrees and move on.
+                    Until then, this section is intentionally empty.
                 </p>
-            </div>
-        </section>
-
-        </div><!-- end tab-alumni -->
-
-        <section>
-            <div class="join-cta">
-                <h2>Join Our Team</h2>
-                <p>
-                    We are always looking for motivated researchers to join our group. Opportunities 
-                    are available for postdoctoral researchers, graduate students, and undergraduate 
-                    researchers.
-                </p>
-                <a href="join.html" class="cta-button">View Open Positions</a>
             </div>
         </section>
     </main>
@@ -284,53 +288,40 @@ ang<!DOCTYPE html>
     <footer>
         <div class="footer-container">
             <div class="footer-section">
+                <h3>CJHuang Group</h3>
+                <p>
+                    Department of Chemical Engineering<br>
+                    National Taiwan University of Science and Technology<br>
+                    No. 43, Section 4, Keelung Road<br>
+                    Taipei 10607, Taiwan
+                </p>
+            </div>
+            <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Chemical Engineering Department<br>
-                National Taiwan University of Science and Technology<br>
-                No. 43, Section 4, Keelung Road<br>
-                Taipei 10607, Taiwan</p>
+                <p><a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a></p>
             </div>
             <div class="footer-section">
-                <h3>Email</h3>
+                <h3>Affiliations</h3>
                 <p>
-                    <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a><br>
+                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank" rel="noopener">Taiwan Tech</a><br>
+                    <a href="https://en.ch.ntust.edu.tw/" target="_blank" rel="noopener">Chemical Engineering</a>
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Links</h3>
+                <h3>Group</h3>
                 <p>
-                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br>
-                    <a href="https://en.ch.ntust.edu.tw/" target="_blank">Chemical Engineering Dept</a>
-                </p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Our Research</h3>
-                <p>
-                    <a href="publications.html">Latest Publications</a><br>
-                    <a href="research.html">Research Updates</a><br>
-                    <a href="join.html">Open Positions</a>
+                    <a href="publications.html">Publications</a><br>
+                    <a href="research.html">Research</a><br>
+                    <a href="join.html">Open positions</a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 CJHuang Research Group @ Taiwan Tech | All Rights Reserved
+            © 2026 CJHuang Research Group · Taiwan Tech
         </div>
     </footer>
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
-    <script src="script.js"></script>
-    <script>
-        const tabs = document.querySelectorAll('.people-tab');
-        const panels = document.querySelectorAll('.tab-panel');
 
-        tabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                tabs.forEach(t => t.classList.remove('active'));
-                panels.forEach(p => p.classList.remove('active'));
-                tab.classList.add('active');
-                document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-                window.scrollTo({ top: document.getElementById('people-tabs').offsetTop - 80, behavior: 'smooth' });
-            });
-        });
-    </script>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
+    <script src="script.js"></script>
 </body>
 </html>

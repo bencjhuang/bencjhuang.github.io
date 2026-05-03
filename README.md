@@ -1,150 +1,186 @@
-# CJHuang Group Website - Setup Instructions
+# bencjhuang.github.io
 
-**Updated with your actual CV information!**
+Academic group website for the **CJHuang Group** (Prof. Chen-Jui "Ben" Huang) at
+National Taiwan University of Science and Technology — starting August 2026.
 
-## What's New
+Static site, no build step. Edit HTML/CSS/JS directly, push to `main`, GitHub
+Pages serves it within a minute or two.
 
-✅ Your actual name: **Chen-Jui (Ben) Huang**  
-✅ Current position: **Incoming Assistant Professor (Starting August 2026)**  
-✅ Real publications from your CV (62+ publications)  
-✅ Accurate biography with UChicago, Argonne, Stanford experience  
-✅ Updated research interests matching your actual expertise  
-
-## Files Included
-
-Your new professional website includes:
-- `index.html` - Homepage with mission and latest news
-- `research.html` - Detailed research areas page
-- `people.html` - Team members page  
-- `publications.html` - Publications list
-- `join.html` - Join us / recruitment page
-- `styles.css` - All styling for the website
-- `script.js` - Interactive features (carousel, smooth scrolling)
-
-## How to Upload to GitHub Pages
-
-### Method 1: Upload Directly on GitHub (Easiest)
-
-1. Go to your repository: https://github.com/bencjhuang/bencjhuang.github.io
-
-2. **Delete old files** (or move them to a backup folder):
-   - Click on `index.md` → click trash icon → commit deletion
-   - Repeat for `_config.yml`, `join.md`, `people.md`, `publications.md`, `research.md`
-
-3. **Upload new files**:
-   - Click "Add file" → "Upload files"
-   - Drag and drop ALL 7 files (the 5 HTML files, styles.css, and script.js)
-   - Commit changes
-
-4. Wait 1-2 minutes, then visit: https://bencjhuang.github.io
-
-### Method 2: Using Git Command Line
+## Local development
 
 ```bash
-# Clone your repository
-git clone https://github.com/bencjhuang/bencjhuang.github.io.git
-cd bencjhuang.github.io
-
-# Delete old files
-rm index.md _config.yml join.md people.md publications.md research.md README.md
-
-# Copy new files into the repository folder
-# (copy all 7 files from your downloads into this folder)
-
-# Add and commit
-git add .
-git commit -m "Update website with new professional design"
-git push origin main
+cd ~/Documents/GitHub/bencjhuang.github.io
+python3 -m http.server 8000
 ```
 
-## Customization Guide
+Open <http://localhost:8000>. Hard-refresh (`Cmd+Shift+R`) after edits to bypass
+the browser cache.
 
-### 1. Adding Your Photos
+## Pages
 
-**For team member photos**, find this code in `people.html`:
+| File | Purpose |
+|---|---|
+| `index.html` | Homepage — hero, mission, three research preview cards, news, quick-nav |
+| `research.html` | Four research areas (ASSB, anode-free, operando, XCT) with sticky sidebar ToC |
+| `people.html` | Tabs: PI · Members (open project areas) · Alumni |
+| `publications.html` | 65+ peer-reviewed articles, conferences, patents · year/type filter chips · search |
+| `equipment.html` | Planned in-house instrumentation + synchrotron access (NSRRC, APS) |
+| `gallery.html` | Filterable photo grid with full-screen lightbox |
+| `join.html` | Open positions and how to apply |
+
+## Design system
+
+All design tokens live in `:root` at the top of `styles.css`. **Never hardcode
+colors or fonts in markup** — use these variables.
+
+### Palette — single accent
+
+| Token | Value | Use |
+|---|---|---|
+| `--ink` | `#0B1220` | Near-black navy — primary text + UI |
+| `--ink-soft` | `#1f2a3d` | Secondary text |
+| `--paper` | `#FAFAF7` | Warm off-white background |
+| `--surface` | `#FFFFFF` | Cards, elevated surfaces |
+| `--rule` | `#E5E7EB` | Hairline borders |
+| `--muted` | `#6B7280` | Tertiary text |
+| `--accent` | `#C2410C` | Terracotta — single accent (CTAs, eyebrows, link hover, bars) |
+| `--accent-2` | `#9A330A` | Hover-deeper accent |
+
+### Type
+
+| Token | Family | Use |
+|---|---|---|
+| `--font-display` | Fraunces (serif) | H1, H2, H3 — editorial gravity |
+| `--font-body` | Inter | Body text, UI |
+| `--font-mono` | JetBrains Mono | Eyebrows, dates, tags, technical labels |
+
+### Motion
+
+- Standard easing: `cubic-bezier(0.22, 1, 0.36, 1)` via `--ease`
+- Card hover: `translateY(-6px)` + shadow lift + accent bar slide-in
+- All animations respect `prefers-reduced-motion`
+
+## Common edits
+
+### Change the palette
+
+Edit `--accent` in `styles.css :root`. Everything terracotta updates site-wide.
+
+### Add a publication
+
+Find the right `<div class="year-group" data-year="YYYY">` in
+`publications.html` and copy an existing `<div class="publication">` block:
 
 ```html
-<div class="photo-placeholder">👨‍🔬</div>
-```
-
-Replace with:
-```html
-<img src="YOUR_IMAGE_URL_HERE.jpg" alt="Name" style="width:100%; height:100%; object-fit:cover;">
-```
-
-**For hero carousel backgrounds**, edit `styles.css` around line 85:
-
-```css
-.hero-slide:nth-child(1) {
-    background-image: url('YOUR_LAB_PHOTO_URL.jpg');
-    background-size: cover;
-    background-position: center;
-}
-```
-
-### 2. Updating Content
-
-**News Items** (index.html, line ~170):
-```html
-<div class="news-item">
-    <div class="news-date">Feb 2026</div>
-    <h3>Your News Title</h3>
-    <p>Your news content...</p>
-    <span class="news-category">CATEGORY</span>
+<div class="publication">
+    <div class="pub-title"><a href="DOI" target="_blank">TITLE</a></div>
+    <div class="pub-authors">AUTHORS — wrap your name in <strong>C.-J. Huang</strong></div>
+    <div class="pub-venue">Journal Name <span class="pub-year">YYYY</span><span class="pub-impact">IF: NN.N</span></div>
 </div>
 ```
 
-**Team Members** (people.html, line ~60):
-- Just copy and paste the team-member div block
-- Update name, role, research focus, and email
+The numbering counter is **automatic** — JS counts pubs on load and assigns
+`data-num` attributes. No CSS counter to keep in sync.
 
-**Publications** (publications.html, line ~80):
-- Copy and paste publication div blocks
-- Update title, authors, venue, year
+Update the stat counts in the `pub-stats` block at the top of the page.
 
-### 3. Changing Colors
+### Add a news item
 
-Edit the top of `styles.css`:
+In `index.html`, copy an existing `<article class="news-item">` block:
 
-```css
-:root {
-    --color-primary: #1a4d8f;    /* Main blue color */
-    --color-secondary: #e67e22;  /* Orange accent */
-    --color-battery: #27ae60;    /* Green for battery tags */
-    --color-synchrotron: #9b59b6; /* Purple for synchrotron */
-}
+```html
+<article class="news-item" data-category="announcement">
+    <div class="news-date">MMM YYYY</div>
+    <div>
+        <h3>Title</h3>
+        <p>Body</p>
+        <span class="badge-cat announcement">Announcement</span>
+    </div>
+</article>
 ```
 
-### 4. Adding More Pages
+`data-category` values: `announcement`, `award`, `publication`, `activity`.
 
-To add a new page:
-1. Copy one of the existing HTML files
-2. Update the content
-3. Add a link in the navigation menu (update all 5 HTML files)
+### Add a gallery photo
 
-## Tips
+In `gallery.html`, copy an existing `<article class="gallery-item">` block:
 
-- All pages share the same `styles.css` and `script.js`
-- Keep all files in the root directory of your repository
-- Images should be hosted online (use GitHub, Imgur, or image hosting service)
-- Test locally by opening `index.html` in your browser before uploading
+```html
+<article class="gallery-item" data-category="lab">
+    <img loading="lazy" decoding="async" src="image/your-photo.jpg" alt="Description">
+    <div class="gallery-caption">
+        <span class="gallery-caption__tag">Lab</span>
+        <p>Caption.</p>
+    </div>
+</article>
+```
 
-## Need Help?
+`data-category` values: `lab`, `research`, `conference`, `group`. The lightbox
+picks it up automatically.
 
-- GitHub Pages Documentation: https://docs.github.com/en/pages
-- Contact: Your friendly AI assistant (Claude) 😊
+### Add a navigation item
 
-## Quick Checklist
+The nav is hardcoded in every HTML file. If you add a page, update the `<nav>`
+and `.mobile-menu` blocks in **all 7 pages**.
 
-- [ ] Upload all 7 files to GitHub repository
-- [ ] Delete old .md files
-- [ ] Wait 1-2 minutes for GitHub Pages to update
-- [ ] Visit https://bencjhuang.github.io to see your new site
-- [ ] Customize content (team members, publications, photos)
-- [ ] Add your actual photos
-- [ ] Update contact information
-- [ ] Share with your team!
+## Image conventions
 
----
+Drop new images into `image/`. For consistent rendering:
 
-**Note:** Your site will be live at https://bencjhuang.github.io immediately after uploading. You can always update individual files later by editing them directly on GitHub or pushing changes via git.
+| Use | Pattern |
+|---|---|
+| Hero / wide photos | landscape, ≥2400px wide, JPG quality 80–85 |
+| Research figures | wide aspect (2:1 or 3:2), white or transparent bg if possible |
+| Equipment photos | 3:2 or close, real photos better than stock |
+| OG / share image | `image/og-default.jpg` — 1200×630 |
+
+Originals of the compressed hero and operando files are kept in
+`image/_originals/` if you ever need to regenerate.
+
+## Cache busting
+
+If you replace an image at the same filename and the browser keeps showing the
+old one, append `?v=N` to the `src` URL — increment `N` every time you swap.
+The server ignores the query string; the browser treats it as a new resource.
+
+## Workflow
+
+The site is on the `redesign` branch. To deploy:
+
+```bash
+git checkout main
+git merge redesign
+git push origin main
+```
+
+GitHub Pages will pick up the change in ~1 minute.
+
+To preview the old version:
+
+```bash
+git checkout main      # original
+git checkout redesign  # current
+```
+
+## Files
+
+```
+.
+├── index.html         # Homepage
+├── research.html      # Research areas + sticky ToC
+├── people.html        # PI, members, alumni
+├── publications.html  # Filterable publication list
+├── equipment.html     # Facilities + synchrotron access
+├── gallery.html       # Filterable photo grid + lightbox
+├── join.html          # Open positions
+├── styles.css         # All styles — single source of truth
+├── script.js          # Reveal-on-scroll, filters, lightbox, ToC, hamburger
+├── image/
+│   ├── og-default.jpg          # Social card image (1200×630)
+│   ├── hero-beamline.jpg       # Homepage hero
+│   ├── research-*.jpg          # Research card figures
+│   ├── Ben.JPG                 # PI portrait
+│   ├── g-*.jpg / *.png / cip.svg # Equipment photos
+│   └── _originals/             # Pre-compression backups
+└── CLAUDE.md          # Project notes for AI editing
+```

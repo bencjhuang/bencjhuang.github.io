@@ -3,18 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications | CJHuang Group @ Taiwan Tech</title>
+    <title>Publications · CJHuang Group</title>
+    <meta name="description" content="65+ peer-reviewed publications on solid-state batteries, anode-free Li metal, and synchrotron X-ray characterization. CJHuang Group, Taiwan Tech.">
+    <link rel="canonical" href="https://bencjhuang.github.io/publications.html">
+
+    <!-- Open Graph / social cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Publications · CJHuang Group">
+    <meta property="og:description" content="65+ peer-reviewed articles, conference presentations, and patents on solid-state batteries, anode-free Li metal, and synchrotron X-ray characterization.">
+    <meta property="og:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+    <meta property="og:url" content="https://bencjhuang.github.io/publications.html">
+    <meta property="og:site_name" content="CJHuang Group">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Publications · CJHuang Group">
+    <meta name="twitter:description" content="Peer-reviewed articles, conferences, and patents — battery materials and synchrotron characterization.">
+    <meta name="twitter:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
     <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-main">CJHuang Group</div>
-                <div class="logo-sub">@ Taiwan Tech</div>
+                <div class="logo-sub">Taiwan Tech · NTUST</div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -23,9 +39,9 @@
                 <li><a href="publications.html" class="active">Publications</a></li>
                 <li><a href="equipment.html">Equipment</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="join.html">Join Us</a></li>
+                <li><a href="join.html">Join</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -38,42 +54,94 @@
         <a href="publications.html" class="active">Publications</a>
         <a href="equipment.html">Equipment</a>
         <a href="gallery.html">Gallery</a>
-        <a href="join.html">Join Us</a>
+        <a href="join.html">Join</a>
     </div>
 
-    <div class="page-header">
-        <div class="page-header-content">
-            <h1>Publications</h1>
-            <p>Scientific contributions to battery research and characterization</p>
-        </div>
-    </div>
+    <header class="page-header">
+        <span class="page-eyebrow">Publications</span>
+        <h1>Selected work</h1>
+        <p>Peer-reviewed articles, conference presentations, and patents.</p>
+    </header>
 
-    <main>
+    <main id="main-content">
 
         <!-- Stats -->
-        <section>
+        <section class="pub-stats-section">
             <div class="pub-stats">
-                <div class="stat-card"><div class="stat-number">41</div><div class="stat-label">h-index</div></div>
-                <div class="stat-card"><div class="stat-number">5242</div><div class="stat-label">Citations</div></div>
-                <div class="stat-card"><div class="stat-number">63</div><div class="stat-label">Total Publications</div></div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="42">42</div>
+                    <div class="stat-label">h-index</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="5327">5,327</div>
+                    <div class="stat-label">Citations</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" data-count="65">65</div>
+                    <div class="stat-label">Peer-reviewed papers</div>
+                </div>
             </div>
-            <div style="text-align: center; margin-top: 16px;">
-                <a href="https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en" target="_blank" class="cta-button" style="display: inline-block; margin-bottom: 10px;">
-                    View Full Profile on Google Scholar
+            <div class="pub-stats-meta">
+                <a href="https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en" target="_blank" rel="noopener" class="btn-link">
+                    Live on Google Scholar
+                    <span class="btn-arrow" aria-hidden="true">→</span>
                 </a>
+                <span class="pub-stats-note">Metrics last checked April 2026.</span>
             </div>
-            <div style="text-align: center; margin-top: 6px; font-size: 0.8rem; opacity: 0.7;">
-                *Metrics updated Feb 2026. Live data available on Google Scholar.
+        </section>
+
+        <!-- Filter toolbar -->
+        <section class="pub-toolbar-section" aria-label="Filter publications">
+            <div class="pub-toolbar">
+                <label class="pub-search">
+                    <span class="visually-hidden">Search publications</span>
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="pub-search-icon">
+                        <circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M16 16l5 5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <input type="search" id="pub-search" placeholder="Search by title or author…" autocomplete="off">
+                </label>
+                <div class="pub-year-chips" id="pub-year-chips" role="group" aria-label="Filter publications">
+                    <button class="pub-chip active" data-filter="all">All</button>
+                    <span class="pub-chips-divider" aria-hidden="true">By year</span>
+                    <button class="pub-chip" data-filter="year-2026">2026</button>
+                    <button class="pub-chip" data-filter="year-2025">2025</button>
+                    <button class="pub-chip" data-filter="year-2024">2024</button>
+                    <button class="pub-chip" data-filter="year-2023">2023</button>
+                    <button class="pub-chip" data-filter="year-2022">2022</button>
+                    <button class="pub-chip" data-filter="year-2021">2021</button>
+                    <button class="pub-chip" data-filter="year-2020">2020</button>
+                    <button class="pub-chip" data-filter="year-2019">2019</button>
+                    <button class="pub-chip" data-filter="year-2018">2018</button>
+                    <button class="pub-chip" data-filter="year-2017">2017</button>
+                    <span class="pub-chips-divider" aria-hidden="true">By type</span>
+                    <button class="pub-chip" data-filter="conferences">Conferences</button>
+                    <button class="pub-chip" data-filter="patents">Patents</button>
+                </div>
             </div>
+            <p class="pub-result-count" id="pub-result-count" aria-live="polite"></p>
         </section>
 
         <!-- Peer-Reviewed Articles — id="peer-reviewed" triggers counter-reset: pub-counter 64 -->
         <section id="peer-reviewed">
-            <div class="section-header"><h2>Peer-Reviewed Articles</h2></div>
+            <div class="section-header">
+                <span class="section-eyebrow">01 · Peer-reviewed</span>
+                <h2>Articles</h2>
+            </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2026">
                 <h3 class="year-label">2026</h3>
                 <div class="publication-list">
+                    <div class="publication">
+                        <div class="pub-title"><a href="https://doi.org/10.1038/s41467-026-69750-0" target="_blank">A Highly Utilized and Practical Lithium-Sulfur Positive Electrode Enabled in All-Solid-State Batteries</a></div>
+                        <div class="pub-authors">A. Cronk, X. Wang, J. A. S. Oh, S.-Y. Ham, S. Bai, P. Ridley, M. Chouchane, <strong>C.-J. Huang</strong>, D. Cheng, G. Deysher, H. Yang, B. Sayahpour, M. Vicencio, C. Lee, D. Lee, M.-S. Song, J. Jang, J. B. Lee, Y. S. Meng</div>
+                        <div class="pub-venue">Nature Communications <span class="pub-year">2026</span><span class="pub-impact">IF: 14.7</span></div>
+                    </div>
+                    <div class="publication">
+                        <div class="pub-title"><a href="https://doi.org/10.1038/s41560-026-01981-3" target="_blank">Dry Electrode Architecture Design to Push Energy Density Limits at the Cell Level</a></div>
+                        <div class="pub-authors">M. Zhang, B. K. Stoychev, X. Zhang, W. Yao, S. Wang, M. Chouchane, N. R. Park, <strong>C.-J. Huang</strong>, R. Jakhar, G. Raghavendran, N. Tojima, T. Yang, H. Gao, Z. Liu, A. A. Franco, O. G. Shpyrko, Y. S. Meng</div>
+                        <div class="pub-venue">Nature Energy <span class="pub-year">2026</span><span class="pub-impact">IF: 49.7</span></div>
+                    </div>
                     <div class="publication">
                         <div class="pub-title"><a href="https://doi.org/10.1002/aenm.202504272" target="_blank">Realizing Low-Pressure Operation of All-Solid-State Lithium–Sulfur Batteries Enabled by Carbon-Coated Current Collectors</a></div>
                         <div class="pub-authors">J. Park, J. Jung, S. B. Yang, D. H. Kim, J. B. Lee, J. A. S. Oh, H. Yang, M. Nashiru, <strong>C.-J. Huang<sup>*</sup></strong>, Y. S. Meng<sup>*</sup></div>
@@ -82,7 +150,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2025">
                 <h3 class="year-label">2025</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -108,7 +176,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2024">
                 <h3 class="year-label">2024</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -124,7 +192,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2023">
                 <h3 class="year-label">2023</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -150,7 +218,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2022">
                 <h3 class="year-label">2022</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -221,7 +289,7 @@
                 </div>
             </div>
             
-            <div class="year-group">
+            <div class="year-group" data-year="2021">
                 <h3 class="year-label">2021</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -287,7 +355,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2020">
                 <h3 class="year-label">2020</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -368,7 +436,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2019">
                 <h3 class="year-label">2019</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -424,7 +492,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2018">
                 <h3 class="year-label">2018</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -435,7 +503,7 @@
                 </div>
             </div>
 
-            <div class="year-group">
+            <div class="year-group" data-year="2017">
                 <h3 class="year-label">2017</h3>
                 <div class="publication-list">
                     <div class="publication">
@@ -450,31 +518,28 @@
 
         <!-- Conference Presentations — id="conferences" hides the number counter -->
         <section id="conferences">
-            <div class="section-header"><h2>Conference Presentations</h2></div>
+            <div class="section-header">
+                <span class="section-eyebrow">02 · Conferences</span>
+                <h2>Presentations</h2>
+            </div>
             <div class="publication-list">
 
-                <div class="publication" style="border-left: 4px solid var(--color-synchrotron);">
+                <div class="publication">
+                    <div class="pub-title"><a href="https://iopscience.iop.org/article/10.1149/MA2025-024730mtgabs/meta" target="_blank">Accessing All-Solid-State Battery Microstructure at the Pouch Cell Level Using Synchrotron X-Ray Tomography</a></div>
+                    <div class="pub-authors"><strong>C.-J. Huang</strong>, Y. S. Meng</div>
+                    <div class="pub-venue">248th ECS Meeting <span class="pub-year">October 2025, Chicago, IL</span><span class="pub-status accepted">Abstract MA2025-02 730</span></div>
+                </div>
+
+                <div class="publication publication--invited">
                     <div class="pub-title">Accessing the Microstructure of All-Solid-State Batteries at Pouch Cell Level</div>
                     <div class="pub-authors"><strong>C.-J. Huang</strong>, Y. S. Meng</div>
-                    <div class="pub-venue" style="color: var(--color-synchrotron);">5th World Conference on Solid Electrolytes (LLZO5WC) <span class="pub-year">July 2025, Stanford, CA</span><span class="news-category" style="background: var(--color-synchrotron); color: white; margin-left: 1rem;">Invited Talk</span></div>
+                    <div class="pub-venue">5th World Conference on Solid Electrolytes (LLZO5WC) <span class="pub-year">July 2025, Stanford, CA</span><span class="pub-tag pub-tag--invited">Invited Talk</span></div>
                 </div>
 
-                <div class="publication" style="border-left: 4px solid var(--color-synchrotron);">
+                <div class="publication publication--invited">
                     <div class="pub-title">Quantitative Non-Destructive Morphological Characterization of All-Solid-State Batteries</div>
                     <div class="pub-authors"><strong>C.-J. Huang</strong>, Y. S. Meng</div>
-                    <div class="pub-venue" style="color: var(--color-synchrotron);">M3S Spring Meeting <span class="pub-year">March 2025, Northwestern University</span><span class="news-category" style="background: var(--color-synchrotron); color: white; margin-left: 1rem;">Invited Talk</span></div>
-                </div>
-
-                <div class="publication">
-                    <div class="pub-title">Realizing Low-Pressure Operation of All-Solid-State Lithium-Sulfur Batteries via Carbon-Coated Current Collectors</div>
-                    <div class="pub-authors">J. Park, J. Jung, <strong>C.-J. Huang</strong>, Y. S. Meng</div>
-                    <div class="pub-venue">ECS Meeting Abstracts <span class="pub-year">2025</span><span class="pub-status accepted">Abstract MA2025-023437</span></div>
-                </div>
-
-                <div class="publication">
-                    <div class="pub-title">Accessing All-Solid-State Battery Microstructure at the Pouch Cell Level Using Synchrotron X-Ray Tomography</div>
-                    <div class="pub-authors"><strong>C.-J. Huang</strong>, Y. S. Meng</div>
-                    <div class="pub-venue">PRiME 2024 / 246th ECS Meeting <span class="pub-year">October 2024, Honolulu, HI</span><span class="pub-status accepted">Abstract MA2024-02 24730</span></div>
+                    <div class="pub-venue">M3S Spring Meeting <span class="pub-year">March 2025, Northwestern University</span><span class="pub-tag pub-tag--invited">Invited Talk</span></div>
                 </div>
 
                 <div class="publication">
@@ -484,21 +549,15 @@
                 </div>
 
                 <div class="publication">
-                    <div class="pub-title">Deciphering the Impact of the Active Lithium Reservoir in Anode-Free Pouch Cells</div>
-                    <div class="pub-authors">C. Gervillie, L. Ah, A. R. Liu, <strong>C.-J. Huang</strong>, Y. S. Meng</div>
-                    <div class="pub-venue">245th ECS Meeting <span class="pub-year">May 2024, San Francisco, CA</span></div>
-                </div>
-
-                <div class="publication">
                     <div class="pub-title">New Insight into the Chemistry of Anode-Free Lithium Metal Battery</div>
                     <div class="pub-authors"><strong>C.-J. Huang</strong>, B. Thirumalraj, H.-C. Tao, K. N. Shitaw, T. T. Hagos, T. T. Beyene, L.-M. Kuo, C.-C. Wang, S.-H. Wu, W.-N. Su, B. J. Hwang</div>
                     <div class="pub-venue">2020 International Conference on Green Electrochemical Technologies <span class="pub-year">November 2020, Taichung, Taiwan</span></div>
                 </div>
 
-                <div class="publication" style="border-left: 4px solid var(--color-battery);">
+                <div class="publication publication--award">
                     <div class="pub-title">Unraveling the Effects of Additive on Li Growth Mechanism by <i>in-operando</i> Transmission X-ray Microscopy</div>
                     <div class="pub-authors"><strong>C.-J. Huang</strong>, H.-C. Tao, S.-K. Jiang, P.-L. Hsieh, W.-N. Su, C.-C. Wang, B. J. Hwang</div>
-                    <div class="pub-venue" style="color: var(--color-battery);">26th NSRRC User Meeting <span class="pub-year">November 2020, Hsinchu, Taiwan</span><span class="news-category" style="background: var(--color-battery); color: white; margin-left: 1rem;">Glory of Taiwan Award</span></div>
+                    <div class="pub-venue">26th NSRRC User Meeting <span class="pub-year">November 2020, Hsinchu, Taiwan</span><span class="pub-tag pub-tag--award">Glory of Taiwan Award</span></div>
                 </div>
 
                 <div class="publication">
@@ -518,53 +577,74 @@
 
         <!-- Patents — id="patents" hides the number counter -->
         <section id="patents">
-            <div class="section-header"><h2>Patents</h2></div>
+            <div class="section-header">
+                <span class="section-eyebrow">03 · Patents</span>
+                <h2>Granted</h2>
+            </div>
             <div class="publication-list">
-                <div class="publication" style="background: var(--color-bg-alt);">
+                <div class="publication publication--patent">
                     <div class="pub-title">Equipment for continuously processing electrochemical device or component for increasing capacity thereof</div>
                     <div class="pub-authors">B. J. Hwang, W.-N. Su, S.-C. Yang, T.-P. Wu,  <strong>C.-J. Huang</strong>, M. Winter, G. BRUNKLAUS</div>
-                    <div class="pub-venue" style="color: var(--color-text);">European Patent EP4253608B1 <span class="pub-year">Issued: October 29, 2025</span></div>
+                    <div class="pub-venue">European Patent EP4253608B1 <span class="pub-year">Issued: October 29, 2025</span></div>
                 </div>
-                <div class="publication" style="background: var(--color-bg-alt);">
+                <div class="publication publication--patent">
                     <div class="pub-title">Composite Modified Layer and Anode-Free Lithium Metal Battery Thereof</div>
                     <div class="pub-authors">B. J. Hwang, W.-N. Su, S.-K. Jiang, <strong>C.-J. Huang</strong>, S.-C. Yang</div>
-                    <div class="pub-venue" style="color: var(--color-text);">U.S. Patent 12,119,496 <span class="pub-year">Issued: October 15, 2024</span></div>
+                    <div class="pub-venue">U.S. Patent 12,119,496 <span class="pub-year">Issued: October 15, 2024</span></div>
                 </div>
-                <div class="publication" style="background: var(--color-bg-alt);">
+                <div class="publication publication--patent">
                     <div class="pub-title">Anode-Free Primary Battery and Electrode Assembly Thereof</div>
                     <div class="pub-authors">B. J. Hwang, W.-N. Su, <strong>C.-J. Huang</strong>, S.-K. Jiang</div>
-                    <div class="pub-venue" style="color: var(--color-text);">U.S. Patent 11,626,582 <span class="pub-year">Issued: April 11, 2023</span></div>
+                    <div class="pub-venue">U.S. Patent 11,626,582 <span class="pub-year">Issued: April 11, 2023</span></div>
                 </div>
-                    <div class="publication" style="background: var(--color-bg-alt);">
+                    <div class="publication publication--patent">
                     <div class="pub-title">增加電池電容量的連續製程設備</div>
                     <div class="pub-authors">黃炳照, 蘇威年, 楊盛强, 吳采頻, <strong>黃貞睿</strong>, 穩特 馬丁, 布倫克勞斯 岡瑟</div>
-                    <div class="pub-venue" style="color: var(--color-text);">中華名國專利號 I814308<span class="pub-year">Issued: 2023</span></div>
+                    <div class="pub-venue">中華名國專利號 I814308<span class="pub-year">Issued: 2023</span></div>
                 </div>
-                <div class="publication" style="background: var(--color-bg-alt);">
+                <div class="publication publication--patent">
                     <div class="pub-title">アノードフリーの一次電池およびその電極アセンブリ</div>
                     <div class="pub-authors">黃炳照, 蘇威年, <strong>黃貞睿</strong>, 蔣仕凱</div>
-                    <div class="pub-venue" style="color: var(--color-text);">Japan Patent JP2021034381A<span class="pub-year">Issued: April 14, 2022</span></div>
+                    <div class="pub-venue">Japan Patent JP2021034381A<span class="pub-year">Issued: April 14, 2022</span></div>
                 </div>
-                <div class="publication" style="background: var(--color-bg-alt);">
+                <div class="publication publication--patent">
                     <div class="pub-title">複合修飾層及其於無陽極鋰電池之應用</div>
                     <div class="pub-authors">黃炳照, 蘇威年, <strong>黃貞睿</strong>, 蔣仕凱, 楊盛强</div>
-                    <div class="pub-venue" style="color: var(--color-text);">中華名國專利號 I771125<span class="pub-year">Issued: 2022</span></div>
+                    <div class="pub-venue">中華名國專利號 I771125<span class="pub-year">Issued: 2022</span></div>
                 </div>
-                <div class="publication" style="background: var(--color-bg-alt);">
+                <div class="publication publication--patent">
                     <div class="pub-title">一次電池及其電極組</div>
                     <div class="pub-authors">黃炳照, 蘇威年, <strong>黃貞睿</strong>, 蔣仕凱</div>
-                    <div class="pub-venue" style="color: var(--color-text);">中華名國專利號 I702753<span class="pub-year">Issued: 2020</span></div>
+                    <div class="pub-venue">中華名國專利號 I702753<span class="pub-year">Issued: 2020</span></div>
                 </div>
             </div>
         </section>
 
         <!-- Research Profiles -->
         <section>
-            <div class="section-header"><h2>Research Profiles</h2></div>
+            <div class="section-header">
+                <span class="section-eyebrow">04 · Profiles</span>
+                <h2>Find me elsewhere</h2>
+            </div>
             <div class="profile-links">
-                <a href="https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en" class="profile-link" target="_blank"><div class="profile-icon">🎓</div><div>Google Scholar</div></a>
-                <a href="https://orcid.org/0000-0001-8338-1424" class="profile-link" target="_blank"><div class="profile-icon">🔬</div><div>ORCID</div></a>
-                <a href="https://www.researchgate.net/profile/Chen-Jui-Huang?ev=hdr_xprf" class="profile-link" target="_blank"><div class="profile-icon">📊</div><div>ResearchGate</div></a>
+                <a href="https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en" class="profile-link" target="_blank" rel="noopener">
+                    <span class="profile-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l10 5-10 5L2 8z"/><path d="M6 10v4c0 2 3 3.5 6 3.5s6-1.5 6-3.5v-4"/></svg>
+                    </span>
+                    <span>Google Scholar</span>
+                </a>
+                <a href="https://orcid.org/0000-0001-8338-1424" class="profile-link" target="_blank" rel="noopener">
+                    <span class="profile-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9 9v8M9 7v.01M11 13c0-2 1.5-4 4-4s4 2 4 4-1.5 4-4 4h-4"/></svg>
+                    </span>
+                    <span>ORCID</span>
+                </a>
+                <a href="https://www.researchgate.net/profile/Chen-Jui-Huang?ev=hdr_xprf" class="profile-link" target="_blank" rel="noopener">
+                    <span class="profile-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-7h6v7"/></svg>
+                    </span>
+                    <span>ResearchGate</span>
+                </a>
             </div>
         </section>
 
@@ -573,37 +653,40 @@
     <footer>
         <div class="footer-container">
             <div class="footer-section">
+                <h3>CJHuang Group</h3>
+                <p>
+                    Department of Chemical Engineering<br>
+                    National Taiwan University of Science and Technology<br>
+                    No. 43, Section 4, Keelung Road<br>
+                    Taipei 10607, Taiwan
+                </p>
+            </div>
+            <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Chemical Engineering Department<br>National Taiwan University of Science and Technology<br>No. 43, Section 4, Keelung Road<br>Taipei 10607, Taiwan</p>
+                <p><a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a></p>
             </div>
             <div class="footer-section">
-                <h3>Email</h3>
+                <h3>Affiliations</h3>
                 <p>
-                    <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a><br>
+                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank" rel="noopener">Taiwan Tech</a><br>
+                    <a href="https://en.ch.ntust.edu.tw/" target="_blank" rel="noopener">Chemical Engineering</a>
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Links</h3>
+                <h3>Group</h3>
                 <p>
-                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br>
-                    <a href="https://www.che.ntust.edu.tw/?Lang=en" target="_blank">Chemical Engineering Dept</a><br>
-                </p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Our Research</h3>
-                <p>
-                    <a href="publications.html">Latest Publications</a><br>
-                    <a href="index.html">Research Updates</a><br>
-                    <a href="join.html">Open Positions</a>
+                    <a href="publications.html">Publications</a><br>
+                    <a href="research.html">Research</a><br>
+                    <a href="join.html">Open positions</a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 CJHuang Research Group @ Taiwan Tech | All Rights Reserved
+            © 2026 CJHuang Research Group · Taiwan Tech
         </div>
     </footer>
 
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
     <script src="script.js"></script>
 </body>
 </html>

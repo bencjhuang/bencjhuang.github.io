@@ -3,19 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research | CJHuang Group @ Taiwan Tech</title>
+    <title>Research · CJHuang Group</title>
+    <meta name="description" content="Research at the CJHuang Group: all-solid-state batteries, anode-free lithium metal, operando synchrotron spectroscopy, and 3D X-ray tomography.">
+    <link rel="canonical" href="https://bencjhuang.github.io/research.html">
+
+    <!-- Open Graph / social cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Research · CJHuang Group">
+    <meta property="og:description" content="Two battery chemistries we develop, two characterization techniques we build around them — solid-state batteries, anode-free Li metal, operando spectroscopy, X-ray tomography.">
+    <meta property="og:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+    <meta property="og:url" content="https://bencjhuang.github.io/research.html">
+    <meta property="og:site_name" content="CJHuang Group">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Research · CJHuang Group">
+    <meta name="twitter:description" content="Solid-state batteries, anode-free Li metal, and synchrotron-based characterization.">
+    <meta name="twitter:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Navigation -->
-        <nav id="navbar">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-main">CJHuang Group</div>
-                <div class="logo-sub">@ Taiwan Tech</div>
+                <div class="logo-sub">Taiwan Tech · NTUST</div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
@@ -24,9 +39,9 @@
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="equipment.html">Equipment</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="join.html">Join Us</a></li>
+                <li><a href="join.html">Join</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -38,272 +53,221 @@
         <a href="publications.html">Publications</a>
         <a href="equipment.html">Equipment</a>
         <a href="gallery.html">Gallery</a>
-        <a href="join.html">Join Us</a>
+        <a href="join.html">Join</a>
     </div>
 
-    <!-- Page Header -->
-    <div class="page-header">
-        <div class="page-header-content">
-            <h1>Research Areas</h1>
-            <p>Advancing energy storage through innovative materials and advanced characterization</p>
+    <header class="page-header">
+        <span class="page-eyebrow">Research</span>
+        <h1>What we work on</h1>
+        <p>Two battery chemistries we develop, two characterization tools we build around them.</p>
+    </header>
+
+    <main id="main-content" class="research-page">
+        <div class="research-layout">
+            <!-- Sticky sidebar table of contents -->
+            <aside class="research-toc" aria-label="Research areas">
+                <div class="toc-label">Areas</div>
+                <ol class="toc-list">
+                    <li><a href="#assb" class="toc-link" data-target="assb"><span class="toc-num">01</span> Solid-state batteries</a></li>
+                    <li><a href="#anode-free" class="toc-link" data-target="anode-free"><span class="toc-num">02</span> Anode-free Li metal</a></li>
+                    <li><a href="#operando" class="toc-link" data-target="operando"><span class="toc-num">03</span> <i>Operando</i> spectroscopy</a></li>
+                    <li><a href="#xct" class="toc-link" data-target="xct"><span class="toc-num">04</span> X-ray tomography</a></li>
+                </ol>
+            </aside>
+
+            <div class="research-body">
+                <!-- Lead -->
+                <section class="research-lead">
+                    <p class="lead-text">
+                        Our work integrates materials synthesis, electrochemical engineering, and
+                        synchrotron-based characterization. The two battery chemistries below set the
+                        questions we ask; the two characterization techniques are how we answer them.
+                    </p>
+                </section>
+
+                <!-- ── 01 — All-Solid-State Batteries ──────────────── -->
+                <section id="assb" class="research-section">
+                    <div class="section-meta">
+                        <span class="section-num">01 / Chemistry</span>
+                        <h2>All-solid-state batteries</h2>
+                    </div>
+
+                    <figure class="research-figure">
+                        <img loading="lazy" decoding="async" src="image/research-assb.jpg" alt="3D rendering of an all-solid-state battery test cell"
+                             onerror="this.parentElement.style.display='none'">
+                        <figcaption>Custom test cell for all-solid-state pouch architectures.</figcaption>
+                    </figure>
+
+                    <p>
+                        Solid-state batteries trade the liquid electrolyte for a solid one — gaining safety
+                        and a path to higher energy density, but inheriting a new problem: the solid–solid
+                        interface. Most ASSB performance limits live there. We work on resolving them.
+                    </p>
+
+                    <h3>What we focus on</h3>
+                    <ul>
+                        <li><strong>Solid-electrolyte interface engineering</strong> — improving contact and
+                            reducing impedance between the electrolyte and electrode.</li>
+                        <li><strong>Sulfide-based solid electrolytes</strong> — high ionic conductivity,
+                            and the stability problem when paired with Li metal.</li>
+                        <li><strong>Composite cathode design</strong> — three-phase optimization across
+                            active material, electrolyte, and conductive additive.</li>
+                        <li><strong>Operando interface characterization</strong> — watching the interface
+                            evolve during cycling rather than guessing from post-mortems.</li>
+                    </ul>
+                </section>
+
+                <!-- ── 02 — Anode-Free Li-Metal ─────────────────────── -->
+                <section id="anode-free" class="research-section">
+                    <div class="section-meta">
+                        <span class="section-num">02 / Chemistry</span>
+                        <h2>Anode-free lithium metal batteries</h2>
+                    </div>
+
+                    <figure class="research-figure">
+                        <img loading="lazy" decoding="async" src="image/research-anodefree.jpg" alt="Comparison of Li||Li, Li||Cu, Cathode||Li and Cathode||Cu cells with characterization features"
+                             onerror="this.parentElement.style.display='none'">
+                        <figcaption>Cell-architecture comparison: which failure modes can be isolated, and which can't.</figcaption>
+                    </figure>
+
+                    <p>
+                        Anode-free architectures remove the anode active material entirely — Li metal
+                        is plated <em>in situ</em> on the current collector during the first charge. The
+                        upside is energy density. The downside is that everything depends on plating uniformly
+                        and stripping reversibly. We design cells and electrolytes to make that work, then
+                        watch what's actually happening.
+                    </p>
+
+                    <h3>What we focus on</h3>
+                    <ul>
+                        <li><strong>Cell &amp; current-collector design</strong> — surfaces and electrolytes
+                            that promote uniform Li deposition and reversible stripping.</li>
+                        <li><strong>Failure-mode isolation</strong> — symmetric and asymmetric cell
+                            geometries (Li‖Li, Li‖Cu, full cells) to separate cathode-side losses from
+                            anode-side dead lithium and SEI growth.</li>
+                        <li><strong>3D imaging of plating morphology</strong> — synchrotron tomography
+                            of the deposited Li layer through cycling.</li>
+                        <li><strong>Cross-talk effects</strong> — how electrolyte decomposition products
+                            transported across the cell change the failure picture.</li>
+                    </ul>
+                </section>
+
+                <!-- ── 03 — Operando Spectroscopy ───────────────────── -->
+                <section id="operando" class="research-section">
+                    <div class="section-meta">
+                        <span class="section-num">03 / Technique</span>
+                        <h2><i>Operando</i> &amp; <i>in-situ</i> spectroscopy</h2>
+                    </div>
+
+                    <figure class="research-figure">
+                        <img loading="lazy" decoding="async" src="image/research-operando.jpg?v=2" alt="Six in-situ and operando battery cell designs: X-ray absorption, X-ray diffraction, optical microscopy, Raman spectroscopy, and transmission X-ray microscopy"
+                             onerror="this.parentElement.style.display='none'">
+                        <figcaption><i>In-situ</i> / <i>operando</i> cell designs developed for X-ray, optical, and Raman characterization.</figcaption>
+                    </figure>
+
+                    <p>
+                        Real-time observation of a working cell. We design the cells, run the experiments
+                        at synchrotron beamlines, and pair spectroscopy with electrochemistry so the chemistry
+                        and the curve are read together.
+                    </p>
+
+                    <h3>Techniques we use</h3>
+                    <ul>
+                        <li><strong>X-ray absorption spectroscopy (XAS)</strong> — element-specific oxidation
+                            states and local structure during cycling.</li>
+                        <li><strong>X-ray diffraction (XRD)</strong> — crystallographic phase changes and
+                            lattice strain in real time.</li>
+                        <li><strong>Electrochemical impedance spectroscopy (EIS)</strong> — frequency-domain
+                            separation of interfacial and transport processes.</li>
+                    </ul>
+                </section>
+
+                <!-- ── 04 — X-ray Tomography ────────────────────────── -->
+                <section id="xct" class="research-section">
+                    <div class="section-meta">
+                        <span class="section-num">04 / Technique</span>
+                        <h2>3D X-ray computed tomography</h2>
+                    </div>
+
+                    <figure class="research-figure">
+                        <img loading="lazy" decoding="async" src="image/research-xct.jpg?v=2" alt="Synchrotron X-ray computed tomography of an all-solid-state pouch cell: top-view slices and 3D reconstructions of µ-Si anode and composite cathode"
+                             onerror="this.parentElement.style.display='none'">
+                        <figcaption>Pouch-cell synchrotron XCT — slice imaging through to segmented 3D reconstruction of µ-Si anode and composite cathode.</figcaption>
+                    </figure>
+
+                    <p>
+                        Non-destructive 3D imaging of the inside of a working cell. We've built the
+                        capability up to pouch-cell scale: from sample mounting and beamline acquisition
+                        through reconstruction, segmentation, and quantitative morphology analysis.
+                    </p>
+
+                    <h3>What we resolve</h3>
+                    <ul>
+                        <li><strong>Lithium-metal morphology</strong> — dendritic vs. compact deposits,
+                            quantified across cycles.</li>
+                        <li><strong>Crack and pore networks</strong> — in solid electrolytes and composite cathodes.</li>
+                        <li><strong>Particle-level damage</strong> — fracture and contact loss in
+                            cycled active materials.</li>
+                        <li><strong>Pouch-cell scale tomography</strong> — capability extended from coin-cell
+                            samples to pouch geometry, where commercial relevance lives.</li>
+                    </ul>
+                </section>
+
+                <!-- ── Collaborations ────────────────────────────────── -->
+                <section class="research-section research-section--meta">
+                    <div class="section-meta">
+                        <span class="section-num">+ / Network</span>
+                        <h2>Facilities &amp; collaborators</h2>
+                    </div>
+                    <p>
+                        Beamtime and instrumentation at the
+                        <strong>National Synchrotron Radiation Research Center (NSRRC)</strong> in Hsinchu, with
+                        ongoing collaboration at the <strong>Advanced Photon Source (APS)</strong> at Argonne
+                        National Laboratory for high-energy XCT. Active collaborations span battery science,
+                        materials characterization, and computational modelling — domestic and international.
+                    </p>
+                </section>
+            </div>
         </div>
-    </div>
-
-    <!-- Main Content -->
-    <main>
-        <!-- Research Overview -->
-        <section>
-            <div class="section-header">
-                <h2>Our Research Philosophy</h2>
-            </div>
-            
-            <div class="content-block">
-                <p class="lead-text">
-                    Our research integrates materials synthesis, electrochemical engineering, and advanced 
-                    characterization to address fundamental challenges in energy storage. We focus on three 
-                    interconnected areas that together advance the development of next-generation batteries.
-                </p>
-            </div>
-        </section>
-
-        <!-- Research Area 1: All-Solid-State Batteries -->
-        <section>
-            <div class="research-detail-card">
-                <div class="research-detail-header battery">
-                    <div class="research-detail-icon">🔋</div>
-                    <h2>All-Solid-State Batteries (ASSBs)</h2>
-                </div>
-                <div class="research-detail-content">
-                    <h3>Overview</h3>
-                    <p>
-                        All-solid-state batteries represent the next frontier in energy storage technology, 
-                        offering enhanced safety and potentially higher energy density compared to conventional 
-                        liquid electrolyte systems. Our research focuses on addressing the critical challenges 
-                        at solid-solid interfaces that currently limit ASSB performance.
-                    </p>
-
-                    <h3>Key Research Topics</h3>
-                    <ul>
-                        <li>
-                            <strong>Solid Electrolyte Interface Engineering:</strong> Developing strategies to 
-                            improve interfacial contact and reduce resistance between solid electrolytes and 
-                            electrode materials
-                        </li>
-                        <li>
-                            <strong>Sulfide-Based Solid Electrolytes:</strong> Investigating high ionic 
-                            conductivity sulfide electrolytes and their stability with lithium metal anodes
-                        </li>
-                        <li>
-                            <strong>Interface Characterization:</strong> Employing operando techniques to 
-                            understand interface evolution during battery cycling
-                        </li>
-                        <li>
-                            <strong>Composite Cathode Design:</strong> Optimizing three-phase (active material, 
-                            electrolyte, conductive additive) composite cathodes for enhanced performance
-                        </li>
-                    </ul>
-
-                    <h3>Technical Approach</h3>
-                    <p>
-                        We combine materials synthesis with advanced electrochemical testing and multi-scale 
-                        characterization. Our operando X-ray techniques allow us to observe interface evolution 
-                        in real-time, providing insights that guide materials design and processing optimization.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Research Area 2: Lithium-Sulfur Batteries -->
-        <!--<section>
-            <div class="research-detail-card">
-                <div class="research-detail-header synchrotron">
-                    <div class="research-detail-icon">⚛️</div>
-                    <h2>Lithium-Sulfur (Li-S) Battery Systems</h2>
-                </div>
-                <div class="research-detail-content">
-                    <h3>Overview</h3>
-                    <p>
-                        Lithium-sulfur batteries offer theoretical energy densities far exceeding current 
-                        lithium-ion technology. However, challenges including polysulfide shuttle effect and 
-                        poor sulfur utilization have hindered commercialization. Our research addresses these 
-                        challenges through novel cathode architectures and electrolyte design.
-                    </p>
-
-                    <h3>Key Research Topics</h3>
-                    <ul>
-                        <li>
-                            <strong>Polysulfide Management:</strong> Developing host materials and electrolyte 
-                            additives to suppress polysulfide dissolution and shuttle
-                        </li>
-                        <li>
-                            <strong>Cathode Architecture:</strong> Designing porous carbon structures and 
-                            functional coatings to improve sulfur loading and utilization
-                        </li>
-                        <li>
-                            <strong>Operando Spectroscopy:</strong> Using synchrotron X-ray absorption 
-                            spectroscopy to track sulfur speciation during cycling
-                        </li>
-                        <li>
-                            <strong>Solid-State Li-S Systems:</strong> Exploring solid electrolytes as a 
-                            pathway to eliminate polysulfide shuttle in Li-S batteries
-                        </li>
-                    </ul>
-
-                    <h3>Technical Approach</h3>
-                    <p>
-                        Our operando characterization capabilities enable direct observation of sulfur 
-                        chemistry during battery operation. This real-time insight guides the development 
-                        of materials and cell designs that address fundamental Li-S battery challenges.
-                    </p>
-                </div>
-            </div>
-        </section>-->
-
-        <!-- Research Area 3: Anode-Free and Advanced Characterization -->
-        <section>
-            <div class="research-detail-card">
-                <div class="research-detail-header electrochemistry">
-                    <div class="research-detail-icon">⚗️</div>
-                    <h2>Anode-Free Metal Batteries</h2>
-                </div>
-                <div class="research-detail-content">
-                    <h3>Overview</h3>
-                    <p>
-                        Anode-free metal battery architectures eliminate the anode active material, relying on 
-                        in-situ metallic anode plating during charging. This approach maximizes energy density but 
-                        requires precise control of metal deposition morphology and plating/stripping efficiency. Our research combines 
-                        novel cell designs with advanced characterization techniques to understand and control  
-                        metal electrodeposition and stripping processes.
-                    </p>
-
-                    <h3>Key Research Topics</h3>
-                    <ul>
-                        <li>
-                            <strong>Anode-Free Cell Design:</strong> Developing current collector surfaces 
-                            and electrolyte formulations that promote uniform metal deposition
-                        </li>
-                        <li>
-                            <strong>3D X-ray Tomography:</strong> Non-destructive 3D visualization of metallic 
-                            anode morphology and dendrite formation
-                        </li>
-                        <li>
-                            <strong><i>in-situ/operando</i> Spectroscopy:</strong> Real-time tracking of chemical and 
-                            structural changes in battery materials during operation
-                        </li>
-                        <li>
-                            <strong>Multi-Scale Integration:</strong> Combining microscopy, spectroscopy, 
-                            and diffraction to build comprehensive understanding from atomic to device scales
-                        </li>
-                    </ul>
-
-                    <h3>Technical Approach</h3>
-                    <p>
-                        We have developed specialized <i>in-situ/operando</i> cells compatible with synchrotron X-ray 
-                        techniques, enabling us to characterize batteries under realistic operating conditions. 
-                        Our 3D tomography capabilities reveal metallic anode morphology evolution, while spectroscopy 
-                        provides chemical and electronic state information.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Characterization Techniques -->
-        <section>
-            <div class="section-header">
-                <h2>Advanced Characterization Techniques</h2>
-            </div>
-            
-            <div class="techniques-grid">
-                <div class="technique-card">
-                    <h3><i>in-situ/operando</i> X-ray Absorption Spectroscopy (XAS)</h3>
-                    <p>
-                        Real-time probing of oxidation states and local atomic structure during battery 
-                        cycling. Provides element-specific information on redox processes and structural 
-                        evolution.
-                    </p>
-                </div>
-
-                <div class="technique-card">
-                    <h3><i>in-situ/operando</i>  X-ray Diffraction (XRD)</h3>
-                    <p>
-                        In-situ monitoring of crystallographic phase changes and lattice parameter evolution. 
-                        Reveals structural transformations and strain development in electrode materials.
-                    </p>
-                </div>
-
-                <div class="technique-card">
-                    <h3>3D X-ray Computed Tomography</h3>
-                    <p>
-                        Non-destructive 3D imaging of battery microstructure. Visualizes lithium metal 
-                        morphology, crack formation, and particle fracture at micron resolution.
-                    </p>
-                </div>
-
-                <div class="technique-card">
-                    <h3><i>in-situ</i> Electrochemical Impedance Spectroscopy (EIS)</h3>
-                    <p>
-                        Frequency-domain analysis of battery processes. Separates contributions from different 
-                        interfaces and transport phenomena to identify performance-limiting factors.
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Collaborations -->
-        <section>
-            <div class="section-header">
-                <h2>Collaborations & Facilities</h2>
-            </div>
-            
-            <div class="content-block">
-                <p>
-                    Our research leverages world-class facilities at the <strong>National Synchrotron 
-                    Radiation Research Center (NSRRC)</strong> in Taiwan. We maintain active collaborations 
-                    with leading research groups in battery science, materials characterization, and 
-                    computational modeling both domestically and internationally.
-                </p>
-            </div>
-        </section>
     </main>
-
-    <!-- Footer -->
 
     <footer>
         <div class="footer-container">
             <div class="footer-section">
+                <h3>CJHuang Group</h3>
+                <p>
+                    Department of Chemical Engineering<br>
+                    National Taiwan University of Science and Technology<br>
+                    No. 43, Section 4, Keelung Road<br>
+                    Taipei 10607, Taiwan
+                </p>
+            </div>
+            <div class="footer-section">
                 <h3>Contact</h3>
-                <p>Chemical Engineering Department<br>
-                National Taiwan University of Science and Technology<br>
-                No. 43, Section 4, Keelung Road<br>
-                Taipei 10607, Taiwan</p>
+                <p><a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a></p>
             </div>
             <div class="footer-section">
-                <h3>Email</h3>
+                <h3>Affiliations</h3>
                 <p>
-                    <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a><br>
+                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank" rel="noopener">Taiwan Tech</a><br>
+                    <a href="https://en.ch.ntust.edu.tw/" target="_blank" rel="noopener">Chemical Engineering</a>
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Links</h3>
+                <h3>Group</h3>
                 <p>
-                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br>
-                    <a href="https://en.ch.ntust.edu.tw/" target="_blank">Chemical Engineering Dept</a>
-                </p>
-            </div>
-            <div class="footer-section">
-                <h3>Follow Our Research</h3>
-                <p>
-                    <a href="publications.html">Latest Publications</a><br>
-                    <a href="research.html">Research Updates</a><br>
-                    <a href="join.html">Open Positions</a>
+                    <a href="publications.html">Publications</a><br>
+                    <a href="research.html">Research</a><br>
+                    <a href="join.html">Open positions</a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            &copy; 2026 CJHuang Research Group @ Taiwan Tech | All Rights Reserved
+            © 2026 CJHuang Research Group · Taiwan Tech
         </div>
     </footer>
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
     <script src="script.js"></script>
 </body>
 </html>

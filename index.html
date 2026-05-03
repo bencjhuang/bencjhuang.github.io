@@ -3,18 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The CJHuang Group @ Taiwan Tech</title>
+    <title>CJHuang Group · Advanced Characterization & Solid-State Battery Research</title>
+    <meta name="description" content="Probing how all-solid-state batteries operate through imaging and spectroscopy in real time. Research group led by Prof. Chen-Jui Huang at Taiwan Tech (NTUST), starting August 2026.">
+    <link rel="canonical" href="https://bencjhuang.github.io/">
+
+    <!-- Open Graph / social cards -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CJHuang Group · Advanced Characterization & Solid-State Battery Research">
+    <meta property="og:description" content="Probing how all-solid-state batteries operate through imaging and spectroscopy in real time. Taiwan Tech (NTUST), starting August 2026.">
+    <meta property="og:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+    <meta property="og:url" content="https://bencjhuang.github.io/">
+    <meta property="og:site_name" content="CJHuang Group">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CJHuang Group · Taiwan Tech">
+    <meta name="twitter:description" content="Probing how all-solid-state batteries operate through imaging and spectroscopy in real time.">
+    <meta name="twitter:image" content="https://bencjhuang.github.io/image/og-default.jpg">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preload" as="image" href="image/hero-beamline.jpg">
 </head>
 <body>
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    <!-- ── Navigation ───────────────────────────────────── -->
     <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
                 <div class="logo-main">CJHuang Group</div>
-                <div class="logo-sub">@ Taiwan Tech</div>
+                <div class="logo-sub">Taiwan Tech · NTUST</div>
             </a>
             <ul class="nav-links">
                 <li><a href="index.html" class="active">Home</a></li>
@@ -23,9 +41,9 @@
                 <li><a href="publications.html">Publications</a></li>
                 <li><a href="equipment.html">Equipment</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
-                <li><a href="join.html">Join Us</a></li>
+                <li><a href="join.html">Join</a></li>
             </ul>
-            <button class="hamburger" id="hamburger" aria-label="Open navigation menu">
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -38,218 +56,231 @@
         <a href="publications.html">Publications</a>
         <a href="equipment.html">Equipment</a>
         <a href="gallery.html">Gallery</a>
-        <a href="join.html">Join Us</a>
+        <a href="join.html">Join</a>
     </div>
 
-    <!-- Hero Section with Carousel -->
-    <section class="hero">
-        <div class="hero-carousel">
-            <div class="hero-slide active"></div>
-            <div class="hero-slide"></div>
-            <div class="hero-slide"></div>
-        </div>
-        <div class="hero-overlay">
-            <div class="hero-content">
-                <h1>The CJHuang Group</h1>
-                <p class="hero-subtitle">Advanced Battery Research &amp; Characterization</p>
-                <div class="research-tags">
-                    <span class="tag battery">⚡ All-Solid-State Batteries</span>
-                    <span class="tag synchrotron">🔬 <i>in-situ/operando</i> Techniques</span>
-                    <span class="tag">📊 3D X-ray Imaging</span>
-                </div>
+    <!-- ── Hero ─────────────────────────────────────────── -->
+    <section class="hero" aria-label="Introduction">
+        <div class="hero-media" role="img" aria-label="At the synchrotron beamline control room"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">Advanced Characterization &amp; Solid-State Battery Group</div>
+            <h1>Probing how all-solid-state batteries operate <em>—&nbsp;through imaging and spectroscopy, in real time.</em></h1>
+            <div class="hero-meta">
+                Taiwan Tech (NTUST)
+                <span class="dot">·</span>
+                Department of Chemical Engineering
+                <span class="dot">·</span>
+                Starting August 2026
+            </div>
+            <div class="hero-actions">
+                <a href="research.html" class="btn btn-primary">
+                    Explore the research
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
+                <a href="join.html" class="btn btn-ghost">
+                    Join the group
+                    <span class="btn-arrow" aria-hidden="true">→</span>
+                </a>
             </div>
         </div>
     </section>
 
-    <main>
+    <main id="main-content">
+        <!-- ── Mission ──────────────────────────────────── -->
         <section id="mission">
             <div class="section-header">
-                <h2>Mission Statement</h2>
+                <span class="section-eyebrow">01 · Mission</span>
+                <h2>What we work on</h2>
             </div>
             <div class="mission-content">
                 <p class="lead-text">
-                    At the CJHuang Group, we are dedicated to bridging the gap between fundamental materials
-                    science and practical energy storage engineering. Our research focuses on the design and
-                    synthesis of next-generation battery chemistries—specifically <strong>All-Solid-State
-                    Batteries (ASSBs)</strong> and <strong>Anode-Free Lithium Metal Batteries</strong>.
+                    The CJHuang Group bridges fundamental materials science and practical energy
+                    storage by designing the next generation of battery chemistries — specifically
+                    <strong>all-solid-state batteries</strong> and <strong>anode-free lithium metal batteries</strong>.
                 </p>
                 <p class="lead-text">
-                    We distinguish ourselves by integrating advanced <strong>multi-scale characterization</strong>
-                    techniques with material development. By utilizing <em>operando</em> spectroscopy and 3D
-                    imaging (X-ray tomography), we aim to visualize and understand the complex electrochemical
-                    interfaces that govern battery performance and failure.
+                    What sets the work apart is integrating advanced multi-scale characterization with
+                    materials development. We use <em>operando</em> spectroscopy and 3D X-ray tomography
+                    to <strong>see the electrochemical interface as it evolves</strong>, turning observations
+                    of failure into design rules.
                 </p>
             </div>
 
+            <!-- Research preview cards -->
             <div class="research-grid">
-                <div class="research-card">
-                    <div class="research-icon battery">🔋</div>
-                    <div class="research-content">
-                        <h3>All-Solid-State Batteries</h3>
-                        <p>Developing next-generation solid-state battery architectures with enhanced safety
-                        and energy density through advanced interface engineering.</p>
+                <article class="research-card" data-href="research.html#assb">
+                    <div class="research-image research-image--zoom">
+                        <img loading="lazy" decoding="async" src="image/research-assb.jpg" alt="3D rendering of an all-solid-state battery test cell"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
-                </div>
-                <div class="research-card">
-                    <div class="research-icon synchrotron">⚛️</div>
                     <div class="research-content">
-                        <h3><i>in-situ/operando</i> Techniques</h3>
-                        <p>Real-time characterization of battery materials during operation using synchrotron
-                        X-ray techniques to understand dynamic electrochemical processes.</p>
+                        <span class="research-eyebrow">Area 01</span>
+                        <h3>All-solid-state batteries</h3>
+                        <p>Electrode and electrolyte architectures for safer, denser cells — with the interface engineering to make them last.</p>
                     </div>
-                </div>
-                <div class="research-card">
-                    <div class="research-icon electrochemistry">⚗️</div>
+                </article>
+
+                <article class="research-card" data-href="research.html#operando">
+                    <div class="research-image">
+                        <img loading="lazy" decoding="async" src="image/research-operando.jpg?v=2" alt="Six in-situ and operando battery cell designs: X-ray absorption, X-ray diffraction, optical microscopy, Raman spectroscopy, and transmission X-ray microscopy"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
+                    </div>
                     <div class="research-content">
-                        <h3>3D X-ray Tomography</h3>
-                        <p>Visualizing battery microstructure and failure mechanisms in three dimensions
-                        to guide materials design and optimization.</p>
+                        <span class="research-eyebrow">Area 02</span>
+                        <h3><i>Operando</i> &amp; <i>in-situ</i> techniques</h3>
+                        <p>Watching reactions happen — synchrotron X-ray spectroscopy and diffraction during real cell operation.</p>
                     </div>
-                </div>
+                </article>
+
+                <article class="research-card" data-href="research.html#xct">
+                    <div class="research-image">
+                        <img loading="lazy" decoding="async" src="image/research-xct.jpg?v=2" alt="Synchrotron X-ray computed tomography of an all-solid-state pouch cell: top-view slices and 3D reconstructions of µ-Si anode and composite cathode"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-eyebrow">Area 03</span>
+                        <h3>3D X-ray tomography</h3>
+                        <p>Reconstructing the inside of a working cell — the failure modes, the morphology, the design feedback loop.</p>
+                    </div>
+                </article>
             </div>
         </section>
 
-        <!-- Latest News -->
+        <!-- ── News ─────────────────────────────────────── -->
         <section id="news">
             <div class="section-header">
-                <h2>Latest News</h2>
+                <span class="section-eyebrow">02 · Latest</span>
+                <h2>News &amp; updates</h2>
             </div>
-            
-            <!-- Filter Dropdown -->
+
             <div class="news-filter">
-                <label for="news-category-filter">Filter by:</label>
+                <label for="news-category-filter">Filter</label>
                 <select id="news-category-filter">
-                    <option value="all">All News</option>
+                    <option value="all">All</option>
                     <option value="announcement">Announcements</option>
-                    <option value="award">Awards & Grants</option>
+                    <option value="award">Awards &amp; Grants</option>
                     <option value="publication">Publications</option>
                     <option value="activity">Activities</option>
                 </select>
             </div>
-        
+
             <div class="news-grid" id="news-grid">
-                <div class="news-item" data-category="announcement">
+                <article class="news-item" data-category="announcement">
                     <div class="news-date">Aug 2026</div>
-                    <h3>Prof. Huang Joining Taiwan Tech</h3>
-                    <p>
-                        Prof. Chen-Jui (Ben) Huang will be joining the Department of Chemical Engineering at 
-                        National Taiwan University of Science and Technology (Taiwan Tech) as an Assistant Professor.
-                    </p>
-                    <div class="badge-cat announcement">ANNOUNCEMENT</div>
-                </div>
-        
-                <div class="news-item" data-category="announcement">
+                    <div>
+                        <h3>Joining Taiwan Tech as Assistant Professor</h3>
+                        <p>Prof. Chen-Jui (Ben) Huang joins the Department of Chemical Engineering at National Taiwan University of Science and Technology (NTUST) to start the group.</p>
+                        <span class="badge-cat announcement">Announcement</span>
+                    </div>
+                </article>
+
+                <article class="news-item" data-category="announcement">
                     <div class="news-date">Feb 2026</div>
-                    <h3>New Lab Website Launched</h3>
-                    <p>
-                        We have officially launched our new lab website! Explore our research, meet our team, 
-                        and learn about opportunities to join us starting August 2026.
-                    </p>
-                    <div class="badge-cat announcement">ANNOUNCEMENT</div>
-                </div>
-        
-                <div class="news-item" data-category="publication">
+                    <div>
+                        <h3>Group website launched</h3>
+                        <p>Research, people, publications and recruiting — now in one place. Reach out via the Join page if you're interested in graduate or undergraduate positions.</p>
+                        <span class="badge-cat announcement">Announcement</span>
+                    </div>
+                </article>
+
+                <article class="news-item" data-category="publication">
                     <div class="news-date">Jan 2025</div>
-                    <h3>Paper Published in ACS Energy Letters</h3>
-                    <p>
-                        Our work on "X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State 
-                        Battery at Pouch Cell Level" has been published in ACS Energy Letters.
-                    </p>
-                    <div class="badge-cat pub-label">PUBLICATION</div>
-                </div>
-        
-                <!-- Example Award item - add your own -->
-                <!-- <div class="news-item" data-category="award">
-                    <div class="news-date">Dec 2024</div>
-                    <h3>Research Grant Awarded</h3>
-                    <p>
-                        Prof. Huang received a research grant from the National Science and Technology Council 
-                        to support all-solid-state battery research.
-                    </p>
-                    <div class="badge-cat award">AWARD & GRANT</div>
-                </div> -->
-        
-                <!-- Example Activity item - add your own -->
-                <!-- <div class="news-item" data-category="activity">
-                    <div class="news-date">Nov 2024</div>
-                    <h3>Conference Presentation at ECS Meeting</h3>
-                    <p>
-                        Our team presented new findings on lithium-sulfur batteries at the 
-                        Electrochemical Society Fall Meeting in San Diego.
-                    </p>
-                    <div class="badge-cat activity">ACTIVITY</div>
-                </div> -->
+                    <div>
+                        <h3>Paper out in <i>ACS Energy Letters</i></h3>
+                        <p>"X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State Battery at Pouch Cell Level" — pouch-level XCT applied end-to-end on a working ASSB.</p>
+                        <span class="badge-cat pub-label">Publication</span>
+                    </div>
+                </article>
             </div>
         </section>
 
+        <!-- ── Quick nav ────────────────────────────────── -->
         <section id="quick-links">
             <div class="section-header">
-                <h2>Explore Our Research</h2>
+                <span class="section-eyebrow">03 · Explore</span>
+                <h2>Where to next</h2>
             </div>
             <div class="quick-nav-grid">
-                <div class="quick-nav-card" onclick="location.href='research.html'">
-                    <div class="card-icon">🔬</div>
-                    <h3>Research Areas</h3>
-                    <p>Discover our focus on advanced battery materials and characterization techniques</p>
+                <div class="quick-nav-card" data-href="research.html">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
+                    </span>
+                    <h3>Research</h3>
+                    <p>Three focus areas — solid-state cells, operando spectroscopy, X-ray tomography.</p>
+                    <span class="card-arrow">See research <span aria-hidden="true">→</span></span>
                 </div>
-                <div class="quick-nav-card" onclick="location.href='people.html'">
-                    <div class="card-icon">👥</div>
-                    <h3>Our Team</h3>
-                    <p>Meet the researchers driving innovation in energy storage</p>
+
+                <div class="quick-nav-card" data-href="people.html">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15 19c.2-2 1.5-3.5 3.5-3.5S22 17 22 19"/></svg>
+                    </span>
+                    <h3>People</h3>
+                    <p>Meet the PI. Group members starting from August 2026 — see Join.</p>
+                    <span class="card-arrow">Meet the team <span aria-hidden="true">→</span></span>
                 </div>
-                <div class="quick-nav-card" onclick="location.href='publications.html'">
-                    <div class="card-icon">📚</div>
+
+                <div class="quick-nav-card" data-href="publications.html">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3V4z"/><path d="M4 17a3 3 0 013-3h12"/></svg>
+                    </span>
                     <h3>Publications</h3>
-                    <p>Explore our latest scientific contributions and research outputs</p>
+                    <p>63+ peer-reviewed articles on battery materials and synchrotron characterization.</p>
+                    <span class="card-arrow">Read publications <span aria-hidden="true">→</span></span>
                 </div>
-                <div class="quick-nav-card" onclick="location.href='join.html'">
-                    <div class="card-icon">🎓</div>
-                    <h3>Join Our Group</h3>
-                    <p>Opportunities for postdocs, graduate students, and undergraduate researchers</p>
+
+                <div class="quick-nav-card" data-href="join.html">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/></svg>
+                    </span>
+                    <h3>Join</h3>
+                    <p>Open positions for graduate students and undergraduate researchers.</p>
+                    <span class="card-arrow">See positions <span aria-hidden="true">→</span></span>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- ── Footer ───────────────────────────────────────── -->
     <footer>
         <div class="footer-container">
             <div class="footer-section">
-                <h3>Contact</h3>
+                <h3>CJHuang Group</h3>
                 <p>
-                    Chemical Engineering Department<br>
+                    Department of Chemical Engineering<br>
                     National Taiwan University of Science and Technology<br>
                     No. 43, Section 4, Keelung Road<br>
                     Taipei 10607, Taiwan
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Email</h3>
+                <h3>Contact</h3>
                 <p>
-                    <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a><br>
+                    <a href="mailto:bencjhuang@gmail.com">bencjhuang@gmail.com</a>
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Links</h3>
+                <h3>Affiliations</h3>
                 <p>
-                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank">Taiwan Tech</a><br>
-                    <a href="https://en.ch.ntust.edu.tw/" target="_blank">Chemical Engineering Dept</a><br>
+                    <a href="https://www.ntust.edu.tw/index.php?Lang=en" target="_blank" rel="noopener">Taiwan Tech</a><br>
+                    <a href="https://en.ch.ntust.edu.tw/" target="_blank" rel="noopener">Chemical Engineering</a>
                 </p>
             </div>
             <div class="footer-section">
-                <h3>Follow Our Research</h3>
+                <h3>Group</h3>
                 <p>
-                    <a href="publications.html">Latest Publications</a><br>
-                    <a href="research.html">Research Updates</a><br>
-                    <a href="join.html">Open Positions</a>
+                    <a href="publications.html">Publications</a><br>
+                    <a href="research.html">Research</a><br>
+                    <a href="join.html">Open positions</a>
                 </p>
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 CJHuang Research Group @ Taiwan Tech | All Rights Reserved
+            © 2026 CJHuang Research Group · Taiwan Tech
         </div>
     </footer>
 
-    <button class="back-to-top" id="back-to-top" aria-label="Back to top">&#8679;</button>
+    <button class="back-to-top" id="back-to-top" aria-label="Back to top">↑</button>
     <script src="script.js"></script>
 </body>
 </html>
