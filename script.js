@@ -154,6 +154,228 @@
         });
     }
 
+    /* ── Gallery filter + lightbox ──────────────────────────── */
+    const galleryFilters = document.querySelectorAll('.gallery-filter-btn');
+    const galleryItems = document.querySelectorAll('.gallery-item');
+
+    if (galleryFilters.length && galleryItems.length) {
+        galleryFilters.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const filter = btn.dataset.filter;
+                galleryFilters.forEach(b => b.classList.toggle('active', b === btn));
+
+                galleryItems.forEach(item => {
+                    const match = (filter === 'all' || item.dataset.category === filter);
+                    if (!match) item.classList.add('is-hiding');
+                });
+                setTimeout(() => {
+                    galleryItems.forEach(item => {
+                        const match = (filter === 'all' || item.dataset.category === filter);
+                        item.classList.toggle('hidden', !match);
+                        item.classList.remove('is-hiding');
+                    });
+                }, 200);
+            });
+        });
+    }
+
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && galleryItems.length) {
+        const lbImg = document.getElementById('lightbox-img');
+        const lbCap = document.getElementById('lightbox-caption');
+        const lbClose = document.getElementById('lightbox-close');
+        const lbPrev = document.getElementById('lightbox-prev');
+        const lbNext = document.getElementById('lightbox-next');
+
+        const visibleItems = () => Array.from(galleryItems).filter(el =>
+            !el.classList.contains('hidden') && el.querySelector('img'));
+        let currentIndex = 0;
+
+        const showAt = (i) => {
+            const items = visibleItems();
+            if (!items.length) return;
+            currentIndex = (i + items.length) % items.length;
+            const item = items[currentIndex];
+            const img = item.querySelector('img');
+            lbImg.src = img.src;
+            lbImg.alt = img.alt;
+            lbCap.textContent = item.querySelector('.gallery-caption p')?.textContent ?? '';
+        };
+
+        const open = (item) => {
+            const items = visibleItems();
+            currentIndex = items.indexOf(item);
+            if (currentIndex < 0) currentIndex = 0;
+            showAt(currentIndex);
+            lightbox.hidden = false;
+            document.body.style.overflow = 'hidden';
+            lbClose.focus();
+        };
+
+        const close = () => {
+            lightbox.hidden = true;
+            document.body.style.overflow = '';
+        };
+
+        galleryItems.forEach(item => {
+            const img = item.querySelector('img');
+            if (!img) return;
+            item.style.cursor = 'zoom-in';
+            item.addEventListener('click', () => open(item));
+        });
+
+        lbClose.addEventListener('click', close);
+        lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showAt(currentIndex - 1); });
+        lbNext.addEventListener('click', (e) => { e.stopPropagation(); showAt(currentIndex + 1); });
+        lightbox.addEventListener('click', (e) => { if (e.target === lightbox) close(); });
+
+        document.addEventListener('keydown', (e) => {
+            if (lightbox.hidden) return;
+            if (e.key === 'Escape') close();
+            else if (e.key === 'ArrowLeft') showAt(currentIndex - 1);
+            else if (e.key === 'ArrowRight') showAt(currentIndex + 1);
+        });
+    }
+
+    /* ── Publications: assign stable paper numbers ──────────── */
+    const peerReviewedPubs = document.querySelectorAll('#peer-reviewed .publication');
+    if (peerReviewedPubs.length) {
+        const total = peerReviewedPubs.length;
+        peerReviewedPubs.forEach((pub, i) => {
+            pub.setAttribute('data-num', total - i);
+        });
+    }
+
+    /* ── Publications: filter + search ──────────────────────── */
+    const pubSearch = document.getElementById('pub-search');
+    const pubChips = document.querySelectorAll('.pub-chip');
+    const pubGroups = document.querySelectorAll('.year-group[data-year]');
+    const pubResultCount = document.getElementById('pub-result-count');
+
+    if (pubSearch || pubChips.length) {
+        let activeFilter = 'all';
+        let query = '';
+
+        const peerReviewedSection = document.getElementById('peer-reviewed');
+        const conferencesSection = document.getElementById('conferences');
+        const patentsSection = document.getElementById('patents');
+
+        const applyFilter = () => {
+            const q = query.trim().toLowerCase();
+            const filter = activeFilter;
+            const yearMatch = filter.match(/^year-(\d{4})$/);
+            const targetYear = yearMatch ? yearMatch[1] : null;
+
+            const showArticles  = (filter === 'all' || targetYear !== null);
+            const showConferences = (filter === 'all' || filter === 'conferences');
+            const showPatents     = (filter === 'all' || filter === 'patents');
+
+            if (peerReviewedSection) peerReviewedSection.style.display = showArticles ? '' : 'none';
+            if (conferencesSection)  conferencesSection.style.display  = showConferences ? '' : 'none';
+            if (patentsSection)      patentsSection.style.display      = showPatents ? '' : 'none';
+
+            let visible = 0;
+
+            // Peer-reviewed by year-group
+            pubGroups.forEach(group => {
+                const groupYearMatch = (targetYear === null || group.dataset.year === targetYear);
+                let groupVisible = 0;
+
+                group.querySelectorAll('.publication').forEach(pub => {
+                    const text = pub.textContent.toLowerCase();
+                    const queryMatch = q === '' || text.includes(q);
+                    const show = showArticles && groupYearMatch && queryMatch;
+                    pub.classList.toggle('is-hidden', !show);
+                    if (show) groupVisible++;
+                });
+
+                group.classList.toggle('is-hidden', groupVisible === 0);
+                if (showArticles) visible += groupVisible;
+            });
+
+            // Conferences
+            document.querySelectorAll('#conferences .publication').forEach(pub => {
+                const text = pub.textContent.toLowerCase();
+                const queryMatch = q === '' || text.includes(q);
+                const show = showConferences && queryMatch;
+                pub.classList.toggle('is-hidden', !show);
+                if (show) visible++;
+            });
+
+            // Patents
+            document.querySelectorAll('#patents .publication').forEach(pub => {
+                const text = pub.textContent.toLowerCase();
+                const queryMatch = q === '' || text.includes(q);
+                const show = showPatents && queryMatch;
+                pub.classList.toggle('is-hidden', !show);
+                if (show) visible++;
+            });
+
+            if (pubResultCount) {
+                if (q || filter !== 'all') {
+                    pubResultCount.textContent = `${visible} ${visible === 1 ? 'item' : 'items'} match`;
+                } else {
+                    pubResultCount.textContent = '';
+                }
+            }
+        };
+
+        pubChips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                pubChips.forEach(c => c.classList.toggle('active', c === chip));
+                activeFilter = chip.dataset.filter;
+                applyFilter();
+            });
+        });
+
+        if (pubSearch) {
+            let debounce;
+            pubSearch.addEventListener('input', () => {
+                clearTimeout(debounce);
+                debounce = setTimeout(() => {
+                    query = pubSearch.value;
+                    applyFilter();
+                }, 120);
+            });
+        }
+    }
+
+    /* ── Animate stat numbers counting up on scroll ─────────── */
+    const statNumbers = document.querySelectorAll('.stat-number[data-count]');
+    if (statNumbers.length && 'IntersectionObserver' in window) {
+        const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+        const animateNumber = (el) => {
+            const target = parseInt(el.dataset.count, 10);
+            if (isNaN(target)) return;
+            const duration = 1200;
+            const start = performance.now();
+
+            const tick = (now) => {
+                const t = Math.min(1, (now - start) / duration);
+                const value = Math.round(target * easeOut(t));
+                el.textContent = value.toLocaleString();
+                if (t < 1) requestAnimationFrame(tick);
+                else el.textContent = target.toLocaleString();
+            };
+            requestAnimationFrame(tick);
+        };
+
+        const statIO = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateNumber(entry.target);
+                    statIO.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.4 });
+
+        statNumbers.forEach(el => {
+            // Start from 0 so the count-up is visible
+            el.textContent = '0';
+            statIO.observe(el);
+        });
+    }
+
     /* ── Research page sticky ToC active state ──────────────── */
     const tocLinks = document.querySelectorAll('.toc-link');
     if (tocLinks.length) {
@@ -188,9 +410,16 @@
         tabs.forEach(tab => {
             tab.addEventListener('click', () => {
                 const target = tab.dataset.tab;
-                tabs.forEach(t => t.classList.toggle('active', t === tab));
+
+                tabs.forEach(t => {
+                    const isActive = t === tab;
+                    t.classList.toggle('active', isActive);
+                    t.setAttribute('aria-selected', String(isActive));
+                });
+
                 document.querySelectorAll('.tab-panel').forEach(panel => {
-                    panel.classList.toggle('active', panel.id === target);
+                    const isActive = panel.id === ('tab-' + target);
+                    panel.classList.toggle('active', isActive);
                 });
             });
         });
