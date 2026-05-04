@@ -26,7 +26,7 @@
     const revealTargets = document.querySelectorAll(
         'section, .research-card, .quick-nav-card, .news-item, ' +
         '.research-detail-card, .technique-card, .team-member, ' +
-        '.equipment-card, .position-card, .stat-card'
+        '.equipment-card, .position-card'
     );
 
     revealTargets.forEach(el => el.classList.add('reveal'));
@@ -347,6 +347,9 @@
         const animateNumber = (el) => {
             const target = parseInt(el.dataset.count, 10);
             if (isNaN(target)) return;
+            // Reset HERE — only when we're definitely about to animate.
+            // If IO never fires, the original HTML value stays visible.
+            el.textContent = '0';
             const duration = 1200;
             const start = performance.now();
 
@@ -367,13 +370,9 @@
                     statIO.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.4 });
+        }, { threshold: 0.2 });
 
-        statNumbers.forEach(el => {
-            // Start from 0 so the count-up is visible
-            el.textContent = '0';
-            statIO.observe(el);
-        });
+        statNumbers.forEach(el => statIO.observe(el));
     }
 
     /* ── Research page sticky ToC active state ──────────────── */
