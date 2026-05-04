@@ -39,7 +39,13 @@
                     io.unobserve(entry.target);
                 }
             });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+        }, {
+            // threshold 0 = fire as soon as ANY pixel intersects.
+            // Critical for tall sections (e.g. publications list) where 12%
+            // of the section is never visible at once.
+            threshold: 0,
+            rootMargin: '0px 0px -40px 0px'
+        });
 
         revealTargets.forEach(el => io.observe(el));
     } else {

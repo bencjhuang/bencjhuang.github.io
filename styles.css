@@ -1666,6 +1666,70 @@ section:last-child { margin-bottom: 0; }
 .position-content ul { margin-left: 1.25rem; margin-top: 0.5rem; }
 .position-content li { margin-bottom: 0.6rem; line-height: 1.65; }
 
+/* "About Taiwan Tech" 2-column layout (join.html) */
+.context-block {
+    padding: 3rem;
+}
+.context-intro {
+    max-width: none;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--ink-soft);
+    padding-bottom: 2rem;
+    margin-bottom: 2.5rem;
+    border-bottom: 1px solid var(--rule);
+}
+.context-intro strong { color: var(--ink); }
+
+.context-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3.5rem;
+}
+.context-col h3 {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 1.25rem 0;
+    letter-spacing: -0.01em;
+}
+.context-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+.context-col li {
+    line-height: 1.65;
+    color: var(--ink-soft);
+    padding-left: 1.25rem;
+    position: relative;
+}
+.context-col li::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0.7em;
+    width: 8px;
+    height: 1px;
+    background: var(--accent);
+}
+.context-col p {
+    color: var(--ink-soft);
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+}
+.context-col .external-links {
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .context-block { padding: 2rem; }
+    .context-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
 /* CTAs */
 .contact-cta {
     background: var(--color-bg-alt);
