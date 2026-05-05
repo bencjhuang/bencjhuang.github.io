@@ -490,10 +490,11 @@ section:last-child { margin-bottom: 0; }
 }
 .section-header .section-eyebrow {
     font-family: var(--font-mono);
-    font-size: var(--fs-xs);
-    color: var(--muted);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ink-soft);
     text-transform: uppercase;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.12em;
 }
 .section-date {
     font-family: var(--font-mono);
@@ -523,6 +524,16 @@ section:last-child { margin-bottom: 0; }
     color: var(--ink-soft);
     margin-bottom: 1.5rem;
     max-width: var(--maxw-prose);
+}
+
+/* Inside content-blocks and position cards, paragraphs span the full
+   container width — typography max-width is reserved for raw <p> in
+   long-form sections (research detail, etc). */
+.content-block .lead-text,
+.content-block p,
+.position-content p,
+.context-col p {
+    max-width: none;
 }
 .lead-text strong {
     color: var(--ink);
@@ -2400,6 +2411,8 @@ footer {
     color: var(--muted);
     text-align: center;
     margin-bottom: 2rem;
+    max-width: none;        /* override global p max-width */
+    width: 100%;
 }
 
 /* ── Lightbox ──────────────────────────────────────────── */
