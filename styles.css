@@ -1929,6 +1929,81 @@ section:last-child { margin-bottom: 0; }
     margin: 0;
 }
 
+/* Group member cards — larger, photo + bio side-by-side */
+.members-block { margin-top: 4rem; }
+.members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+    gap: 1.5rem;
+}
+.member-card {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform var(--t-med), box-shadow var(--t-med),
+                border-color var(--t-med);
+}
+.member-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--ink);
+    box-shadow: var(--shadow-md);
+}
+.member-card__photo {
+    background: var(--color-bg-alt);
+    overflow: hidden;
+}
+.member-card__photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    transition: transform var(--t-slow);
+}
+.member-card:hover .member-card__photo img { transform: scale(1.04); }
+.member-card__body {
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+}
+.member-card__tag {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.75rem;
+}
+.member-card__body h3 {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--ink);
+    margin: 0 0 0.75rem 0;
+    letter-spacing: -0.01em;
+}
+.member-card__name-en {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-left: 0.4rem;
+}
+.member-card__body p {
+    color: var(--ink-soft);
+    font-size: var(--fs-sm);
+    line-height: 1.7;
+    margin: 0;
+    max-width: none;
+}
+
+@media (max-width: 560px) {
+    .members-grid { grid-template-columns: 1fr; }
+    .member-card { grid-template-columns: 1fr; }
+    .member-card__photo { aspect-ratio: 4 / 3; }
+}
+
 /* ════════════════════════════════════════════════════════════════
    EQUIPMENT
    ════════════════════════════════════════════════════════════════ */
