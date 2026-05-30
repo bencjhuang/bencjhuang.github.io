@@ -1938,7 +1938,8 @@ section:last-child { margin-bottom: 0; }
 }
 .member-card {
     display: grid;
-    grid-template-columns: 180px 1fr;
+    grid-template-columns: 210px 1fr;
+    align-items: start;
     background: var(--surface);
     border: 1px solid var(--rule);
     border-radius: 2px;
@@ -1952,6 +1953,8 @@ section:last-child { margin-bottom: 0; }
     box-shadow: var(--shadow-md);
 }
 .member-card__photo {
+    width: 210px;
+    aspect-ratio: 3 / 4;        /* fixed portrait frame */
     background: var(--color-bg-alt);
     overflow: hidden;
 }
@@ -1959,12 +1962,13 @@ section:last-child { margin-bottom: 0; }
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center;
     transition: transform var(--t-slow);
 }
 .member-card:hover .member-card__photo img { transform: scale(1.04); }
 .member-card__body {
     padding: 1.75rem;
+    align-self: center;        /* center bio next to the 3:4 photo */
     display: flex;
     flex-direction: column;
 }
@@ -2000,8 +2004,9 @@ section:last-child { margin-bottom: 0; }
 
 @media (max-width: 560px) {
     .members-grid { grid-template-columns: 1fr; }
-    .member-card { grid-template-columns: 1fr; }
-    .member-card__photo { aspect-ratio: 4 / 3; }
+    .member-card { grid-template-columns: 1fr; justify-items: center; text-align: center; }
+    .member-card__photo { width: 220px; }      /* stays 3:4, centered */
+    .member-card__body { align-self: stretch; }
 }
 
 /* ════════════════════════════════════════════════════════════════
