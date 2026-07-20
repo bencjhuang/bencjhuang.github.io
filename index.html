@@ -24,6 +24,87 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <link rel="preload" as="image" href="image/hero-beamline.jpg">
+
+    <!-- Structured data: research group, website, and its founder -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ResearchOrganization",
+          "@id": "https://bencjhuang.github.io/#organization",
+          "name": "CJHuang Group",
+          "alternateName": "Advanced Characterization and Solid-State Battery Research Group",
+          "url": "https://bencjhuang.github.io/",
+          "logo": "https://bencjhuang.github.io/image/og-default.jpg",
+          "description": "Research group at Taiwan Tech probing how all-solid-state batteries operate through real-time imaging and spectroscopy.",
+          "foundingDate": "2026-08",
+          "email": "mailto:cjhuang@mail.ntust.edu.tw",
+          "founder": { "@id": "https://bencjhuang.github.io/#person" },
+          "employee": { "@id": "https://bencjhuang.github.io/#person" },
+          "parentOrganization": {
+            "@type": "CollegeOrUniversity",
+            "name": "National Taiwan University of Science and Technology",
+            "alternateName": ["Taiwan Tech", "NTUST"],
+            "url": "https://www.ntust.edu.tw/"
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Room E2-808, No. 43, Section 4, Keelung Road",
+            "addressLocality": "Taipei",
+            "postalCode": "10607",
+            "addressCountry": "TW"
+          },
+          "knowsAbout": [
+            "All-solid-state batteries",
+            "Anode-free lithium metal batteries",
+            "Operando and in-situ synchrotron X-ray characterization",
+            "X-ray computed tomography"
+          ],
+          "sameAs": [
+            "https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en",
+            "https://orcid.org/0000-0001-8338-1424",
+            "https://www.linkedin.com/in/chen-jui-ben-huang-b25267a1",
+            "https://www.researchgate.net/profile/Chen-Jui-Huang"
+          ]
+        },
+        {
+          "@type": "Person",
+          "@id": "https://bencjhuang.github.io/#person",
+          "name": "Chen-Jui Huang",
+          "alternateName": ["Ben Huang", "Chen-Jui (Ben) Huang", "黃貞睿"],
+          "jobTitle": "Assistant Professor of Chemical Engineering",
+          "url": "https://bencjhuang.github.io/people.html",
+          "image": "https://bencjhuang.github.io/image/Ben.JPG",
+          "email": "mailto:cjhuang@mail.ntust.edu.tw",
+          "worksFor": {
+            "@type": "CollegeOrUniversity",
+            "name": "National Taiwan University of Science and Technology",
+            "url": "https://www.ntust.edu.tw/"
+          },
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "ORCID",
+            "value": "0000-0001-8338-1424"
+          },
+          "sameAs": [
+            "https://scholar.google.com/citations?user=fFTtGFAAAAAJ&hl=en",
+            "https://orcid.org/0000-0001-8338-1424",
+            "https://www.linkedin.com/in/chen-jui-ben-huang-b25267a1",
+            "https://www.researchgate.net/profile/Chen-Jui-Huang"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://bencjhuang.github.io/#website",
+          "url": "https://bencjhuang.github.io/",
+          "name": "CJHuang Group",
+          "inLanguage": "en",
+          "publisher": { "@id": "https://bencjhuang.github.io/#organization" }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
@@ -257,6 +338,12 @@
                 <h3>Contact</h3>
                 <p>
                     <a href="mailto:cjhuang@mail.ntust.edu.tw">cjhuang@mail.ntust.edu.tw</a>
+                </p>
+                <p>
+                    <a href="https://scholar.google.com/citations?user=fFTtGFAAAAAJ&amp;hl=en" target="_blank" rel="noopener me">Google Scholar</a><br>
+                    <a href="https://orcid.org/0000-0001-8338-1424" target="_blank" rel="noopener me">ORCID</a><br>
+                    <a href="https://www.linkedin.com/in/chen-jui-ben-huang-b25267a1" target="_blank" rel="noopener me">LinkedIn</a><br>
+                    <a href="https://www.researchgate.net/profile/Chen-Jui-Huang" target="_blank" rel="noopener me">ResearchGate</a>
                 </p>
             </div>
             <div class="footer-section">
