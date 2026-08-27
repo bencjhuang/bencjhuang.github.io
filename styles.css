@@ -524,6 +524,9 @@ section:last-child { margin-bottom: 0; }
     color: var(--ink-soft);
     margin-bottom: 1.5rem;
     max-width: var(--maxw-prose);
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
 }
 
 /* Inside content-blocks and position cards, paragraphs span the full
@@ -764,6 +767,9 @@ section:last-child { margin-bottom: 0; }
     margin-bottom: 1rem;
     max-width: 64ch;
     color: var(--ink-soft);
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
 }
 .research-section ul {
     list-style: none;
@@ -1224,7 +1230,13 @@ section:last-child { margin-bottom: 0; }
     margin-top: 2rem;
     margin-bottom: 1rem;
 }
-.pi-bio p { line-height: 1.75; margin-bottom: 1rem; }
+.pi-bio p {
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
 .pi-research ul { margin-left: 1.25rem; }
 .pi-research li { margin-bottom: 0.7rem; line-height: 1.65; }
 
