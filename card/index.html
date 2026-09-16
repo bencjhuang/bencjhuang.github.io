@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>黃貞睿 Ben Huang｜電子名片</title>
+<meta name="description" content="黃貞睿 博士 — 國立臺灣科技大學化學工程系助理教授、玉山青年學者。電子名片與聯絡資訊。">
+<meta name="theme-color" content="#0B5FA5">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="黃貞睿 Chen-Jui (Ben) Huang, Ph.D.">
+<meta property="og:description" content="Assistant Professor, Department of Chemical Engineering, Taiwan Tech｜Yushan Young Fellow">
+<meta property="og:url" content="https://bencjhuang.github.io/card/">
+<link rel="canonical" href="https://bencjhuang.github.io/card/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@500;700&display=swap">
+<style>
+  :root{
+    color-scheme:light;
+    --bg:#EEF1F5; --surface:#FFFFFF; --surface-2:#F5F7FA;
+    --ink:#0F1E2D; --muted:#5B6E80; --faint:#8899A8; --line:#DCE3EB;
+    --brand:#0B5FA5; --brand-deep:#083F6E; --accent:#0E9384;
+    --shadow:0 1px 2px rgba(15,30,45,.06), 0 12px 32px -12px rgba(15,30,45,.18);
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box}
+  img{max-width:100%}
+  [hidden]{display:none!important}
+  body{
+    margin:0;
+    background:var(--bg); color:var(--ink);
+    font-family:"IBM Plex Sans","Noto Sans TC",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:520px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:18px}
+  .topbar{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+  .lang{display:inline-flex;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:3px;box-shadow:var(--shadow)}
+  .lang button{font:inherit;font-size:13px;font-weight:500;letter-spacing:.02em;color:var(--muted);background:none;border:0;border-radius:999px;padding:5px 14px;cursor:pointer}
+  .lang button[aria-pressed="true"]{background:var(--brand);color:#fff}
+  .lang button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden}
+  .crest{background:linear-gradient(105deg,var(--brand-deep) 0%,var(--brand) 62%,#1C7FC4 100%);color:#fff;padding:16px 20px;display:flex;flex-direction:column;gap:2px}
+  .crest .zh{font-family:"Noto Serif TC",serif;font-weight:700;font-size:19px;letter-spacing:.16em}
+  .crest .en{font-size:11px;font-weight:500;letter-spacing:.07em;color:#CFE4F6;text-transform:uppercase}
+
+  .identity{padding:22px 20px 20px;display:flex;flex-direction:column;gap:14px}
+  .name{font-family:"Source Serif 4","Noto Serif TC",serif;font-weight:600;font-size:clamp(28px,8vw,34px);line-height:1.15;margin:0;text-wrap:balance}
+  .name[data-lang="zh"]{letter-spacing:.14em}
+  .name .deg{font-family:"IBM Plex Sans","Noto Sans TC",sans-serif;font-size:14px;font-weight:500;color:var(--muted);letter-spacing:0;margin-left:.45em;white-space:nowrap}
+  .roles{display:flex;flex-direction:column;gap:3px;margin:0;padding:0;list-style:none}
+  .roles li{color:var(--muted);font-size:14.5px}
+  .roles li.lead{color:var(--ink);font-weight:500}
+  .fellow{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:500;letter-spacing:.02em;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 35%,transparent);background:color-mix(in srgb,var(--accent) 9%,transparent);border-radius:999px;padding:4px 11px}
+  .fellow::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--accent)}
+
+  .actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:0 20px 20px}
+  .btn{display:flex;align-items:center;justify-content:center;gap:7px;font:inherit;font-size:14px;font-weight:500;text-decoration:none;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:10px;padding:11px 12px;cursor:pointer;transition:background .15s ease,border-color .15s ease}
+  .btn:hover{border-color:var(--brand);background:color-mix(in srgb,var(--brand) 8%,var(--surface-2))}
+  .btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  .btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .btn.primary:hover{background:var(--brand-deep);border-color:var(--brand-deep)}
+  .btn svg{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .btn.wide{grid-column:1 / -1}
+
+  .details{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:6px 20px}
+  .row{display:flex;gap:14px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:0}
+  .row dt{flex:none;width:74px;font-size:11px;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--faint);margin:0}
+  .row dd{margin:0;flex:1;min-width:0;word-break:break-word}
+  .row dd a{color:var(--brand);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--brand) 35%,transparent)}
+  .row dd a:hover{border-bottom-color:var(--brand)}
+  .row dd.tel{font-variant-numeric:tabular-nums}
+
+  .qrblock{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center}
+  .qrblock h2{margin:0;font-family:"Source Serif 4","Noto Serif TC",serif;font-size:17px;font-weight:600}
+  .qrblock p{margin:0;font-size:13px;color:var(--muted);max-width:34ch}
+  #qr{background:#fff;padding:12px;border-radius:10px;border:1px solid var(--line);line-height:0}
+  #qr img,#qr canvas{display:block;width:180px;height:180px}
+
+  .foot{text-align:center;font-size:12px;color:var(--faint);letter-spacing:.02em}
+  .toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(8px);background:var(--ink);color:var(--bg);font-size:13px;font-weight:500;padding:9px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .2s ease;z-index:20}
+  .toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+  @media (prefers-reduced-motion: reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="topbar">
+    <div class="lang" role="group" aria-label="Language">
+      <button id="btn-zh" type="button" aria-pressed="true">中文</button>
+      <button id="btn-en" type="button" aria-pressed="false">EN</button>
+    </div>
+  </div>
+
+  <section class="card">
+    <header class="crest">
+      <span class="zh" data-zh="國立臺灣科技大學" data-en="TAIWAN TECH">國立臺灣科技大學</span>
+      <span class="en">National Taiwan University of Science and Technology</span>
+    </header>
+
+    <div class="identity">
+      <h1 class="name" id="name" data-lang="zh">黃貞睿<span class="deg" data-zh="博士" data-en="Ph.D.">博士</span></h1>
+      <ul class="roles">
+        <li class="lead" data-zh="化學工程系 助理教授" data-en="Assistant Professor">化學工程系 助理教授</li>
+        <li data-zh="國立臺灣科技大學" data-en="Department of Chemical Engineering">國立臺灣科技大學</li>
+      </ul>
+      <span class="fellow" data-zh="玉山青年學者" data-en="Yushan Young Fellow">玉山青年學者</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn primary" href="tel:+886227376618">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 3h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A17 17 0 0 1 4.5 5.2 2 2 0 0 1 6.5 3Z"/></svg>
+        <span data-zh="撥打電話" data-en="Call">撥打電話</span>
+      </a>
+      <a class="btn" href="mailto:cjhuang@mail.ntust.edu.tw">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6 8.5-6"/></svg>
+        <span data-zh="寄送 Email" data-en="Email">寄送 Email</span>
+      </a>
+      <a class="btn" href="https://bencjhuang.github.io/">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 2.5 15.4 0 18M12 3c-2.5 2.6-2.5 15.4 0 18"/></svg>
+        <span data-zh="實驗室網站" data-en="Lab Website">實驗室網站</span>
+      </a>
+      <button class="btn" type="button" id="share">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V4m0 0L8.5 7.5M12 4l3.5 3.5"/><path d="M5 13v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg>
+        <span data-zh="分享名片" data-en="Share Card">分享名片</span>
+      </button>
+      <a class="btn wide" href="ben-huang.vcf" download="ben-huang.vcf">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11m0 0-4-4m4 4 4-4"/><path d="M5 17v2a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2"/></svg>
+        <span data-zh="存入通訊錄（下載 vCard）" data-en="Save to contacts (vCard)">存入通訊錄（下載 vCard）</span>
+      </a>
+      <button class="btn wide" type="button" id="copy">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h8"/></svg>
+        <span data-zh="複製所有聯絡資訊" data-en="Copy all contact details">複製所有聯絡資訊</span>
+      </button>
+    </div>
+  </section>
+
+  <dl class="details">
+    <div class="row">
+      <dt data-zh="電話" data-en="Phone">電話</dt>
+      <dd class="tel"><a href="tel:+886227376618">+886-2-2737-6618</a></dd>
+    </div>
+    <div class="row">
+      <dt>Email</dt>
+      <dd><a href="mailto:cjhuang@mail.ntust.edu.tw">cjhuang@mail.ntust.edu.tw</a></dd>
+    </div>
+    <div class="row">
+      <dt data-zh="地址" data-en="Address">地址</dt>
+      <dd data-zh="106335 臺北市大安區基隆路四段 43 號" data-en="No. 43, Sec. 4, Keelung Rd., Da’an Dist., Taipei 106335, Taiwan">106335 臺北市大安區基隆路四段 43 號</dd>
+    </div>
+    <div class="row">
+      <dt data-zh="網站" data-en="Website">網站</dt>
+      <dd><a href="https://bencjhuang.github.io/">bencjhuang.github.io</a></dd>
+    </div>
+  </dl>
+
+  <section class="qrblock">
+    <h2 data-zh="掃描存入通訊錄" data-en="Scan to save contact">掃描存入通訊錄</h2>
+    <p data-zh="用對方的手機相機掃這個碼，會直接跳出新增聯絡人。" data-en="Point a phone camera here to add me straight to contacts.">用對方的手機相機掃這個碼，會直接跳出新增聯絡人。</p>
+    <div id="qr"><img id="qr-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAbYAAAG2AQAAAAA7cp7dAAAGZ0lEQVR42u1cPY4DOw+jngdI6bnBHsVzs2Bv5hwlN/CUCzjgKyg7adaz36u+Qqn2J24IWRQpyUb8l8/rH/y3T5yLc//Thw0AUgMbkAmUjtJz7bmStQOpFbKyAShAAQCUHnj+imchmUgAJMnaMzuKfmADydRKauiAvskWeK7OmR04DShmhvO+AcAD53F7HhuA8+jA66sicwNw2hb3fRmfQEkNisBE9lzZkEhkIleSHUW/sumbEZ/X536+6pb5MkutvL4qTsNpOO8vOxK/X3Z0PLbgo7/nz0zkmlpBdvZhQ0dJrD0zKYwjf16fe5gZziM9j/S8A0jP+4aSGjaUWwPO++15qAbAebzMbI/4/D0+/VPZ0HPtKKOIKgpdBafSJrJ/O+JzVX9mpga20oEOIDslDcCdkpCrUkHw0VX+rGxFqTKxis17ZmIlmVg7QNZEdpQe9fwVnopJso4CqQIY2MIFUa4ewPoh8Fzgmdlz7QBy9YzaShKqrcwY7rmmcfcDz0X+JKncqHqJTVm0pubFUkchicyehyANPJd8JBKfUmgSvZshLo6Gfg9+X9ZLPVcAHejDXBLdJ6+jSs8V8GIpNQSel/zeXcjDRfq43alhaCL0XJVpg98v+UhsTjflqv6u/OkKlIQIK/j9b/pIuPVc4cmzUGE5TSdWBW3w0YV+32F29Fz7ed+ADtwaUsPLbEPZUF47bg1mRz8NeIS/tL7vGInRb/ckJswmCAD0TMwyIPBc4OlGXE2ju6EaSQylXlIHvKZqBXHf1/zeILg8CDEqpaE3ZTQhUzVV8Ps6f76+KKuTJE4jvwXjBmxAarAdOC013EjgkVrkz1V8plGxd6hGovwQN0mgO17TuwSN+77Ec1gfswoVyLr+nxnA/aXgo6V+F7kPq9OtJAn21Ir+ImdJejPic41nIjX7oTJJWt6TQK5pOHVCUpo08LyoPwFZc9P87GLzXFPDpxfqBlTgudDvgOYZFJNKmD0zvZsd7JmjUq2B55/i01Ol23eiJFWhQlUms8MbeP5+rp/HliuADY/X/pBKkpDHeX/twHncGgDgvN9YX3vUn+t6iTKRICtJuRTuLDnpN4wMEPMhl/rdP4kVuQJlKs2Ooqan+u+pQak18PwVT1IKSD33odbrx/wS55wD2xgaCTyX55Qt09NI2tc3fH4JiVUuqNKsvvmyI/Ln4pwmP7fTtly30/p52D4uOx6pFbZHYr21B4AefsiVPvLk6YnUp+WVKqUx9UdNOyg5xH1f601vG2W3lKXfXVpKyI+mfPghV3zkA0uuktxGLs5NnBNNTlhuLAeev58zO1QO/XzVnx1m9w24PY2tmFl6HrajA12bCEB6Bh9d6Hd11VUaedOtQTlzWCU1Nf9axOc6f0r+jHEvr96nrv9c6ZJnEnx0pTdlymlcVnZ98V6nO8w+J8Yx1xR4LvgovbvDBZmiciEsADmuf/ehkYjPld6UXayBzz5bRf4rNPDpI8qeUQPPJR9lXzcYvDNanG2OzaP7f91YDjzX9z2N0S96f9N/mBM4GCOgoY8u8cS7KTzWZLJLpGHTlcH7Y+w28Pz9vtOrIO99jPl5jvYHZxZNvogU/H5RL/XBTR+bxa7fXZA6zkU4B54r/d5KImUopTd0PvqlXJoaZikVeF7pI3+ZYbYyNS0vXxTvncQynKi47xd+3RwGm9Gouz/WZHy84V2mBp6L/PkRh7MlN5vvH0rTnfy471f1fNXDNWNxu4xxkfeql4ZpVduHn3xVz3Nc9jLH7dTsSO8VeA2HlJiv+wsfwdnclw7m9qsKUdfsWcuGkT8v/JA5v6Sy02+0Sk2v4TFq/qL2XOC55qO5B+fl+lgo9pEGf7NFUyKM+Fyf65k/O5Arn/fUcGtA/jYz6SP1jF47fux+aw+c1hH99yW/uxtf05hRdALySW9/fu3jHaGIz1X+lOUu6PCxgzBfYRLU7s9Hv2N97jQz2/I3zvvP/kisOA+fwAE6Hpu/qfiw3TeSEPd97ddRT9lUn0WclKR/qXGsekn7hsHvy3NmB4ANIOvtafD94oft0GDYhtLz93YeilLkGvG5iE+pdb1QN19VRa6zMTfH5qWSwl/6A54+1eDKfbxkNZYNfcx7viISeF7kz1bG47R6zcabdJKZfW4jRr30B/0Ofz/ZO+wioPe7N3pdZHj4US8tPxbvpce5/+Nz/wJawD7v1xTU8QAAAABJRU5ErkJggg==" alt="vCard QR code" width="438" height="438"></div>
+  </section>
+
+  <p class="foot" data-zh="國立臺灣科技大學 化學工程系" data-en="Dept. of Chemical Engineering, Taiwan Tech">國立臺灣科技大學 化學工程系</p>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  var VCARD = [
+    "BEGIN:VCARD","VERSION:3.0",
+    "N:Huang;Chen-Jui;;;Ph.D.",
+    "FN:Chen-Jui (Ben) Huang",
+    "ORG:National Taiwan University of Science and Technology;Department of Chemical Engineering",
+    "TITLE:Assistant Professor",
+    "TEL;TYPE=WORK,VOICE:+886227376618",
+    "EMAIL;TYPE=WORK:cjhuang@mail.ntust.edu.tw",
+    "URL:https://bencjhuang.github.io/",
+    "ADR;TYPE=WORK:;;No. 43 Sec. 4 Keelung Rd. Da-an Dist.;Taipei;;106335;Taiwan",
+    "NOTE:Yushan Young Fellow",
+    "END:VCARD"
+  ].join("\n");
+
+  var nodes = document.querySelectorAll("[data-zh][data-en]");
+  var btnZh = document.getElementById("btn-zh");
+  var btnEn = document.getElementById("btn-en");
+  var nameEl = document.getElementById("name");
+  var NAME = { zh:"黃貞睿", en:"Chen-Jui (Ben) Huang" };
+
+  function setLang(lang){
+    nodes.forEach(function(n){ n.textContent = n.getAttribute("data-" + lang); });
+    nameEl.setAttribute("data-lang", lang);
+    nameEl.firstChild.nodeValue = NAME[lang];
+    document.documentElement.lang = (lang === "zh") ? "zh-Hant" : "en";
+    btnZh.setAttribute("aria-pressed", lang === "zh");
+    btnEn.setAttribute("aria-pressed", lang === "en");
+    try{ localStorage.setItem("cardLang", lang); }catch(e){}
+  }
+  btnZh.addEventListener("click", function(){ setLang("zh"); });
+  btnEn.addEventListener("click", function(){ setLang("en"); });
+
+  var saved = null;
+  try{ saved = localStorage.getItem("cardLang"); }catch(e){}
+  setLang(saved === "en" || saved === "zh" ? saved
+        : ((navigator.language||"").toLowerCase().indexOf("zh") === 0 ? "zh" : "en"));
+
+  var toast = document.getElementById("toast"), tid;
+  function say(msg){
+    toast.textContent = msg;
+    toast.classList.add("on");
+    clearTimeout(tid);
+    tid = setTimeout(function(){ toast.classList.remove("on"); }, 1900);
+  }
+
+  var PLAIN_ZH = "黃貞睿 博士\n國立臺灣科技大學 化學工程系 助理教授／玉山青年學者\n電話：+886-2-2737-6618\nEmail：cjhuang@mail.ntust.edu.tw\n地址：106335 臺北市大安區基隆路四段 43 號\n網站：https://bencjhuang.github.io/";
+  var PLAIN_EN = "Chen-Jui (Ben) Huang, Ph.D.\nAssistant Professor, Dept. of Chemical Engineering, Taiwan Tech\nYushan Young Fellow\nPhone: +886-2-2737-6618\nEmail: cjhuang@mail.ntust.edu.tw\nAddress: No. 43, Sec. 4, Keelung Rd., Da'an Dist., Taipei 106335, Taiwan\nWeb: https://bencjhuang.github.io/";
+
+  document.getElementById("copy").addEventListener("click", function(){
+    var zh = btnZh.getAttribute("aria-pressed") === "true";
+    var text = zh ? PLAIN_ZH : PLAIN_EN;
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(
+        function(){ say(zh ? "已複製聯絡資訊" : "Contact details copied"); },
+        function(){ say(zh ? "複製失敗，請長按選取" : "Copy failed — select manually"); }
+      );
+    } else {
+      say(zh ? "此瀏覽器不支援複製" : "Clipboard unavailable here");
+    }
+  });
+
+  document.getElementById("share").addEventListener("click", function(){
+    var zh = btnZh.getAttribute("aria-pressed") === "true";
+    var url = location.href;
+    var title = zh ? "黃貞睿 博士 電子名片" : "Chen-Jui (Ben) Huang — Digital Card";
+    if (navigator.share){
+      navigator.share({ title: title, url: url }).catch(function(){});
+    } else if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){
+        say(zh ? "已複製名片網址" : "Card link copied");
+      }, function(){ say(zh ? "請手動複製網址" : "Copy the link manually"); });
+    } else {
+      say(zh ? "請手動複製網址" : "Copy the link manually");
+    }
+  });
+})();
+</script>
+</body>
+</html>
