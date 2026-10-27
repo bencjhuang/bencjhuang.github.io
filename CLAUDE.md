@@ -76,6 +76,7 @@ update the visible HTML **and** the matching JSON-LD on both pages, then re-vali
 **Add a publication** (`publications.html`):
 - Find the correct `.year-group`, copy an existing `.publication` entry, update all fields
 - Update the citation stats block (h-index, citations) and the "last checked" date
+- Also update the homepage "at a glance" band (`#numbers` in `index.html`) — same numbers
 
 **Update PI facts** (title, honors, research interests, stats):
 - Edit the visible HTML **and** the JSON-LD on `index.html` + `people.html`

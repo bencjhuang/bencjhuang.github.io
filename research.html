@@ -189,17 +189,73 @@
                         <h2>3D X-ray computed tomography</h2>
                     </div>
 
-                    <figure class="research-figure">
-                        <img loading="lazy" decoding="async" src="image/research-xct.jpg?v=2" alt="Synchrotron X-ray computed tomography of an all-solid-state pouch cell: top-view slices and 3D reconstructions of µ-Si anode and composite cathode"
-                             onerror="this.parentElement.style.display='none'">
-                        <figcaption>Pouch-cell synchrotron XCT — slice imaging through to segmented 3D reconstruction of µ-Si anode and composite cathode.</figcaption>
-                    </figure>
-
                     <p>
                         Non-destructive 3D imaging of the inside of a working cell. We've built the
                         capability up to pouch-cell scale: from sample mounting and beamline acquisition
                         through reconstruction, segmentation, and quantitative morphology analysis.
                     </p>
+
+                    <!-- Scrollytelling: the figure stays pinned while the steps scroll past (script.js) -->
+                    <div class="scrolly" id="xct-scrolly">
+                        <figure class="scrolly-figure">
+                            <div class="scrolly-frame">
+                                <img class="scrolly-img scrolly-img--photo is-active" data-step="1" decoding="async"
+                                     src="image/xct-step-beamline.jpg"
+                                     alt="Sample stage at the APS 1-ID synchrotron X-ray tomography beamline, with the in-situ cell holder mounted on the rotation stage"
+                                     data-caption="Synchrotron X-ray tomography beamline (APS 1-ID Beamline).">
+                                <img class="scrolly-img" data-step="2" loading="lazy" decoding="async"
+                                     src="image/xct-step-cell.jpg"
+                                     alt="Schematic of an all-solid-state pouch cell rotating in the X-ray beam, with a reconstructed side-view slice through the cell stack"
+                                     data-caption="Adapted with permission from Huang et al., ACS Energy Lett. 2025. © 2025 American Chemical Society.">
+                                <img class="scrolly-img" data-step="3" loading="lazy" decoding="async"
+                                     src="image/xct-step-slices.jpg"
+                                     alt="Reconstructed top-view slices of the µ-Si anode, showing a mud-crack pattern, and of the composite cathode"
+                                     data-caption="Adapted with permission from Huang et al., ACS Energy Lett. 2025. © 2025 American Chemical Society.">
+                                <img class="scrolly-img" data-step="4" loading="lazy" decoding="async"
+                                     src="image/xct-step-seg.jpg"
+                                     alt="Segmented 3D renderings: the µ-Si anode mud-crack network and labelled phases in a composite cathode volume"
+                                     data-caption="Adapted with permission from Huang et al., ACS Energy Lett. 2025. © 2025 American Chemical Society.">
+                            </div>
+                            <figcaption class="scrolly-caption">Synchrotron X-ray tomography beamline (APS 1-ID Beamline).</figcaption>
+                        </figure>
+
+                        <div class="scrolly-steps">
+                            <div class="scrolly-step is-active" data-step="1">
+                                <span class="scrolly-step-num">01 · Acquire</span>
+                                <h4>At the beamline</h4>
+                                <p>
+                                    The <i>in-situ</i> cell holder sits on the rotation stage. As the cell turns
+                                    through the X-ray beam, the detector records a projection at every angle.
+                                </p>
+                            </div>
+                            <div class="scrolly-step" data-step="2">
+                                <span class="scrolly-step-num">02 · Reconstruct</span>
+                                <h4>See through the whole pouch cell</h4>
+                                <p>
+                                    The projections are reconstructed into a 3D volume, so any virtual slice can be
+                                    read out without opening the cell — here, a side view through the full
+                                    all-solid-state stack.
+                                </p>
+                            </div>
+                            <div class="scrolly-step" data-step="3">
+                                <span class="scrolly-step-num">03 · Slice</span>
+                                <h4>Read each layer from above</h4>
+                                <p>
+                                    Top-view slices resolve the mud-crack pattern of the µ-Si anode and the particle
+                                    distribution of the composite cathode across hundreds of micrometres.
+                                </p>
+                            </div>
+                            <div class="scrolly-step" data-step="4">
+                                <span class="scrolly-step-num">04 · Segment</span>
+                                <h4>From image to number</h4>
+                                <p>
+                                    Segmentation turns grayscale into labelled phases — the anode crack network and
+                                    the phases of the composite cathode — for quantitative 3D analysis.
+                                    <a href="https://doi.org/10.1021/acsenergylett.5c00956" target="_blank" rel="noopener">Read the paper</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
 
                     <h3>What we resolve</h3>
                     <ul>
@@ -235,6 +291,10 @@
         <div class="footer-container">
             <div class="footer-section">
                 <h3>CJHuang Group</h3>
+                <p class="footer-labname">
+                    Laboratory for Energy Storage Imaging and Spectroscopy<br>
+                    <span lang="zh-Hant">儲能材料影像與光譜分析實驗室</span>
+                </p>
                 <p>
                     Room E2-808, Department of Chemical Engineering<br>
                     National Taiwan University of Science and Technology<br>

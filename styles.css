@@ -142,6 +142,12 @@ button:focus, a:focus, select:focus, input:focus, textarea:focus {
 .reveal.is-visible {
     opacity: 1;
     transform: none;
+    /* Higher specificity than component transitions, so cards fade too.
+       script.js removes both classes once the reveal has finished, which
+       hands hover transitions back to the component. --reveal-delay
+       staggers items that enter the viewport together. */
+    transition: opacity 700ms var(--ease) var(--reveal-delay, 0ms),
+                transform 700ms var(--ease) var(--reveal-delay, 0ms);
 }
 @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
@@ -350,6 +356,59 @@ nav#navbar.scrolled {
 }
 @media (prefers-reduced-motion: reduce) {
     .hero-media { animation: none; }
+}
+
+/* Scroll-linked hero: the image eases in and the copy lifts away as the
+   hero scrolls out. Uses `scale`/`translate` (not `transform`) so it
+   composes with kenBurns. Browsers without scroll timelines keep the
+   static hero. */
+@supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+        .hero { view-timeline: --hero block; }
+        .hero-media {
+            animation: kenBurns 24s ease-in-out infinite alternate,
+                       heroZoom linear both;
+            animation-timeline: auto, --hero;
+            animation-range: normal, exit 0% exit 100%;
+        }
+        .hero-content {
+            animation: heroLift linear both;
+            animation-timeline: --hero;
+            animation-range: exit 0% exit 70%;
+        }
+    }
+}
+@keyframes heroZoom {
+    to { scale: 1.12; }
+}
+@keyframes heroLift {
+    to { opacity: 0; translate: 0 -64px; }
+}
+
+/* Cross-document page transitions (progressive enhancement) */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition { navigation: auto; }
+}
+nav#navbar { view-transition-name: site-nav; }
+
+/* Publications reading progress (scroll-driven; hidden where unsupported) */
+.read-progress { display: none; }
+@supports (animation-timeline: scroll()) {
+    .read-progress {
+        display: block;
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: 2px;
+        background: var(--accent);
+        transform-origin: left;
+        z-index: 1001;
+        animation: readProgress linear both;
+        animation-timeline: scroll(root);
+    }
+}
+@keyframes readProgress {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -824,6 +883,125 @@ section:last-child { margin-bottom: 0; }
 .research-section--meta {
     border-bottom: none;
     padding-bottom: 1rem;
+}
+
+/* ── XCT scrollytelling: pinned figure, steps scroll past ───── */
+.scrolly {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 2.5rem;
+    margin: 2.5rem 0 1rem;
+}
+.scrolly-figure {
+    grid-column: 2;
+    grid-row: 1;
+    position: sticky;
+    top: 104px;
+    align-self: start;
+    margin: 0;
+}
+.scrolly-frame {
+    position: relative;
+    height: min(68vh, 600px);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+}
+.scrolly-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1.25rem;
+    opacity: 0;
+    scale: 1.03;
+    transition: opacity 600ms var(--ease), scale 900ms var(--ease);
+}
+.scrolly-img--photo { object-fit: cover; padding: 0; }
+.scrolly-img.is-active { opacity: 1; scale: 1; }
+.scrolly-caption {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    padding-top: 0.75rem;
+    min-height: 3.2em;
+}
+.scrolly-steps {
+    grid-column: 1;
+    grid-row: 1;
+}
+.scrolly-step {
+    min-height: 72vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: opacity var(--t-slow);
+}
+.scrolly-step:first-child { min-height: 50vh; justify-content: flex-start; padding-top: 2rem; }
+.scrolly.is-enhanced .scrolly-step:not(.is-active) { opacity: 0.3; }
+.scrolly-step-num {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.6rem;
+}
+.research-section .scrolly-step h4 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+}
+.research-section .scrolly-step p { text-align: left; hyphens: manual; }
+
+/* Narrow screens: figure pins to the top, steps scroll beneath it */
+@media (max-width: 1024px) {
+    .scrolly { grid-template-columns: minmax(0, 1fr); gap: 0; }
+    .scrolly-figure {
+        grid-column: 1;
+        top: 72px;
+        z-index: 2;
+        background: var(--paper);
+        padding-bottom: 0.5rem;
+    }
+    .scrolly-frame { height: 40vh; }
+    /* Room for 3 lines, so the pinned figure (and trigger line) never resizes */
+    .scrolly-caption { min-height: 4.8em; font-size: 0.72rem; line-height: 1.5; }
+    .scrolly-steps { grid-row: 2; }
+    /* Each step's text leads its block, so it is read just under the figure */
+    .scrolly-step,
+    .scrolly-step:first-child { min-height: 42vh; justify-content: flex-start; padding: 1.5rem 0 0; }
+    .scrolly-step:last-child { min-height: 40vh; }
+}
+
+/* ── Homepage "at a glance" numbers band ────────────────────── */
+.numbers-band {
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--rule);
+}
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.number-cell {
+    padding: 2.25rem 1.5rem 2rem;
+    border-left: 1px solid var(--rule);
+}
+.number-cell:first-child { border-left: none; padding-left: 0; }
+.numbers-band .stat-number { font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 400; }
+.numbers-band .stat-number--text { font-style: italic; color: var(--accent); }
+@media (max-width: 768px) {
+    .numbers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .number-cell { padding: 1.5rem 1rem; }
+    .number-cell:nth-child(odd) { border-left: none; padding-left: 0; }
+    .number-cell:nth-child(n+3) { border-top: 1px solid var(--rule); }
 }
 
 @media (max-width: 900px) {
@@ -2302,6 +2480,12 @@ footer {
     transition: color var(--t-fast);
 }
 .footer-section a:hover { color: var(--accent); }
+.footer-section .footer-labname {
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+    line-height: 1.6;
+    margin-bottom: 0.85rem;
+}
 .footer-bottom {
     max-width: var(--maxw);
     margin: 3rem auto 0;

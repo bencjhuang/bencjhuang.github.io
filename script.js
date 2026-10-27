@@ -31,12 +31,28 @@
 
     revealTargets.forEach(el => el.classList.add('reveal'));
 
+    // Once revealed, drop the reveal classes so components get their own
+    // (hover) transitions back. 700ms fade + up to 320ms stagger.
+    const finishReveal = (el) => {
+        setTimeout(() => {
+            el.classList.remove('reveal', 'is-visible');
+            el.style.removeProperty('--reveal-delay');
+        }, 1100);
+    };
+
     if ('IntersectionObserver' in window) {
         const io = new IntersectionObserver((entries) => {
+            // Items entering together (e.g. a row of cards) are staggered
+            let batch = 0;
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    io.unobserve(entry.target);
+                    const el = entry.target;
+                    if (el.tagName !== 'SECTION') {
+                        el.style.setProperty('--reveal-delay', Math.min(batch++, 4) * 80 + 'ms');
+                    }
+                    el.classList.add('is-visible');
+                    io.unobserve(el);
+                    finishReveal(el);
                 }
             });
         }, {
@@ -407,6 +423,54 @@
             });
             sectionMap.forEach((_, section) => tocIO.observe(section));
         }
+    }
+
+    /* ── Research page XCT scrollytelling ───────────────────── */
+    // The step crossing the middle of the viewport picks which image
+    // (and caption) the pinned figure shows. Without JS, step 1's image
+    // stays visible and all steps read as plain text.
+    const scrolly = document.getElementById('xct-scrolly');
+    if (scrolly && 'IntersectionObserver' in window) {
+        const steps = scrolly.querySelectorAll('.scrolly-step');
+        const images = scrolly.querySelectorAll('.scrolly-img');
+        const caption = scrolly.querySelector('.scrolly-caption');
+        scrolly.classList.add('is-enhanced');
+
+        const setStep = (n) => {
+            steps.forEach(s => s.classList.toggle('is-active', s.dataset.step === n));
+            images.forEach(img => {
+                const active = img.dataset.step === n;
+                img.classList.toggle('is-active', active);
+                if (active && caption) caption.textContent = img.dataset.caption;
+            });
+        };
+
+        // Trigger line: mid-viewport on desktop. On narrow screens the figure
+        // is pinned to the top, so the line sits just below it — the step
+        // whose text is right under the figure is the active one.
+        const narrow = window.matchMedia('(max-width: 1024px)');
+        const figure = scrolly.querySelector('.scrolly-figure');
+        let stepIO;
+        const observeSteps = () => {
+            if (stepIO) stepIO.disconnect();
+            let rootMargin = '-45% 0px -45% 0px';
+            if (narrow.matches) {
+                const line = Math.round(parseFloat(getComputedStyle(figure).top) + figure.offsetHeight + 24);
+                rootMargin = `-${line}px 0px -${Math.max(0, window.innerHeight - line - 2)}px 0px`;
+            }
+            stepIO = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) setStep(entry.target.dataset.step);
+                });
+            }, { rootMargin, threshold: 0 });
+            steps.forEach(s => stepIO.observe(s));
+        };
+        observeSteps();
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(observeSteps, 200);
+        });
     }
 
     /* ── People page tabs (if present) ──────────────────────── */
