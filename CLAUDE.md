@@ -41,11 +41,12 @@ Never hardcode colors or fonts inline — use these variables. Single-accent sys
 | `--paper` | `#FAFAF7` | Warm off-white page background |
 | `--surface` | `#FFFFFF` | Cards, elevated surfaces |
 | `--rule` | `#E5E7EB` | Hairline borders |
-| `--muted` | `#6B7280` | Tertiary text |
+| `--muted` | `#636A76` | Tertiary text (≥4.5:1 on paper) |
 | `--accent` | `#C2410C` | Terracotta — the single accent (links, highlights) |
 | `--accent-2` | `#9A330A` | Deeper terracotta — hover |
+| `--accent-on-dark` | `#EE7D46` | Terracotta for text on `--ink` backgrounds (AA contrast) |
 | `--font-display` | Fraunces (serif) | H1–H3 |
-| `--font-body` | Inter | Body |
+| `--font-body` | IBM Plex Sans | Body (same family as the business card) |
 | `--font-mono` | JetBrains Mono | Eyebrows, tags, code-style text |
 
 Motion uses `--ease: cubic-bezier(0.22,1,0.36,1)` with `--t-fast/med/slow`; respect
@@ -87,5 +88,5 @@ update the visible HTML **and** the matching JSON-LD on both pages, then re-vali
 ## Notes
 
 - **Never run `git commit` or `git push`** — always ask first; the user handles all commits and pushes
-- Google Fonts via CDN (Fraunces, Inter, JetBrains Mono; the card page also loads Noto Sans/Serif TC + IBM Plex Sans)
+- Google Fonts via CDN (Fraunces, IBM Plex Sans, JetBrains Mono; the card page also loads Noto Sans/Serif TC + IBM Plex Sans)
 - The `card/` page is intentionally self-contained (its own inline styles, not the main design system)
