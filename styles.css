@@ -2359,6 +2359,65 @@ section:last-child { margin-bottom: 0; }
 /* ════════════════════════════════════════════════════════════════
    EQUIPMENT
    ════════════════════════════════════════════════════════════════ */
+/* Lab 3D tour — entry card linking to the standalone lab.html page */
+.lab-tour {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    border-left: 3px solid var(--accent);
+    border-radius: 2px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform var(--t-med), box-shadow var(--t-med);
+}
+.lab-tour:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.lab-tour-glyph {
+    flex: none;
+    width: 52px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    border: 1.5px solid var(--accent);
+    border-radius: 2px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+.lab-tour-body { flex: 1 1 auto; }
+.lab-tour-eyebrow {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--accent-on-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+}
+.lab-tour-body h3 {
+    margin: 0.25rem 0 0.35rem;
+    font-family: var(--font-display);
+    color: var(--ink);
+}
+.lab-tour-body p { margin: 0; color: var(--muted); font-size: var(--fs-sm); }
+.lab-tour-arrow {
+    flex: none;
+    font-size: 1.5rem;
+    color: var(--accent);
+    transition: transform var(--t-fast);
+}
+.lab-tour:hover .lab-tour-arrow { transform: translateX(4px); }
+@media (max-width: 768px) {
+    .lab-tour { flex-wrap: wrap; gap: 1rem; }
+    .lab-tour-arrow { display: none; }
+}
+
 .equipment-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

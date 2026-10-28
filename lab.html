@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>實驗室 3D 導覽 · CJHuang Group</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F4F6F5; --ink:#1E2A32; --muted:#5A6870; --line:#C3CBCF; --accent:#D9731A; --scene:#DFE5E7;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){ --paper:#1C2226; --ink:#E5EAED; --muted:#9AA7AE; --line:#3A454C; --accent:#F08C33; --scene:#1F262B; }
+}
+:root[data-theme="dark"]{ --paper:#1C2226; --ink:#E5EAED; --muted:#9AA7AE; --line:#3A454C; --accent:#F08C33; --scene:#1F262B; }
+html{ scroll-padding-top:env(safe-area-inset-top,0px); height:100%; }
+*,*::before,*::after{ box-sizing:inherit; }
+html,body{ margin:0; height:100%; }
+body{ background:var(--scene); color:var(--ink); overflow:hidden;
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+#stage{ position:fixed; inset:0; }
+#stage canvas{ display:block; touch-action:none; }
+
+.tb{ position:fixed; top:0; left:0; margin:calc(env(safe-area-inset-top,0px) + 12px) 0 0 12px;
+  background:var(--paper); border:1.5px solid var(--ink); display:grid; grid-template-columns:auto; }
+.tb-back{ font-size:12px; font-weight:500; color:var(--muted); text-decoration:none; padding:6px 12px 2px; border-bottom:1px solid var(--line); transition:color .15s; }
+.tb-back:hover{ color:var(--accent); }
+.tb-name{ font-weight:700; font-size:19px; letter-spacing:.02em; padding:6px 12px 4px; border-bottom:1px solid var(--ink); }
+.tb-sub{ font-size:12px; color:var(--muted); padding:4px 12px 6px; }
+
+.about-btn{ position:fixed; top:0; right:0; margin:calc(env(safe-area-inset-top,0px) + 12px) 12px 0 0;
+  font-family:inherit; font-size:14px; font-weight:500; color:var(--ink); background:var(--paper); border:1.5px solid var(--ink);
+  padding:8px 14px; cursor:pointer; }
+.about-btn[aria-expanded="true"]{ background:var(--ink); color:var(--paper); }
+
+.hint{ position:fixed; left:50%; transform:translateX(-50%); bottom:calc(env(safe-area-inset-bottom,0px) + 118px);
+  background:var(--ink); color:var(--paper); font-size:13px; padding:7px 12px; white-space:nowrap; transition:opacity .4s; pointer-events:none; }
+.hint.gone{ opacity:0; }
+
+.sheet{ position:fixed; left:12px; right:12px; bottom:calc(env(safe-area-inset-bottom,0px) + 112px);
+  max-width:440px; background:var(--paper); border:1.5px solid var(--ink); padding:12px 14px 14px; max-height:46vh; overflow:auto; }
+.sheet[hidden]{ display:none; }
+.sheet-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:12px; border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:8px; }
+.sheet h2{ font-size:17px; margin:0; font-weight:700; line-height:1.4; }
+.x{ font:inherit; font-size:15px; background:none; border:1px solid var(--line); color:var(--ink); width:32px; height:32px; cursor:pointer; flex:none; }
+.sheet dl{ margin:0; display:grid; grid-template-columns:3.2em 1fr; gap:6px 10px; font-size:14px; line-height:1.55; }
+.sheet dt{ color:var(--muted); }
+.sheet dd{ margin:0; }
+.about ul{ margin:0; padding-left:1.1em; font-size:14px; line-height:1.6; }
+.about li{ margin-bottom:4px; }
+.about-note{ margin:0 0 12px; padding:8px 11px; font-size:13px; line-height:1.55; color:var(--muted);
+  border-left:3px solid var(--accent); background:color-mix(in srgb, var(--accent) 7%, transparent); }
+.about-note strong{ color:var(--ink); font-weight:700; }
+.legend{ display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:10px; font-size:13px; color:var(--muted); }
+.legend span::before{ content:""; display:inline-block; width:12px; height:12px; margin-right:5px; vertical-align:-1px; background:var(--c); }
+
+.dock{ position:fixed; left:0; right:0; bottom:0; background:var(--paper); border-top:1.5px solid var(--ink);
+  padding:8px 0 calc(env(safe-area-inset-bottom,0px) + 8px); }
+.row{ display:flex; gap:4px; overflow-x:auto; padding:0 12px; scrollbar-width:none; }
+.row::-webkit-scrollbar{ display:none; }
+.views button{ font-family:inherit; font-size:15px; font-weight:500; color:var(--muted); background:none; border:0; border-bottom:2.5px solid transparent;
+  padding:8px 10px 7px; white-space:nowrap; cursor:pointer; }
+.views button[aria-current="true"]{ color:var(--ink); border-bottom-color:var(--accent); }
+.toggles{ margin-top:6px; gap:16px; }
+.tg{ font-family:inherit; font-size:14px; font-weight:400; color:var(--ink); background:none; border:0; padding:6px 0; display:flex; align-items:center; gap:7px; white-space:nowrap; cursor:pointer; }
+.tg::before{ content:""; width:15px; height:15px; border:1.5px solid var(--ink); flex:none; }
+.tg[aria-pressed="true"]::before{ background:var(--accent); border-color:var(--accent); box-shadow:inset 0 0 0 2.5px var(--paper); }
+button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+.err{ position:fixed; inset:0; display:grid; place-items:center; padding:24px; text-align:center; font-size:15px; }
+@media (min-width:760px){
+  .sheet{ left:auto; right:16px; bottom:calc(env(safe-area-inset-bottom,0px) + 118px); }
+  .tb-name{ font-size:22px; }
+}
+</style>
+</head>
+<body>
+<div id="stage"></div>
+
+<header class="tb">
+  <a class="tb-back" href="index.html">← CJHuang Group</a>
+  <div class="tb-name">R301 實驗室</div>
+  <div class="tb-sub">方案 1 v4 初步規劃 · 非最終版本，配置與設備可能變動</div>
+</header>
+<button class="about-btn" id="aboutBtn" aria-expanded="false" aria-controls="about">說明</button>
+
+<div class="hint" id="hint">拖曳旋轉，雙指縮放或平移；點選設備看尺寸</div>
+
+<section class="sheet" id="sheet" hidden aria-live="polite">
+  <div class="sheet-head"><h2 id="sName"></h2><button class="x" id="sClose" aria-label="關閉">✕</button></div>
+  <dl><dt>尺寸</dt><dd id="sSize"></dd><dt>備註</dt><dd id="sNote"></dd></dl>
+</section>
+
+<section class="sheet about" id="about" hidden>
+  <div class="sheet-head"><h2>建模依據與假設</h2><button class="x" id="aClose" aria-label="關閉">✕</button></div>
+  <p class="about-note"><strong>免責聲明：</strong>本模型為實驗室空間的<strong>初步規劃示意</strong>，非最終定案。空間配置、動線與儀器尚未定稿，部分設備也尚未採購，實際內容可能隨規劃與建置進度調整，保留更動權利。</p>
+  <ul>
+    <li>家具編號與位置依景明 A1；儀器尺寸與牆面淨尺寸依方案 1 v4。</li>
+    <li>右上門封閉，上牆放 2 張活動桌。</li>
+    <li>手套箱2 的 Box 順序依景明：Box 1 在北、Box 2 在南。</li>
+    <li>北牆整面為窗，窗台 900、窗頂 2,700（假設值）。</li>
+    <li>天花板高 3,000（暫抓）；為了俯視，模型不顯示天花板。</li>
+    <li>主入口雙開門寬約 1,200，由圖面量測估計。</li>
+    <li>樓梯形式、鋼瓶凹口、落地設備皆為示意。</li>
+  </ul>
+  <div class="legend">
+    <span style="--c:#c62828">氣體管線</span>
+    <span style="--c:#6b2fa0">建議排氣口</span>
+    <span style="--c:#f2c94c">緩衝區</span>
+    <span style="--c:#4f9d5a">待定設備</span>
+  </div>
+</section>
+
+<nav class="dock" aria-label="視角與顯示">
+  <div class="row views" id="views">
+    <button data-v="overview" aria-current="true">全景</button>
+    <button data-v="top">平面俯視</button>
+    <button data-v="entry">從入口看</button>
+    <button data-v="gb">手套箱區</button>
+    <button data-v="island">中央桌</button>
+    <button data-v="north">排煙櫃與上牆</button>
+    <button data-v="break">休息室</button>
+    <button data-v="mill">球磨室</button>
+  </div>
+  <div class="row toggles">
+    <button class="tg" data-t="cut" aria-pressed="false">剖切牆面</button>
+    <button class="tg" data-t="labels" aria-pressed="true">標籤</button>
+    <button class="tg" data-t="gas" aria-pressed="true">氣體管線</button>
+  </div>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+(function(){
+'use strict';
+if(!window.THREE || !THREE.OrbitControls){
+  document.body.insertAdjacentHTML('beforeend','<div class="err">3D 元件載入失敗。請確認網路連線後重新整理頁面。</div>');
+  return;
+}
+const MM=0.001, H=3000;
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ---------- renderer / scene ---------- */
+const stage=document.getElementById('stage');
+const renderer=new THREE.WebGLRenderer({antialias:true});
+renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+renderer.setSize(innerWidth,innerHeight);
+renderer.shadowMap.enabled=true;
+renderer.shadowMap.type=THREE.PCFSoftShadowMap;
+renderer.localClippingEnabled=true;
+stage.appendChild(renderer.domElement);
+
+const scene=new THREE.Scene();
+function setBg(){ scene.background=new THREE.Color(getComputedStyle(document.documentElement).getPropertyValue('--scene').trim()||'#DFE5E7'); }
+setBg();
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change',setBg);
+
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,0.05,200);
+const controls=new THREE.OrbitControls(camera,renderer.domElement);
+controls.enableDamping=true; controls.dampingFactor=0.09;
+controls.maxPolarAngle=Math.PI/2-0.04; controls.minDistance=0.8; controls.maxDistance=45;
+controls.screenSpacePanning=true;
+
+scene.add(new THREE.HemisphereLight(0xffffff,0x9aa3a8,0.72));
+const sun=new THREE.DirectionalLight(0xffffff,0.72);
+sun.position.set(-3,15,-5); sun.target.position.set(4.3,0,5.7); scene.add(sun.target);
+sun.castShadow=true; sun.shadow.mapSize.set(2048,2048);
+Object.assign(sun.shadow.camera,{left:-10,right:10,top:10,bottom:-10,near:1,far:40});
+sun.shadow.bias=-0.0004; sun.shadow.normalBias=0.02;
+scene.add(sun);
+const fill=new THREE.DirectionalLight(0xffffff,0.25); fill.position.set(14,8,16); scene.add(fill);
+
+/* ---------- textures ---------- */
+const maxAniso=renderer.capabilities.getMaxAnisotropy();
+function tex(w,h,draw){ const c=document.createElement('canvas'); c.width=w; c.height=h; draw(c.getContext('2d'),w,h);
+  const t=new THREE.CanvasTexture(c); t.wrapS=t.wrapT=THREE.RepeatWrapping; t.anisotropy=maxAniso; return t; }
+function rng(s){ return ()=>{ s=(s*16807)%2147483647; return (s-1)/2147483646; }; }
+
+const epoxyTex=tex(512,512,(x,w,h)=>{ x.fillStyle='#d4dad8'; x.fillRect(0,0,w,h); const r=rng(7);
+  for(let i=0;i<5000;i++){ x.fillStyle=r()<.5?'rgba(0,0,0,.05)':'rgba(255,255,255,.12)'; x.fillRect(r()*w,r()*h,1.6,1.6); } });
+const plankTex=tex(512,512,(x,w,h)=>{ const r=rng(11); const tones=['#c9a67a','#c09b6c','#cfae84','#bd9666'];
+  for(let row=0;row<8;row++){ let px=-r()*200; while(px<w){ const len=180+r()*220; x.fillStyle=tones[Math.floor(r()*4)];
+      x.fillRect(px,row*64,len,64); x.strokeStyle='rgba(80,50,20,.25)'; x.lineWidth=2; x.strokeRect(px,row*64,len,64);
+      for(let g=0;g<5;g++){ x.strokeStyle='rgba(90,60,30,.12)'; x.beginPath(); const gy=row*64+8+r()*48; x.moveTo(px,gy); x.bezierCurveTo(px+len*.3,gy+r()*6-3,px+len*.6,gy+r()*6-3,px+len,gy); x.stroke(); }
+      px+=len; } } });
+const woodTex=tex(256,256,(x,w,h)=>{ x.fillStyle='#c79d6e'; x.fillRect(0,0,w,h); const r=rng(3);
+  for(let i=0;i<40;i++){ x.strokeStyle=`rgba(100,64,30,${.06+r()*.1})`; x.lineWidth=1+r()*2; x.beginPath(); const y=r()*h; x.moveTo(0,y); x.bezierCurveTo(w*.3,y+r()*10-5,w*.7,y+r()*10-5,w,y+r()*4-2); x.stroke(); } });
+const concreteTex=tex(256,256,(x,w,h)=>{ x.fillStyle='#bfc3c3'; x.fillRect(0,0,w,h); const r=rng(19);
+  for(let i=0;i<2500;i++){ x.fillStyle=`rgba(0,0,0,${r()*.07})`; x.fillRect(r()*w,r()*h,2,2); } });
+const stripeTex=tex(128,128,(x,w,h)=>{ x.clearRect(0,0,w,h); x.fillStyle='rgba(242,201,76,.75)';
+  for(let i=-2;i<4;i++){ x.beginPath(); x.moveTo(i*48,0); x.lineTo(i*48+24,0); x.lineTo(i*48+24+h,h); x.lineTo(i*48+h,h); x.closePath(); x.fill(); }
+  x.strokeStyle='rgba(200,150,20,.9)'; x.lineWidth=6; x.strokeRect(0,0,w,h); });
+function doorTex(n,base,seam,handle){ return tex(512,256,(x,w,h)=>{ x.fillStyle=base; x.fillRect(0,0,w,h);
+  x.fillStyle=seam; for(let i=1;i<n;i++) x.fillRect(i*w/n-1.5,0,3,h); x.fillRect(0,0,w,3);
+  x.fillStyle=handle; for(let i=0;i<n;i++) x.fillRect(i*w/n+w/n/2-18,22,36,7);
+  x.fillStyle='rgba(0,0,0,.25)'; x.fillRect(0,h-14,w,14); }); }
+const cyclerTex=tex(256,512,(x,w,h)=>{ x.fillStyle='#2a2f34'; x.fillRect(0,0,w,h);
+  for(let s=0;s<5;s++){ const y0=20+s*98; x.fillStyle='#3b4249'; x.fillRect(10,y0,w-20,70);
+    for(let r=0;r<2;r++) for(let c=0;c<8;c++){ x.fillStyle=(r+c+s)%5===0?'#f2b84b':'#5fe08a'; x.beginPath(); x.arc(28+c*28,y0+22+r*26,5,0,7); x.fill(); } } });
+const pmTex=tex(256,256,(x,w,h)=>{ x.fillStyle='#dfe3e5'; x.fillRect(0,0,w,h); x.fillStyle='#2b3238'; x.fillRect(70,60,116,46);
+  x.fillStyle='#7fd0ff'; x.font='24px sans-serif'; x.fillText('300 rpm',82,92); x.fillStyle='#55606a'; x.font='bold 26px sans-serif'; x.fillText('球磨機',82,180); });
+const furnTex=tex(256,256,(x,w,h)=>{ x.fillStyle='#d6dadd'; x.fillRect(0,0,w,h); x.fillStyle='#b4bbc0'; x.fillRect(16,16,160,224);
+  x.fillStyle='#4c555c'; x.fillRect(150,110,14,50); x.fillStyle='#2b3238'; x.fillRect(190,30,52,30); x.fillStyle='#ff5a4a'; x.font='bold 20px sans-serif'; x.fillText('950',196,52); });
+const vspTex=tex(512,256,(x,w,h)=>{ x.fillStyle='#e8ecef'; x.fillRect(0,0,w,h); x.fillStyle='#2f6db5'; x.fillRect(0,0,w,46);
+  x.fillStyle='#fff'; x.font='bold 28px sans-serif'; x.fillText('電化學',18,34);
+  for(let i=0;i<6;i++){ x.fillStyle='#39424a'; x.fillRect(30+i*78,90,60,120); x.fillStyle='#d34b3c'; x.beginPath(); x.arc(60+i*78,120,9,0,7); x.fill(); x.fillStyle='#222'; x.beginPath(); x.arc(60+i*78,170,9,0,7); x.fill(); } });
+const screenTex=tex(512,320,(x,w,h)=>{ x.fillStyle='#14202b'; x.fillRect(0,0,w,h); x.strokeStyle='rgba(255,255,255,.1)';
+  for(let i=1;i<6;i++){ x.beginPath(); x.moveTo(0,i*h/6); x.lineTo(w,i*h/6); x.stroke(); }
+  [['#5fd3a0',0],['#f2b84b',18],['#7fb6ff',36]].forEach(([c,o])=>{ x.strokeStyle=c; x.lineWidth=3; x.beginPath();
+    for(let px=0;px<=w;px+=4){ const t=px/w; const y=h*.82-o-h*.55*(1-Math.exp(-t*8))+h*.18*Math.pow(t,6); px?x.lineTo(px,y):x.moveTo(px,y);} x.stroke(); }); });
+
+/* ---------- materials ---------- */
+const std=(c,o)=>new THREE.MeshStandardMaterial(Object.assign({color:c,roughness:.8,metalness:0},o||{}));
+const M={
+  wall:std(0xf1f1ec,{roughness:.95}), col:std(0xdcdcd7,{roughness:.95}),
+  frame:std(0x88919a,{roughness:.4,metalness:.3}),
+  winGlass:std(0xa6d4ea,{transparent:true,opacity:.28,roughness:.05,depthWrite:false}),
+  slab:std(0xb3babd), stair:std(0xffffff,{map:concreteTex,roughness:.9}),
+  floor:std(0xffffff,{map:epoxyTex,roughness:.55}), plank:std(0xffffff,{map:plankTex,roughness:.7}),
+  wood:std(0xffffff,{map:woodTex,roughness:.65}),
+  steel:std(0xd3d8dc,{roughness:.45,metalness:.25}), steelDark:std(0x6c757b,{roughness:.5,metalness:.3}),
+  stainless:std(0xd0d5d9,{roughness:.3,metalness:.4}), cabinet:std(0xe4e7e9,{roughness:.6}),
+  epoxy:std(0x2d3237,{roughness:.5}), black:std(0x1f2225,{roughness:.6}), glove:std(0x16181b,{roughness:.85}),
+  fabric:std(0x45525b,{roughness:.95}),
+  glass:std(0xcfeaf4,{transparent:true,opacity:.3,roughness:.05,depthWrite:false}),
+  gbBody:std(0xd9dee2,{roughness:.4,metalness:.25}), gbInterior:std(0xa7bac5,{roughness:.5}),
+  pump:std(0x485461,{roughness:.6}), hood:std(0xeef0f1,{roughness:.55}),
+  hoodIn:std(0xf5f6f6,{roughness:.7,emissive:0x2a2a2a}), doorGray:std(0xa3abb0,{roughness:.6}),
+  gas:std(0xc62828,{roughness:.4}), exhaust:std(0x6b2fa0,{roughness:.4,emissive:0x2a0d40}),
+  cylGray:std(0x7f8c88,{roughness:.5,metalness:.2}), cylBlack:std(0x26292c,{roughness:.5}),
+  placeholder:std(0x4f9d5a,{transparent:true,opacity:.22,depthWrite:false}),
+  bottleBrown:std(0x7a4a1c,{transparent:true,opacity:.85,roughness:.2}),
+  bottleClear:std(0xdcecf1,{transparent:true,opacity:.6,roughness:.1}),
+  cap:std(0x2b5ea8), buffer:new THREE.MeshBasicMaterial({map:stripeTex,transparent:true,depthWrite:false}),
+  screen:new THREE.MeshBasicMaterial({map:screenTex}),
+};
+const C=M.cabinet;
+const mats={
+  door2:std(0xffffff,{map:doorTex(2,'#e3e7ea','#a9b1b7','#6f7a82'),roughness:.6}),
+  door5:std(0xffffff,{map:doorTex(5,'#e3e7ea','#a9b1b7','#6f7a82'),roughness:.6}),
+  woodDoor6:std(0xffffff,{map:doorTex(6,'#c79d6e','#8a6239','#5a3d22'),roughness:.65}),
+  cycler:std(0xffffff,{map:cyclerTex,roughness:.6}), pm:std(0xffffff,{map:pmTex,roughness:.6}),
+  furn:std(0xffffff,{map:furnTex,roughness:.6}), vsp:std(0xffffff,{map:vspTex,roughness:.6}),
+};
+const clipPlane=new THREE.Plane(new THREE.Vector3(0,-1,0),1.1);
+const clipMats=[M.wall,M.col,M.frame,M.winGlass];
+
+/* ---------- geometry helpers (plan coords in mm: x west→east, z north→south) ---------- */
+function bx(x0,z0,w,d,y0,h,mat,parent){
+  const m=new THREE.Mesh(new THREE.BoxGeometry(w*MM,h*MM,d*MM),mat);
+  m.position.set((x0+w/2)*MM,(y0+h/2)*MM,(z0+d/2)*MM);
+  m.castShadow=true; m.receiveShadow=true; (parent||scene).add(m); return m;
+}
+function cyl(cx,cy,cz,r,len,axis,mat,parent,seg){
+  const m=new THREE.Mesh(new THREE.CylinderGeometry(r*MM,r*MM,len*MM,seg||24),mat);
+  if(axis==='x') m.rotation.z=Math.PI/2; if(axis==='z') m.rotation.x=Math.PI/2;
+  m.position.set(cx*MM,cy*MM,cz*MM); m.castShadow=true; m.receiveShadow=true; (parent||scene).add(m); return m;
+}
+function plane(x0,z0,w,d,y,mat,tile){
+  const g=new THREE.PlaneGeometry(w*MM,d*MM);
+  if(tile){ const uv=g.attributes.uv; for(let i=0;i<uv.count;i++) uv.setXY(i,uv.getX(i)*w/tile,uv.getY(i)*d/tile); }
+  const m=new THREE.Mesh(g,mat); m.rotation.x=-Math.PI/2; m.position.set((x0+w/2)*MM,y*MM,(z0+d/2)*MM); m.receiveShadow=true; scene.add(m); return m;
+}
+function noShadow(m){ m.castShadow=false; m.receiveShadow=false; m.renderOrder=2; return m; }
+const items=[];
+function item(n,s,note){ const g=new THREE.Group(); g.userData.info={n,s,note}; scene.add(g); items.push(g); return g; }
+function table(g,x0,z0,w,d,h,o){
+  o=o||{}; const top=o.top||M.epoxy, fr=o.frame||M.steel, lift=o.wheels?90:0;
+  bx(x0,z0,w,d,h-30,30,top,g);
+  bx(x0+25,z0+25,w-50,d-50,h-100,70,fr,g);
+  [[x0+20,z0+20],[x0+w-65,z0+20],[x0+20,z0+d-65],[x0+w-65,z0+d-65]].forEach(([x,z])=>{
+    bx(x,z,45,45,lift,h-30-lift,fr,g);
+    if(o.wheels) cyl(x+22,45,z+22,45,35,'x',M.black,g,16);
+  });
+  if(o.shelf) bx(x0+30,z0+30,w-60,d-60,lift+160,20,fr,g);
+}
+
+/* ---------- walls ---------- */
+const walls=new THREE.Group(); scene.add(walls);
+function seg(axis,f0,t,a0,a1,y0,h,mat){ return axis==='z'?bx(f0,a0,t,a1-a0,y0,h,mat,walls):bx(a0,f0,a1-a0,t,y0,h,mat,walls); }
+function wallRun(axis,f0,t,a0,a1,ops){
+  let cur=a0;
+  (ops||[]).forEach(o=>{
+    if(o.a0>cur) seg(axis,f0,t,cur,o.a0,0,H,M.wall);
+    const top=o.type==='door'?2100:o.head;
+    seg(axis,f0,t,o.a0,o.a1,top,H-top,M.wall);
+    if(o.type==='win'){
+      seg(axis,f0,t,o.a0,o.a1,0,o.sill,M.wall);
+      noShadow(seg(axis,f0+t/2-6,12,o.a0,o.a1,o.sill,o.head-o.sill,M.winGlass));
+      seg(axis,f0+t/2-25,50,o.a0,o.a1,o.sill,40,M.frame);
+      seg(axis,f0+t/2-25,50,o.a0,o.a1,o.head-40,40,M.frame);
+      const n=Math.max(1,Math.round((o.a1-o.a0)/1100));
+      for(let i=0;i<=n;i++){ const a=o.a0+(o.a1-o.a0)*i/n; seg(axis,f0+t/2-25,50,Math.max(o.a0,a-25),Math.min(o.a1,a+25),o.sill,o.head-o.sill,M.frame); }
+    }
+    cur=o.a1;
+  });
+  if(a1>cur) seg(axis,f0,t,cur,a1,0,H,M.wall);
+}
+wallRun('x',-150,150,-150,8770,[{a0:0,a1:8620,type:'win',sill:900,head:2700}]); // north: full windows
+wallRun('z',-150,150,0,11409);                                                  // west
+wallRun('z',8620,150,0,11409);                                                  // east
+wallRun('x',11409,150,-150,8770,[{a0:5250,a1:6450,type:'door'}]);              // south + main entrance
+wallRun('z',2834,120,0,7098,[                                                   // partition
+  {a0:150,a1:1034,type:'door'},
+  {a0:1134,a1:4700,type:'win',sill:1000,head:2100},
+  {a0:5000,a1:5700,type:'win',sill:1000,head:2100},
+  {a0:6069,a1:6969,type:'door'}]);
+wallRun('x',4800,100,0,2834,[{a0:1000,a1:1900,type:'door'}]);                  // break | ball-mill
+wallRun('x',7098,100,0,3760);                                                   // ball-mill | stairs
+wallRun('z',3680,80,7198,9380);                                                 // stair east
+wallRun('x',9300,80,3760,4870);                                                 // alcove north
+wallRun('z',4790,80,9380,11409);                                                // alcove east
+cyl(3113,H/2,2308,170,H,'y',M.col,walls,28);
+cyl(3113,H/2,5870,170,H,'y',M.col,walls,28);
+
+/* ---------- floors ---------- */
+bx(-150,-150,8920,11709,-220,220,M.slab);
+plane(0,0,8620,11409,1,M.floor,1500);
+plane(0,0,2834,4800,2,M.plank,2200);
+plane(0,7198,3680,4211,2,M.stair,1200);
+plane(3760,9380,1030,2029,2,M.stair,1200);
+plane(7840,6900,780,600,3,M.buffer,300);
+plane(7840,10600,780,809,3,M.buffer,300);
+
+/* ---------- break room ---------- */
+function chair(parent,cx,cz,rot){
+  const c=new THREE.Group(); c.position.set(cx*MM,0,cz*MM); c.rotation.y=rot; parent.add(c);
+  bx(-230,-230,460,460,420,70,M.fabric,c);
+  bx(-220,200,440,45,540,470,M.fabric,c);
+  cyl(0,235,0,24,370,'y',M.steelDark,c,12);
+  cyl(0,35,0,290,24,'y',M.black,c,5);
+}
+function desk(g,x0,z0,w,d,chairX,chairRot){
+  bx(x0,z0,w,d,720,30,M.wood,g);
+  [[x0+20,z0+20],[x0+w-60,z0+20],[x0+20,z0+d-60],[x0+w-60,z0+d-60]].forEach(([x,z])=>bx(x,z,40,40,0,720,M.steelDark,g));
+  const lx=chairRot>0?x0+120:x0+w-350;
+  bx(lx,z0+330,230,320,750,14,M.black,g);
+  chair(g,chairX,z0+d/2,chairRot);
+}
+for(let i=0;i<5;i++){
+  const g=item('學生座位','書桌約 700 × 960（依原圖）','休息室 8 座之一（左牆 5 座）；書桌與椅子型號待定');
+  desk(g,0,i*960,700,960,1020,Math.PI/2);
+}
+[1210,2500,3470].forEach(z=>{
+  const g=item('學生座位','書桌約 700 × 960（依原圖）','休息室 8 座之一（隔間牆側 3 座，面對互看窗）');
+  desk(g,2134,z,700,960,1820,-Math.PI/2);
+});
+{ const g=item('⑧ 木製壁櫃','W4200 × D300 × H600','休息室左牆上方；安裝高度暫設離地 1,600');
+  bx(0,300,300,4200,1600,600,[mats.woodDoor6,mats.woodDoor6,M.wood,M.wood,M.wood,M.wood],g); }
+{ const g=item('拉門（休息室 ↔ 實驗室）','淨寬暫抓 884','軌道裝在實驗室側；開啟時門片停在 1,034–1,950 段，會疊在互看窗前方');
+  bx(2970,1034,40,916,0,2100,M.wood,g);
+  bx(2985,1480,20,80,950,200,M.steelDark,g);
+  bx(2958,100,50,1900,2110,50,M.steelDark,g); }
+{ const g=item('隔音扇門（休息室 ↔ 球磨室）','淨寬暫抓 900','門片材質、隔音等級（STC）待定');
+  const h=new THREE.Group(); h.position.set(1000*MM,0,4850*MM); h.rotation.y=-0.75; g.add(h);
+  bx(0,-22,900,44,0,2080,M.doorGray,h); }
+
+/* ---------- ball-mill room ---------- */
+{ const g=item('⑦ 鋼構靠邊實驗桌','W2198 × D750 × H850','球磨室 L 型桌左段；放行星式球磨機 ×2');
+  table(g,0,4900,750,2198,850,{shelf:true}); }
+{ const g=item('⑥ 鋼構靠邊實驗桌','W1100 × D750 × H850','球磨室 L 型桌底段；放箱型高溫爐');
+  table(g,750,6348,1100,750,850,{shelf:true}); }
+[5040,5840].forEach(z=>{
+  const g=item('行星式球磨機','W640 × D420 × H480（開蓋 780），76 kg','共 2 台，放 ⑦ 桌');
+  bx(165,z,420,640,850,450,[mats.pm,C,C,C,C,C],g);
+  bx(185,z+20,380,600,1300,40,M.steelDark,g);
+  cyl(375,1350,z+320,60,40,'y',M.black,g,20);
+});
+{ const g=item('箱型高溫爐','W431.8 × D533.4 × H546.1','上方排氣口需移位');
+  bx(1000,6540,432,533,850,546,[C,C,C,C,C,mats.furn],g);
+  cyl(1216,1500,6806,60,300,'y',M.stainless,g,16); }
+{ const g=item('球磨室扇門','淨寬暫抓 900','鉸鏈在南側、往實驗室開；門把側距柱約 90 mm，建議用平貼式把手');
+  const h=new THREE.Group(); h.position.set(2954*MM,0,6969*MM); h.rotation.y=-0.55; g.add(h);
+  bx(0,-900,44,900,0,2080,M.doorGray,h); }
+
+/* ---------- lab: partition side ---------- */
+{ const g=item('⑤ 木製靠邊實驗桌（柱間長桌）','W3200 × D750 × H850','沿隔間牆、位於兩柱之間；無上架');
+  table(g,2954,2490,750,3200,850,{top:M.wood,frame:M.wood,shelf:true}); }
+
+/* ---------- lab: north wall ---------- */
+{ const g=item('① 鋼構藥品櫃','W1200 × D450 × H1890','上牆，靠北側窗');
+  bx(4425,0,1200,450,0,1890,[C,C,C,C,mats.door2,C],g);
+  noShadow(bx(4445,452,1160,8,950,880,M.glass,g));
+  [1250,1600].forEach(y=>bx(4440,30,1170,400,y,15,M.steel,g));
+  const r=rng(5);
+  for(let i=0;i<9;i++){ const x=4480+i*120, y=i<5?1265:1615;
+    cyl(x,y+90,240,40,180,'y',r()<.5?M.bottleBrown:M.bottleClear,g,12); cyl(x,y+195,240,18,30,'y',M.cap,g,10); } }
+[[5625,1500],[7125,1495]].forEach(([x,w])=>{
+  const g=item('② 鋼構活動桌（有輪）','W1500 × D750 × H850','上牆 2 張＋中央 1 張，共 3 張');
+  table(g,x,0,w,750,850,{wheels:true,shelf:true}); });
+{ const g=item('右上門（封閉）','暫抓寬 1,000','依景明 A1 封閉；上牆改放 2 張活動桌');
+  bx(8600,80,20,940,0,2100,M.doorGray,g); }
+
+/* ---------- lab: east wall ---------- */
+{ const g=item('③ 排煙櫃','W1500 × D800 × H2350','右牆最北端（原藥品櫃位）；建議櫃前淨走道 ≥ 1,200');
+  const x0=7820,z0=1100,W=1500,D=800;
+  bx(x0,z0,D,W,0,850,[C,mats.door2,C,C,C,C],g);
+  bx(x0-15,z0,D+15,W,850,30,M.epoxy,g);
+  bx(x0,z0,D,80,880,1470,M.hood,g); bx(x0,z0+W-80,D,80,880,1470,M.hood,g);
+  bx(x0+D-60,z0+80,60,W-160,880,1070,M.hoodIn,g);
+  bx(x0,z0,D,W,1950,400,M.hood,g);
+  noShadow(bx(x0+20,z0+80,12,W-160,1400,550,M.glass,g));
+  bx(x0+5,z0+80,30,W-160,1380,30,M.steelDark,g);
+  bx(x0-8,z0+W-75,10,70,1050,260,M.black,g);
+  cyl(x0+D/2,2350+325,z0+W/2,150,650,'y',M.stainless,g); }
+{ const g=item('充放電機','W555 × D645 × H1800','背後留 100 走線');
+  bx(7875,2622,645,555,0,1800,[C,mats.cycler,M.steelDark,C,M.steelDark,M.steelDark],g); }
+{ const g=item('電腦桌','W1300 × D750（建議）','v4 建議 1,300；若用 1,500，右牆只剩約 9 mm 餘裕');
+  table(g,7870,3200,750,1300,750,{top:M.wood,frame:M.steelDark});
+  bx(8400,3480,60,560,960,340,[C,M.screen,C,C,C,C],g);
+  bx(8460,3480,20,560,960,340,M.black,g);
+  bx(8440,3730,40,60,750,210,M.black,g);
+  bx(8000,3540,160,440,750,18,M.black,g); }
+{ const g=item('電化學工作站','W517 × D337 × H254，20 kg，650 W','放電腦桌靠手套箱1 那端');
+  bx(8150,3960,337,517,750,254,[C,mats.vsp,C,C,C,C],g); }
+
+function port(g,x,y,z){
+  const t=new THREE.Mesh(new THREE.TorusGeometry(.1,.02,10,28),M.black); t.rotation.y=Math.PI/2; t.position.set(x*MM,y*MM,z*MM); g.add(t);
+  cyl(x-60,y,z,85,110,'x',M.glove,g,16);
+  cyl(x-110,y-200,z,60,320,'y',M.glove,g,14);
+}
+function glovebox(g,z0,boxes,ante,purifier){
+  const x0=7840,D=780,SH=1000,BH=900;
+  const L=boxes.reduce((s,b)=>s+b.len,0)+ante;
+  bx(x0,z0,D,L,SH-40,40,M.steelDark,g);
+  [z0+10,z0+L/2-20,z0+L-50].forEach(z=>{ bx(x0+10,z,40,40,0,SH-40,M.steelDark,g); bx(x0+D-50,z,40,40,0,SH-40,M.steelDark,g); });
+  bx(x0+20,z0+20,D-40,L-40,170,20,M.steelDark,g);
+  bx(x0+200,z0+150,440,560,190,380,M.pump,g);
+  if(purifier) bx(x0+150,z0+900,600,800,190,740,C,g);
+  let z=z0;
+  boxes.forEach(b=>{
+    bx(x0+80,z+15,D-80,b.len-30,SH,BH,M.gbBody,g);
+    bx(x0+68,z+70,14,b.len-140,SH+90,BH-180,M.gbInterior,g);
+    noShadow(bx(x0+52,z+60,12,b.len-120,SH+80,BH-160,M.glass,g));
+    bx(x0+52,z+50,16,b.len-100,SH+70,25,M.steelDark,g);
+    bx(x0+52,z+50,16,b.len-100,SH+BH-95,25,M.steelDark,g);
+    for(let i=0;i<b.ports;i++) port(g,x0+50,SH+400,z+b.len*(i+.5)/b.ports);
+    bx(x0+380,z+120,300,260,SH+BH,160,M.cabinet,g);
+    z+=b.len;
+  });
+  cyl(x0+D/2+40,SH+330,z+ante/2,195,ante,'z',M.stainless,g,28);
+  cyl(x0+D/2+40,SH+330,z+ante-15,215,30,'z',M.steelDark,g,28);
+  cyl(x0+D/2+40,SH+330,z+ante+25,22,60,'z',M.black,g,10);
+  cyl(x0+D/2+40,SH+760,z+200,75,400,'z',M.stainless,g,20);
+  cyl(x0+D/2+40,SH+760,z+395,85,20,'z',M.steelDark,g,20);
+}
+{ const g=item('手套箱1','L 2,400（箱體 1,800＋ante 600）× W780 × H900','支架 H1000，總高約 1,900；4 手套孔；KF40 ×4；220 V 1Ph；ante Ø390 × L600 與 mini Ø150 × L400 在南端');
+  glovebox(g,4500,[{len:1800,ports:4}],600,true); }
+{ const g=item('手套箱2（Box 1＋Box 2）','L 3,100（1,250＋1,250＋ante 600）× W780 × H900','支架 H1000；2＋2 手套孔；KF40 ×8；220 V 1Ph；Box 順序依景明（Box 1 在北）');
+  glovebox(g,7500,[{len:1250,ports:2},{len:1250,ports:2}],600,false); }
+{ const g=item('緩衝區 600','600 × 780','讓手套箱1 的 600 托盤可完全拉出（mini 需 400）');
+  bx(7840,6900,780,600,0,4,M.buffer,g).visible=false; }
+{ const g=item('手套箱排氣口（建議）','—','附波浪管 5 m；建議設在兩箱之間（距上牆約 7,200），兩台都在 5 m 內');
+  const s=new THREE.Mesh(new THREE.SphereGeometry(.075,20,14),M.exhaust); s.position.set(8.57,2.6,7.2); g.add(s);
+  cyl(8570,2800,7200,45,400,'y',M.exhaust,g,14); }
+
+/* ---------- lab: centre ---------- */
+{ const g=item('④ 鋼構水槽中央桌','W3750 × D1500 × H2400','含水槽（既有給排水點）與上方試藥架；建議加裝水龍頭式洗眼器');
+  const x0=4850,z0=2000;
+  bx(x0+30,z0+30,1440,3690,0,100,M.steelDark,g);
+  bx(x0+20,z0+20,1460,3710,100,700,[mats.door5,mats.door5,C,C,mats.door2,mats.door2],g);
+  bx(x0,z0,1500,3750,800,50,M.epoxy,g);
+  bx(x0+400,z0+150,700,480,851,4,M.stainless,g);
+  bx(x0+450,z0+190,600,400,852,4,M.steelDark,g);
+  cyl(x0+750,1000,z0+680,18,300,'y',M.stainless,g,12);
+  cyl(x0+750,1150,z0+580,15,200,'z',M.stainless,g,12);
+  const zs=[z0+900,z0+2325,z0+3700];
+  zs.forEach(z=>bx(x0+730,z-20,40,40,850,1550,M.steel,g));
+  [1350,1850,2370].forEach(y=>bx(x0+550,z0+880,400,2840,y,25,M.steel,g));
+  const r=rng(23);
+  for(let lvl=0;lvl<2;lvl++) for(let i=0;i<14;i++){
+    const y=(lvl?1875:1375), z=z0+980+i*190, x=x0+(i%2?620:860);
+    const tall=120+r()*90;
+    cyl(x,y+tall/2,z,35+r()*15,tall,'y',r()<.55?M.bottleBrown:M.bottleClear,g,12);
+    cyl(x,y+tall+12,z,16,24,'y',M.cap,g,10);
+  } }
+{ const g=item('② 鋼構活動桌（活動中央桌）','W1500 × D750 × H850','有輪，可移動；位置僅為示意');
+  table(g,5800,7200,750,1500,850,{wheels:true,shelf:true}); }
+{ const g=item('落地設備（待定）','可用空間 D750–1,110 × L2,100','設備項目未定，以半透明方塊示意');
+  const m=bx(3790,7250,750,2000,0,1500,M.placeholder,g); m.castShadow=false;
+  const e=new THREE.LineSegments(new THREE.EdgesGeometry(m.geometry),new THREE.LineBasicMaterial({color:0x3f8a4b}));
+  e.position.copy(m.position); g.add(e); }
+
+/* ---------- stairs + gas alcove ---------- */
+{ const g=item('樓梯間（既有）','約 4,790 × 4,211','非實驗室空間；樓梯形式為示意');
+  for(let i=0;i<10;i++) bx(150,7400+i*270,1500,270,0,(i+1)*170,M.stair,g);
+  bx(150,10100,3400,1200,0,1700,M.stair,g);
+  for(let j=0;j<7;j++){ const top=1700+(j+1)*165; bx(1850,10100-(j+1)*270,1700,270,top-180,180,M.stair,g); }
+  bx(1800,8200,40,1900,1700,1100,M.steelDark,g); }
+{ const g=item('氣體鋼瓶＋電盤','—','位於樓梯間側凹口（寬約 1,110）；位置為示意');
+  [[4500,9650,M.cylGray],[4500,9950,M.cylBlack],[4500,10250,M.cylGray]].forEach(([x,z,m])=>{
+    cyl(x,750,z,115,1500,'y',m,g,20); cyl(x,1560,z,40,120,'y',M.stainless,g,12); });
+  bx(4560,10600,220,600,500,1200,C,g);
+  bx(4550,10630,10,540,560,1080,M.steelDark,g); }
+{ const g=item('主入口（雙開門）','寬約 1,200（圖面估計）','—');
+  bx(5255,11420,595,40,0,2090,M.wood,g); bx(5855,11420,590,40,0,2090,M.wood,g);
+  bx(5800,11400,30,20,950,160,M.steelDark,g); bx(5880,11400,30,20,950,160,M.steelDark,g); }
+
+/* ---------- gas line (ceiling) ---------- */
+const gasG=item('氣體管線（紅色）','水平估算約 10.9 m','天花板下方走管：到手套箱1 約 7.1 m、到手套箱2 約 3.8 m');
+function pipe(a,b,r,mat,parent){
+  const va=new THREE.Vector3(...a).multiplyScalar(MM), vb=new THREE.Vector3(...b).multiplyScalar(MM);
+  const m=new THREE.Mesh(new THREE.CylinderGeometry(r*MM,r*MM,va.distanceTo(vb),12),mat);
+  m.position.copy(va).add(vb).multiplyScalar(.5);
+  m.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),vb.clone().sub(va).normalize());
+  parent.add(m);
+  [va,vb].forEach(v=>{ const s=new THREE.Mesh(new THREE.SphereGeometry(r*MM*1.3,12,8),mat); s.position.copy(v); parent.add(s); });
+}
+const GY=2850;
+[[[4450,1600,9480],[4450,GY,9480]],[[4450,GY,9480],[6800,GY,9480]],[[6800,GY,9480],[6800,GY,5300]],
+ [[6800,GY,5300],[8560,GY,5300]],[[8560,GY,5300],[8560,1960,5300]],
+ [[6800,GY,9480],[8560,GY,9480]],[[8560,GY,9480],[8560,1960,9480]]].forEach(([a,b])=>pipe(a,b,22,M.gas,gasG));
+
+/* ---------- labels ---------- */
+const labels=new THREE.Group(); scene.add(labels);
+function makeLabel(text,p,room){
+  const fs=room?54:40, font=`${room?700:500} ${fs}px "Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif`;
+  const c=document.createElement('canvas'), x=c.getContext('2d'); x.font=font;
+  const pad=room?14:18, tw=x.measureText(text).width;
+  c.width=Math.ceil(tw+pad*2); c.height=Math.ceil(fs*1.55);
+  x.font=font; x.textBaseline='middle';
+  if(room){ x.lineWidth=9; x.strokeStyle='rgba(255,255,255,.92)'; x.strokeText(text,pad,c.height/2); x.fillStyle='#1E2A32'; x.fillText(text,pad,c.height/2); }
+  else { x.fillStyle='rgba(255,255,255,.93)'; x.fillRect(1,1,c.width-2,c.height-2); x.strokeStyle='#1E2A32'; x.lineWidth=2; x.strokeRect(1,1,c.width-2,c.height-2);
+    x.fillStyle='#1E2A32'; x.fillText(text,pad,c.height/2+1); }
+  const t=new THREE.CanvasTexture(c); t.minFilter=THREE.LinearFilter;
+  const s=new THREE.Sprite(new THREE.SpriteMaterial({map:t,depthTest:false,transparent:true,sizeAttenuation:false}));
+  const h=room?.052:.036; s.scale.set(h*c.width/c.height,h,1); s.position.set(p[0]*MM,p[1]*MM,p[2]*MM); s.renderOrder=10; labels.add(s);
+}
+function buildLabels(){
+  [['休息室',[1417,2600,2400]],['球磨室',[1417,2400,6000]],['實驗室',[6400,2700,6400]],['樓梯間',[1800,3300,8900]]].forEach(([t,p])=>makeLabel(t,p,true));
+  [['① 藥品櫃',[5025,2150,225]],['② 活動桌 ×2',[7100,1200,375]],['此門封閉',[8450,2350,550]],['③ 排煙櫃',[8220,2600,1850]],
+   ['充放電機',[8200,2050,2900]],['電腦桌＋電化學工作站',[8250,1450,3850]],['手套箱1',[8230,2200,5600]],['緩衝 600',[8230,700,7200]],
+   ['手套箱2',[8230,2200,8750]],['緩衝 809',[8230,700,11000]],['排氣口（建議）',[8450,2950,7200]],
+   ['④ 水槽中央桌',[5600,2650,3900]],['⑤ 木製長桌',[3330,1250,4100]],['② 活動中央桌',[6175,1250,7950]],
+   ['落地設備（待定）',[4165,1800,8250]],['氣體鋼瓶＋電盤',[4275,2050,10300]],['主入口',[5850,2450,11300]],
+   ['⑧ 木製壁櫃',[200,2450,2400]],['行星式球磨機 ×2',[375,1650,5800]],['高溫爐',[1216,1900,6800]]].forEach(([t,p])=>makeLabel(t,p,false));
+}
+let labelsBuilt=false;
+function ensureLabels(){ if(!labelsBuilt){ labelsBuilt=true; buildLabels(); } }
+(document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(ensureLabels);
+setTimeout(ensureLabels,2500);
+
+/* ---------- views ---------- */
+const P={
+  overview:{t:[4.31,.4,5.7],p:[12.5,13,18.5]},
+  top:{t:[4.31,0,5.7]},
+  break:{t:[1.4,.6,2.4],p:[5.6,6.2,7.4]},
+  mill:{t:[1.3,.7,6.0],p:[5.0,4.6,9.6]},
+  gb:{t:[8.2,1.3,7.6],p:[4.0,3.0,7.9],eye:true},
+  island:{t:[5.6,1.0,3.9],p:[2.6,3.4,9.2],eye:true},
+  entry:{t:[5.6,1.3,4.0],p:[5.85,1.65,10.9],eye:true},
+  north:{t:[6.6,1.1,0.9],p:[4.2,2.7,6.6],eye:true},
+};
+let anim=null;
+function goTo(key,instant){
+  const pr=P[key], t=new THREE.Vector3(...pr.t); let p;
+  if(key==='top'){ const d=Math.max(12.6/0.828,9.8/(0.828*camera.aspect)); p=new THREE.Vector3(t.x,d,t.z+0.01); }
+  else { p=new THREE.Vector3(...pr.p); if(!pr.eye){ const k=Math.min(2.1,Math.max(1,1.05/camera.aspect)); p.sub(t).multiplyScalar(k).add(t); } }
+  if(instant||reduceMotion){ camera.position.copy(p); controls.target.copy(t); controls.update(); anim=null; return; }
+  anim={p0:camera.position.clone(),t0:controls.target.clone(),p1:p,t1:t,start:performance.now(),dur:950};
+}
+const viewBtns=[...document.querySelectorAll('#views button')];
+viewBtns.forEach(b=>b.addEventListener('click',()=>{ viewBtns.forEach(o=>o.setAttribute('aria-current',o===b?'true':'false')); goTo(b.dataset.v); hideHint(); }));
+goTo('overview',true);
+
+/* ---------- toggles ---------- */
+document.querySelectorAll('.tg').forEach(b=>b.addEventListener('click',()=>{
+  const on=b.getAttribute('aria-pressed')!=='true'; b.setAttribute('aria-pressed',on?'true':'false');
+  const k=b.dataset.t;
+  if(k==='cut') clipMats.forEach(m=>{ m.clippingPlanes=on?[clipPlane]:null; m.clipShadows=true; m.needsUpdate=true; });
+  if(k==='labels') labels.visible=on;
+  if(k==='gas'){ gasG.visible=on; if(!on && selected===gasG) closeSheet(); }
+}));
+
+/* ---------- picking ---------- */
+const sheet=document.getElementById('sheet'), about=document.getElementById('about'), aboutBtn=document.getElementById('aboutBtn');
+const ray=new THREE.Raycaster(), ndc=new THREE.Vector2();
+let downAt=null, selected=null, helper=null;
+function visible(o){ while(o){ if(!o.visible) return false; o=o.parent; } return true; }
+function select(g){
+  selected=g; if(helper){ scene.remove(helper); helper=null; }
+  if(!g){ return; }
+  helper=new THREE.BoxHelper(g,0xD9731A); scene.add(helper);
+  const i=g.userData.info;
+  document.getElementById('sName').textContent=i.n;
+  document.getElementById('sSize').textContent=i.s;
+  document.getElementById('sNote').textContent=i.note;
+  about.hidden=true; aboutBtn.setAttribute('aria-expanded','false'); sheet.hidden=false;
+}
+function closeSheet(){ sheet.hidden=true; select(null); }
+document.getElementById('sClose').addEventListener('click',closeSheet);
+const cvs=renderer.domElement;
+cvs.addEventListener('pointerdown',e=>{ downAt=[e.clientX,e.clientY]; anim=null; hideHint(); });
+cvs.addEventListener('pointerup',e=>{
+  if(!downAt) return; const moved=Math.hypot(e.clientX-downAt[0],e.clientY-downAt[1]); downAt=null;
+  if(moved>6) return;
+  const r=cvs.getBoundingClientRect();
+  ndc.set(((e.clientX-r.left)/r.width)*2-1,-((e.clientY-r.top)/r.height)*2+1);
+  ray.setFromCamera(ndc,camera);
+  const hit=ray.intersectObjects(items,true).find(h=>visible(h.object));
+  if(!hit){ closeSheet(); return; }
+  let o=hit.object; while(o&&!o.userData.info) o=o.parent;
+  if(o) select(o);
+});
+aboutBtn.addEventListener('click',()=>{ const open=about.hidden; about.hidden=!open; aboutBtn.setAttribute('aria-expanded',open?'true':'false'); if(open){ sheet.hidden=true; select(null); } });
+document.getElementById('aClose').addEventListener('click',()=>{ about.hidden=true; aboutBtn.setAttribute('aria-expanded','false'); });
+
+const hint=document.getElementById('hint');
+function hideHint(){ hint.classList.add('gone'); }
+setTimeout(hideHint,7000);
+
+/* ---------- loop ---------- */
+addEventListener('resize',()=>{ camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth,innerHeight); });
+const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+renderer.setAnimationLoop(()=>{
+  if(anim){ const t=Math.min(1,(performance.now()-anim.start)/anim.dur), e=ease(t);
+    camera.position.lerpVectors(anim.p0,anim.p1,e); controls.target.lerpVectors(anim.t0,anim.t1,e); if(t>=1) anim=null; }
+  controls.update();
+  if(helper) helper.update();
+  renderer.render(scene,camera);
+});
+})();
+</script>
+</body>
+</html>
