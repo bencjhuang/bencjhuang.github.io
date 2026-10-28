@@ -241,6 +241,43 @@ nav#navbar.scrolled {
 .nav-links a.active::after { transform: scaleX(1); }
 .nav-links a.active { color: var(--ink); }
 
+/* Language switch (EN ⇄ 中文), last item in the nav */
+.nav-lang {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--rule);
+}
+.nav-links .nav-lang a {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.06em;
+}
+.mobile-menu .mobile-lang {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--muted);
+}
+
+/* ── Traditional Chinese pages (zh/) ─────────────────────────
+   Latin text keeps the site faces; CJK glyphs fall through to
+   Noto Sans/Serif TC (loaded only on zh/ pages). Uppercase
+   tracking is meant for Latin labels, so it is relaxed here. */
+html[lang="zh-Hant"] {
+    --font-body:    'IBM Plex Sans', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --font-display: 'Fraunces', 'Noto Serif TC', 'Songti TC', serif;
+    --font-mono:    'JetBrains Mono', 'Noto Sans TC', monospace;
+}
+html[lang="zh-Hant"] body { line-height: 1.8; }
+html[lang="zh-Hant"] :is(.hero-eyebrow, .page-eyebrow, .section-eyebrow, .section-num,
+    .stat-label, .research-eyebrow, .toc-label, .badge-cat, .news-date, .cv-sub,
+    .member-card__tag, .project-card__tag, .recruiting-notice__eyebrow, .position-badge,
+    .compare-label, .footer-section h3) {
+    letter-spacing: 0.06em;
+}
+html[lang="zh-Hant"] .hero h1 { max-width: 15em; line-height: 1.2; }
+/* CJK glyphs are uniform width, so ragged-right already reads evenly; justify
+   would stretch the spaces around embedded Latin words (names, acronyms). */
+html[lang="zh-Hant"] p { text-align: start; }
+
 /* ════════════════════════════════════════════════════════════════
    HERO — full-bleed image, editorial layout
    ════════════════════════════════════════════════════════════════ */

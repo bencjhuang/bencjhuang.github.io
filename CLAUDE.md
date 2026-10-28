@@ -26,6 +26,7 @@ No build process. Edit files directly, then push:
 | `gallery.html` | Filterable photo gallery with lightbox |
 | `join.html` | Recruitment: postdoc, PhD, undergrad positions |
 | `card/index.html` | Standalone digital business card (self-contained; embedded QR + vCard) |
+| `zh/index.html`, `zh/research.html`, `zh/people.html`, `zh/join.html` | Traditional Chinese versions (share `../styles.css` / `../script.js`; Publications, Equipment, Gallery link to the English pages) |
 | `styles.css` | All styling — CSS custom properties (design tokens) in `:root` |
 | `script.js` | Sticky nav, hamburger, news filter, publications filter, people tabs, lightbox, reveal-on-scroll |
 | `sitemap.xml`, `robots.txt` | SEO; `google*.html` is the Search Console verification file — do not delete |
@@ -67,6 +68,10 @@ update the visible HTML **and** the matching JSON-LD on both pages, then re-vali
 - **Stable publication numbering**: JS assigns `data-num` (CSS counters break when items are filtered)
 - **Mobile breakpoint**: 768px (hamburger menu)
 - **Navigation**: hardcoded in every HTML file — update all pages when adding a nav item
+- **Bilingual pages**: `index`, `research`, `people`, `join` each have a `zh/` twin. When you change
+  content on one, update the other (news, stats band, positions, PI facts). Each pair is linked by
+  `hreflang` tags in `<head>` and the `.nav-lang` / `.mobile-lang` switch in the nav; zh pages use
+  `../` paths and load Noto Sans/Serif TC. Chinese copy uses 臺 (國立臺灣科技大學) and ROC 學年度.
 
 ## Common Editing Tasks
 
@@ -77,7 +82,7 @@ update the visible HTML **and** the matching JSON-LD on both pages, then re-vali
 **Add a publication** (`publications.html`):
 - Find the correct `.year-group`, copy an existing `.publication` entry, update all fields
 - Update the citation stats block (h-index, citations) and the "last checked" date
-- Also update the homepage "at a glance" band (`#numbers` in `index.html`) — same numbers
+- Also update the homepage "at a glance" band (`#numbers` in `index.html` **and** `zh/index.html`) — same numbers
 
 **Update PI facts** (title, honors, research interests, stats):
 - Edit the visible HTML **and** the JSON-LD on `index.html` + `people.html`
