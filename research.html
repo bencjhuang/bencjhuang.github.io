@@ -98,7 +98,7 @@
                         <figure class="research-figure pinned-figure">
                             <img loading="lazy" decoding="async" src="image/research-assb-cell.jpg" alt="Cutaway 3D rendering of the all-solid-state battery test cell"
                                  onerror="this.parentElement.style.display='none'">
-                            <figcaption>Custom test cell for all-solid-state pouch architectures.</figcaption>
+                            <figcaption>Custom test cell for all-solid-state pellet cell architectures.</figcaption>
                         </figure>
 
                         <div class="pinned-text">
@@ -262,6 +262,31 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Before/after comparison: drag (or use arrow keys) to move the divider (script.js) -->
+                    <h3>Assembled vs. cycled</h3>
+                    <p>
+                        A µ-Si anode imaged as assembled and after cycling. Drag the divider to compare.
+                    </p>
+                    <figure class="compare" id="si-compare">
+                        <div class="compare-frame">
+                            <img class="compare-img" src="image/xct-si-cycled.jpg" loading="lazy" decoding="async"
+                                 alt="Top-view XCT slice of the µ-Si anode after cycling, showing a mud-crack network">
+                            <div class="compare-before">
+                                <img class="compare-img" src="image/xct-si-assembled.jpg" loading="lazy" decoding="async"
+                                     alt="Top-view XCT slice of the µ-Si anode as assembled, with uniformly distributed particles">
+                            </div>
+                            <span class="compare-label compare-label--before">Assembled</span>
+                            <span class="compare-label compare-label--after">Cycled</span>
+                            <div class="compare-handle" aria-hidden="true"></div>
+                            <input class="compare-range" type="range" min="0" max="100" value="50"
+                                   aria-label="Divider position: left shows the assembled anode, right shows the cycled anode">
+                        </div>
+                        <figcaption>
+                            Top-view XCT slices of the µ-Si anode. Scale bar, 100 µm.
+                            Adapted with permission from Huang et al., ACS Energy Lett. 2025. © 2025 American Chemical Society.
+                        </figcaption>
+                    </figure>
 
                     <h3>What we resolve</h3>
                     <ul>
