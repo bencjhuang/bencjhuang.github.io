@@ -241,6 +241,43 @@ nav#navbar.scrolled {
 .nav-links a.active::after { transform: scaleX(1); }
 .nav-links a.active { color: var(--ink); }
 
+/* Language switch (EN ⇄ 中文), last item in the nav */
+.nav-lang {
+    padding-left: 1.25rem;
+    border-left: 1px solid var(--rule);
+}
+.nav-links .nav-lang a {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    letter-spacing: 0.06em;
+}
+.mobile-menu .mobile-lang {
+    font-family: var(--font-mono);
+    font-size: var(--fs-sm);
+    color: var(--muted);
+}
+
+/* ── Traditional Chinese pages (zh/) ─────────────────────────
+   Latin text keeps the site faces; CJK glyphs fall through to
+   Noto Sans/Serif TC (loaded only on zh/ pages). Uppercase
+   tracking is meant for Latin labels, so it is relaxed here. */
+html[lang="zh-Hant"] {
+    --font-body:    'IBM Plex Sans', 'Noto Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+    --font-display: 'Fraunces', 'Noto Serif TC', 'Songti TC', serif;
+    --font-mono:    'JetBrains Mono', 'Noto Sans TC', monospace;
+}
+html[lang="zh-Hant"] body { line-height: 1.8; }
+html[lang="zh-Hant"] :is(.hero-eyebrow, .page-eyebrow, .section-eyebrow, .section-num,
+    .stat-label, .research-eyebrow, .toc-label, .badge-cat, .news-date, .cv-sub,
+    .member-card__tag, .project-card__tag, .recruiting-notice__eyebrow, .position-badge,
+    .compare-label, .footer-section h3) {
+    letter-spacing: 0.06em;
+}
+html[lang="zh-Hant"] .hero h1 { max-width: 15em; line-height: 1.2; }
+/* CJK glyphs are uniform width, so ragged-right already reads evenly; justify
+   would stretch the spaces around embedded Latin words (names, acronyms). */
+html[lang="zh-Hant"] p { text-align: start; }
+
 /* ════════════════════════════════════════════════════════════════
    HERO — full-bleed image, editorial layout
    ════════════════════════════════════════════════════════════════ */
@@ -902,6 +939,106 @@ section:last-child { margin-bottom: 0; }
     }
     .pinned-figure img { max-height: 440px; }
     .pinned-text { grid-column: 1; grid-row: 1; }
+}
+
+/* ── Before/after comparison slider (XCT, assembled vs. cycled) ─
+   --pos is the divider position; script.js updates it from pointer
+   drags and the (visually hidden) range input, which keeps it usable
+   from the keyboard. Without JS it rests at 50%. */
+.compare { margin: 1.5rem 0 2.5rem; }
+.compare-frame {
+    --pos: 50%;
+    position: relative;
+    aspect-ratio: 1400 / 636;
+    overflow: hidden;
+    background: var(--ink);
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    cursor: ew-resize;
+    touch-action: pan-y;          /* vertical page scroll still works on touch */
+    user-select: none;
+    -webkit-user-select: none;
+}
+.compare-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+}
+.compare-before {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+.compare-handle {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: var(--pos);
+    width: 2px;
+    margin-left: -1px;
+    background: var(--surface);
+    pointer-events: none;
+}
+.compare-handle::after {
+    content: '‹ ›';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 44px;
+    height: 44px;
+    translate: -50% -50%;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    box-shadow: 0 2px 10px color-mix(in srgb, var(--ink) 35%, transparent);
+}
+.compare-frame:has(.compare-range:focus-visible) .compare-handle::after {
+    outline: 2px solid var(--surface);
+    outline-offset: 3px;
+}
+.compare-range {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;         /* drags are handled on the frame; this is for keyboard */
+}
+.compare-label {
+    position: absolute;
+    top: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--surface);
+    background: color-mix(in srgb, var(--ink) 72%, transparent);
+    pointer-events: none;
+}
+.compare-label--before { left: 0.75rem; }
+.compare-label--after  { right: 0.75rem; }
+/* Taller on phones; crop from the right so the scale bar (bottom-left) stays */
+@media (max-width: 768px) {
+    .compare-frame { aspect-ratio: 3 / 2; }
+    .compare-img { object-position: left center; }
+}
+.research-section .compare figcaption {
+    font-family: var(--font-mono);
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    letter-spacing: 0.02em;
+    padding-top: 0.75rem;
 }
 
 /* ── XCT scrollytelling: pinned figure, steps scroll past ───── */

@@ -473,6 +473,59 @@
         });
     }
 
+    /* ── Before/after comparison slider ─────────────────────── */
+    // Drag anywhere on the image (mouse or touch) to move the divider;
+    // the hidden range input mirrors it so arrow keys work too.
+    document.querySelectorAll('.compare-frame').forEach(frame => {
+        const range = frame.querySelector('.compare-range');
+        let touched = false;
+
+        const setPos = (pct) => {
+            const v = Math.max(0, Math.min(100, pct));
+            frame.style.setProperty('--pos', v + '%');
+            range.value = v;
+        };
+        const fromPointer = (e) => {
+            const r = frame.getBoundingClientRect();
+            setPos(((e.clientX - r.left) / r.width) * 100);
+        };
+
+        frame.addEventListener('pointerdown', (e) => {
+            touched = true;
+            frame.setPointerCapture(e.pointerId);
+            fromPointer(e);
+        });
+        frame.addEventListener('pointermove', (e) => {
+            if (frame.hasPointerCapture(e.pointerId)) fromPointer(e);
+        });
+        // Clicking the image also focuses the range, so arrow keys follow
+        frame.addEventListener('click', () => range.focus({ preventScroll: true }));
+        range.addEventListener('input', () => { touched = true; setPos(+range.value); });
+
+        // One gentle sweep the first time it scrolls into view, to show it
+        // can be dragged. Skipped for reduced motion or once the user acts.
+        const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (reduce || !('IntersectionObserver' in window)) return;
+        const hintIO = new IntersectionObserver((entries) => {
+            if (!entries[0].isIntersecting) return;
+            hintIO.disconnect();
+            const keys = [50, 30, 70, 50];
+            const seg = 550;
+            const start = performance.now() + 400;
+            const ease = (t) => t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+            const tick = (now) => {
+                if (touched) return;
+                const t = Math.max(0, now - start);
+                const i = Math.min(Math.floor(t / seg), keys.length - 2);
+                const local = Math.min(1, (t - i * seg) / seg);
+                setPos(keys[i] + (keys[i + 1] - keys[i]) * ease(local));
+                if (t < seg * (keys.length - 1)) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+        }, { threshold: 0.6 });
+        hintIO.observe(frame);
+    });
+
     /* ── People page tabs (if present) ──────────────────────── */
     const tabs = document.querySelectorAll('.people-tab');
     if (tabs.length) {
