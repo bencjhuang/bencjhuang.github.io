@@ -25,6 +25,7 @@ No build process. Edit files directly, then push:
 | `equipment.html` | Lab + facility instruments with photos and specs |
 | `gallery.html` | Filterable photo gallery with lightbox |
 | `join.html` | Recruitment: postdoc, PhD, undergrad positions |
+| `lab.html` | Interactive 3D lab tour (Three.js r128 + OrbitControls via CDN). Chinese-only (`lang="zh-Hant"`), linked from the nav on every page; not yet in `sitemap.xml` |
 | `card/index.html` | Standalone digital business card (self-contained; embedded QR + vCard) |
 | `zh/index.html`, `zh/research.html`, `zh/people.html`, `zh/join.html` | Traditional Chinese versions (share `../styles.css` / `../script.js`; Publications, Equipment, Gallery link to the English pages) |
 | `styles.css` | All styling — CSS custom properties (design tokens) in `:root` |
@@ -92,6 +93,41 @@ update the visible HTML **and** the matching JSON-LD on both pages, then re-vali
 
 ## Notes
 
-- **Never run `git commit` or `git push`** — always ask first; the user handles all commits and pushes
+- **Always ask before `git commit`** — never commit without explicit approval for that commit
+- **Never run `git push`** — the user pushes themselves
+- Never delete `google*.html` (Search Console verification file)
 - Google Fonts via CDN (Fraunces, IBM Plex Sans, JetBrains Mono; the card page also loads Noto Sans/Serif TC + IBM Plex Sans)
 - The `card/` page is intentionally self-contained (its own inline styles, not the main design system)
+
+## PI Reference Facts (authoritative)
+
+Use these exact values when editing site/CV/faculty content.
+
+- **Name:** Chen-Jui (Ben) Huang / 黃貞睿, Ph.D. (publishing byline: C.-J. Huang)
+- **Title:** Assistant Professor, Dept. of Chemical Engineering, Taiwan Tech (NTUST) — started Aug 2026
+- **Email:** cjhuang@mail.ntust.edu.tw · **Office** E2-808 · **Lab** E2-301
+- **Phones:** office 02-2737-6618 · lab 02-2733-3141 ext. 7603 · fax 02-2737-6644
+- **ORCID:** 0000-0001-8338-1424 · **Google Scholar id:** fFTtGFAAAAAJ
+- **NTUST faculty page:** https://www.ch.ntust.edu.tw/departmentmembers-76.html
+
+**Awards (6 as of 2026-07):** Yushan Young Fellow (MOE, 2026–2031, most important) ·
+CTCI Foundation Science & Technology Scholarship (2021) · Phi Tau Phi Honorary Membership (2021) ·
+Ph.D. Candidate Scholarship (NSRRC, 2019/2020) · HERCULES Program (MOST/NSTC, 2019) ·
+Global Networking Talent 3.0 (MOE, 2016, Hongjie Dai Lab @ Stanford).
+
+**Citation stats change** — as of 2026-07: h-index 44 / 5,644 citations / 65 papers.
+Re-check the Scholar page when updating; don't reuse old numbers.
+
+## Ongoing: Google Authority / Knowledge Panel
+
+Goal: make the PI/group entity clear enough for Google to auto-generate a Knowledge Panel
+(can't be created manually, only claimed).
+
+**Done (2026-07):** JSON-LD on `index.html` + `people.html`; `sameAs` to 5 sources; footer
+`rel="me"` links on all main pages; `sitemap.xml` + `robots.txt`; Search Console verified;
+all external profiles (Scholar, ORCID, LinkedIn, ResearchGate, NTUST) link back to the site;
+Scholar affiliation verified with mail.ntust.edu.tw.
+
+**On hold / to watch:** Wikidata entry deferred (decided 2026-07) until third-party sources
+exist — e.g. NTUST onboarding press release, MOE Yushan Young Fellow announcement, media
+coverage of papers.
