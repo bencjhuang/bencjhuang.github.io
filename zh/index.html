@@ -31,7 +31,6 @@
 </head>
 <body>
     <a class="skip-link" href="#main-content">跳至主要內容</a>
-    <div class="read-progress" aria-hidden="true"></div>
     <!-- ── Navigation ───────────────────────────────────── -->
     <nav id="navbar">
         <div class="nav-container">
@@ -102,7 +101,6 @@
         <!-- ── Mission ──────────────────────────────────── -->
         <section id="mission">
             <div class="section-header">
-                <span class="section-eyebrow">使命</span>
                 <h2>我們的研究</h2>
             </div>
             <div class="mission-content">
@@ -122,7 +120,6 @@
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">研究方向 01</span>
                         <h3><a class="card-link" href="research.html#assb">全固態電池</a></h3>
                         <p>為更安全、更高能量密度的電池設計電極與電解質架構，並透過界面工程延長電池壽命。</p>
                     </div>
@@ -134,7 +131,6 @@
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">研究方向 02</span>
                         <h3><a class="card-link" href="research.html#anode-free">無負極鋰金屬電池</a></h3>
                         <p>不使用負極活性材料，鋰金屬在首次充電時直接沉積於集流體上。我們設計電池與電解質，讓鋰均勻沉積、可逆剝除。</p>
                     </div>
@@ -142,11 +138,10 @@
 
                 <article class="research-card">
                     <div class="research-image">
-                        <img loading="lazy" decoding="async" src="../image/research-operando.jpg?v=2" alt="六種原位與臨場電池設計：X 光吸收、X 光繞射、光學顯微鏡、拉曼光譜與穿透式 X 光顯微術"
+                        <img loading="lazy" decoding="async" src="../image/research-operando-xrd.jpg" alt="臨場 X 光繞射鈕扣電池的分解圖：Kapton 窗片、銅箔、隔離膜、O 型環、鋅、墊片與彈簧，X 光穿透電池"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">研究方向 03</span>
                         <h3><a class="card-link" href="research.html#operando">臨場與原位分析技術</a></h3>
                         <p>即時觀察反應進行：在電池實際運作下，進行同步輻射 X 光光譜與繞射分析。</p>
                     </div>
@@ -158,12 +153,38 @@
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">研究方向 04</span>
                         <h3><a class="card-link" href="research.html#xct">三維 X 光斷層掃描</a></h3>
                         <p>重建運作中電池的內部結構：解析失效模式與微結構形貌，並回饋於電池設計。</p>
                     </div>
                 </article>
             </div>
+        </section>
+
+        <!-- ── Inside a working cell (XCT before/after) ─── -->
+        <section id="inside" class="inside-band">
+            <div class="section-header">
+                <h2>看見電池內部</h2>
+            </div>
+            <p class="inside-lead">全固態軟包電池中 µ-Si 負極的俯視 X 光斷層切片：組裝後與循環後。拖曳分隔線比較：原本分布均勻的顆粒，循環後形成泥裂紋狀的裂紋網絡。以非破壞、三維的方式看見失效，才能把觀察轉化為設計準則。 <a href="research.html#xct" class="btn-link">我們如何拍攝電池內部 <span class="btn-arrow" aria-hidden="true">→</span></a></p>
+            <figure class="compare">
+                <div class="compare-frame">
+                    <img class="compare-img" src="../image/xct-si-cycled.jpg" loading="lazy" decoding="async"
+                         alt="循環後 µ-Si 負極的俯視 XCT 切片，可見泥裂紋狀的裂紋網絡">
+                    <div class="compare-before">
+                        <img class="compare-img" src="../image/xct-si-assembled.jpg" loading="lazy" decoding="async"
+                             alt="組裝後 µ-Si 負極的俯視 XCT 切片，顆粒分布均勻">
+                    </div>
+                    <span class="compare-label compare-label--before">組裝後</span>
+                    <span class="compare-label compare-label--after">循環後</span>
+                    <div class="compare-handle" aria-hidden="true"></div>
+                    <input class="compare-range" type="range" min="0" max="100" value="50"
+                           aria-label="分隔線位置：左側為組裝後的負極，右側為循環後的負極">
+                </div>
+                <figcaption>
+                    µ-Si 負極的俯視 XCT 切片影像。比例尺：100 µm。
+                    <span lang="en">Adapted with permission from Huang et al., ACS Energy Lett. 2025. © 2025 American Chemical Society.</span>
+                </figcaption>
+            </figure>
         </section>
 
         <!-- ── At a glance (numbers count up via script.js) ─ -->
@@ -191,7 +212,6 @@
         <!-- ── News ─────────────────────────────────────── -->
         <section id="news">
             <div class="section-header">
-                <span class="section-eyebrow">最新消息</span>
                 <h2>新聞與動態</h2>
             </div>
 
@@ -281,47 +301,23 @@
             <button type="button" class="news-more" id="news-more" hidden>顯示較早的消息（4 則）</button>
         </section>
 
-        <!-- ── Quick nav ────────────────────────────────── -->
-        <section id="quick-links">
+        <!-- ── The group ─────────────────────────────────── -->
+        <section id="group" class="group-band">
             <div class="section-header">
-                <span class="section-eyebrow">探索</span>
-                <h2>繼續瀏覽</h2>
+                <h2>實驗室成員</h2>
             </div>
-            <div class="quick-nav-grid">
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="research.html">研究</a></h3>
-                    <p>四大研究主軸：全固態電池、無負極鋰金屬電池、臨場光譜分析、X 光斷層掃描。</p>
-                    <span class="card-arrow">查看研究 <span aria-hidden="true">→</span></span>
-                </div>
-
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15 19c.2-2 1.5-3.5 3.5-3.5S22 17 22 19"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="people.html">成員</a></h3>
-                    <p>認識實驗室主持人與成員。招生資訊請見「加入我們」。</p>
-                    <span class="card-arrow">認識團隊 <span aria-hidden="true">→</span></span>
-                </div>
-
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3V4z"/><path d="M4 17a3 3 0 013-3h12"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="../publications.html">論文</a></h3>
-                    <p>期刊論文與引用指標，涵蓋電池材料與同步輻射分析（英文頁面）。</p>
-                    <span class="card-arrow">閱讀論文 <span aria-hidden="true">→</span></span>
-                </div>
-
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="join.html">加入我們</a></h3>
-                    <p>116 學年度招收博士班（提供每月獎助學金）與碩士班；大學部專題生全年招收。</p>
-                    <span class="card-arrow">查看招生資訊 <span aria-hidden="true">→</span></span>
+            <div class="group-layout">
+                <figure class="group-photo">
+                    <img loading="lazy" decoding="async" src="../image/group-2026.jpg" width="1274" height="849"
+                         alt="黃貞睿老師與實驗室五位創始成員在實驗室的合照">
+                </figure>
+                <div class="group-text">
+                    <p>黃貞睿老師與 2026 年 8 月加入、共同創立實驗室的五位碩士生。我們在實驗室製作電池，再到同步輻射光束線（包括臺灣的 NSRRC 與美國的 APS）研究它們。</p>
+                    <p>116 學年度招生中：博士班（每月研究獎助學金）、碩士班、大學部專題生。</p>
+                    <div class="group-actions">
+                        <a href="join.html" class="btn btn-primary">加入我們 <span class="btn-arrow" aria-hidden="true">→</span></a>
+                        <a href="people.html" class="btn-link">認識團隊 <span class="btn-arrow" aria-hidden="true">→</span></a>
+                    </div>
                 </div>
             </div>
         </section>

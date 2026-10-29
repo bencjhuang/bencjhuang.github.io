@@ -100,6 +100,9 @@ h2 { font-size: var(--fs-h2); font-weight: 500; }
 h3 { font-size: var(--fs-h3); }
 
 p { max-width: var(--maxw-prose); }
+p, li { text-wrap: pretty; }
+/* Balance only where it can't split hyphenated terms like "all-solid-state" */
+h2, .news-item h3 { text-wrap: balance; }
 
 ::selection { background: var(--accent); color: #fff; }
 
@@ -630,6 +633,7 @@ section:last-child { margin-bottom: 0; }
     border: none;
     margin-bottom: 3rem;
 }
+.mission-content { background: none; }
 .content-block {
     background: var(--surface);
     padding: 2.5rem;
@@ -1501,6 +1505,51 @@ section:last-child { margin-bottom: 0; }
 .quick-nav-card:hover .card-arrow {
     color: var(--accent);
     transform: translateX(3px);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   HOMEPAGE — inside a working cell (XCT compare) + the group
+   ════════════════════════════════════════════════════════════════ */
+.inside-lead {
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+}
+.inside-lead .btn-link { white-space: nowrap; }
+.inside-band .compare { margin-bottom: 0; }
+.inside-band .compare figcaption {
+    margin-top: 0.75rem;
+    font-size: var(--fs-xs);
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.group-layout {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: 3rem;
+    align-items: center;
+}
+.group-photo img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 2px;
+}
+.group-text p {
+    color: var(--ink-soft);
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+.group-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+@media (max-width: 768px) {
+    .group-layout { grid-template-columns: 1fr; gap: 1.5rem; }
 }
 
 /* ════════════════════════════════════════════════════════════════
@@ -2729,7 +2778,7 @@ footer {
     margin-top: 6rem;
 }
 .footer-container {
-    max-width: var(--maxw);
+    max-width: calc(var(--maxw) - 2 * var(--pad-x));
     margin: 0 auto;
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -2760,7 +2809,7 @@ footer {
     margin-bottom: 0.85rem;
 }
 .footer-bottom {
-    max-width: var(--maxw);
+    max-width: calc(var(--maxw) - 2 * var(--pad-x));
     margin: 3rem auto 0;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);

@@ -11,21 +11,22 @@ site-wide (no "incoming" / "starting August 2026").
 No build process. Edit files directly, then push:
 - Changes go live automatically via GitHub Pages
 - Test locally by opening HTML files in a browser (or `python3 -m http.server` from the repo root)
-- Images go in `image/`; originals/backups in `image/_originals/`
+- Images go in `image/`; originals/backups in `image/_originals/` (git-ignored: new backups stay local)
+- Web images: JPEG quality ~85, long edge ≤ 2400px
 - Cache-bust changed images with a `?v=N` query string on the `src`
 
 ## Site Structure
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Homepage: full-bleed hero, mission, filterable news timeline, research preview |
+| `index.html` | Homepage: hero (+ recruiting line), mission + 4 research cards, XCT before/after compare, stats band, news (latest 4, older behind a button), group photo + join CTA |
 | `research.html` | 4 research areas: ASSBs, anode-free Li metal, operando/in-situ, X-ray tomography (µXCT) |
 | `people.html` | Tabbed: PI profile (bio, education, experience, honors), Members, Alumni |
 | `publications.html` | ~65 publications with impact factors, filter chips, citation stats |
 | `equipment.html` | Lab + facility instruments with photos and specs |
 | `gallery.html` | Filterable photo gallery with lightbox |
 | `join.html` | Recruitment: postdoc, PhD, undergrad positions |
-| `lab.html` | Interactive 3D lab tour (Three.js r128 + OrbitControls via CDN). Chinese-only (`lang="zh-Hant"`), linked from the nav on every page; not yet in `sitemap.xml` |
+| `lab.html` | Interactive 3D lab tour (Three.js r128 + OrbitControls via CDN). Chinese-only (`lang="zh-Hant"`), linked from the nav on every page |
 | `card/index.html` | Standalone digital business card (self-contained; embedded QR + vCard) |
 | `zh/index.html`, `zh/research.html`, `zh/people.html`, `zh/join.html` | Traditional Chinese versions (share `../styles.css` / `../script.js`; Publications, Equipment, Gallery link to the English pages) |
 | `styles.css` | All styling — CSS custom properties (design tokens) in `:root` |

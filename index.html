@@ -122,7 +122,6 @@
 </head>
 <body>
     <a class="skip-link" href="#main-content">Skip to content</a>
-    <div class="read-progress" aria-hidden="true"></div>
     <!-- ── Navigation ───────────────────────────────────── -->
     <nav id="navbar">
         <div class="nav-container">
@@ -193,7 +192,6 @@
         <!-- ── Mission ──────────────────────────────────── -->
         <section id="mission">
             <div class="section-header">
-                <span class="section-eyebrow">Mission</span>
                 <h2>What we work on</h2>
             </div>
             <div class="mission-content">
@@ -218,7 +216,6 @@
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">Area 01</span>
                         <h3><a class="card-link" href="research.html#assb">All-solid-state batteries</a></h3>
                         <p>Electrode and electrolyte architectures for safer, denser cells, with the interface engineering to make them last.</p>
                     </div>
@@ -230,7 +227,6 @@
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">Area 02</span>
                         <h3><a class="card-link" href="research.html#anode-free">Anode-free lithium metal batteries</a></h3>
                         <p>No anode material: lithium plates onto the current collector on first charge. We design cells and electrolytes so it plates evenly and strips reversibly.</p>
                     </div>
@@ -238,11 +234,10 @@
 
                 <article class="research-card">
                     <div class="research-image">
-                        <img loading="lazy" decoding="async" src="image/research-operando.jpg?v=2" alt="Six in-situ and operando battery cell designs: X-ray absorption, X-ray diffraction, optical microscopy, Raman spectroscopy, and transmission X-ray microscopy"
+                        <img loading="lazy" decoding="async" src="image/research-operando-xrd.jpg" alt="Exploded view of an operando X-ray diffraction coin cell: Kapton windows, Cu, separator, O-ring, Zn, spacer and spring, with the X-ray beam passing through"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">Area 03</span>
                         <h3><a class="card-link" href="research.html#operando"><i>Operando</i> &amp; <i>in-situ</i> techniques</a></h3>
                         <p>Watching reactions happen: synchrotron X-ray spectroscopy and diffraction during real cell operation.</p>
                     </div>
@@ -254,12 +249,38 @@
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">Area 04</span>
                         <h3><a class="card-link" href="research.html#xct">3D X-ray tomography</a></h3>
                         <p>Reconstructing the inside of a working cell: the failure modes, the morphology, the design feedback loop.</p>
                     </div>
                 </article>
             </div>
+        </section>
+
+        <!-- ── Inside a working cell (XCT before/after) ─── -->
+        <section id="inside" class="inside-band">
+            <div class="section-header">
+                <h2>Inside a working cell</h2>
+            </div>
+            <p class="inside-lead">Top-view X-ray CT slices of a µ-Si anode in an all-solid-state pouch cell, as assembled and after cycling. Drag the divider: evenly packed particles turn into a mud-crack network. Imaging failure like this, non-destructively and in 3D, is how we turn it into design rules. <a href="research.html#xct" class="btn-link">How we image cells <span class="btn-arrow" aria-hidden="true">→</span></a></p>
+            <figure class="compare">
+                <div class="compare-frame">
+                    <img class="compare-img" src="image/xct-si-cycled.jpg" loading="lazy" decoding="async"
+                         alt="Top-view XCT slice of the µ-Si anode after cycling, showing a mud-crack network">
+                    <div class="compare-before">
+                        <img class="compare-img" src="image/xct-si-assembled.jpg" loading="lazy" decoding="async"
+                             alt="Top-view XCT slice of the µ-Si anode as assembled, with uniformly distributed particles">
+                    </div>
+                    <span class="compare-label compare-label--before">Assembled</span>
+                    <span class="compare-label compare-label--after">Cycled</span>
+                    <div class="compare-handle" aria-hidden="true"></div>
+                    <input class="compare-range" type="range" min="0" max="100" value="50"
+                           aria-label="Divider position: left shows the assembled anode, right shows the cycled anode">
+                </div>
+                <figcaption>
+                    Top-view XCT slices of the µ-Si anode. Scale bar, 100 µm.
+                    Adapted with permission from Huang et al., ACS Energy Lett. 2025. © 2025 American Chemical Society.
+                </figcaption>
+            </figure>
         </section>
 
         <!-- ── At a glance (numbers count up via script.js) ─ -->
@@ -287,7 +308,6 @@
         <!-- ── News ─────────────────────────────────────── -->
         <section id="news">
             <div class="section-header">
-                <span class="section-eyebrow">Latest</span>
                 <h2>News &amp; updates</h2>
             </div>
 
@@ -377,47 +397,23 @@
             <button type="button" class="news-more" id="news-more" hidden>Show earlier news (4)</button>
         </section>
 
-        <!-- ── Quick nav ────────────────────────────────── -->
-        <section id="quick-links">
+        <!-- ── The group ─────────────────────────────────── -->
+        <section id="group" class="group-band">
             <div class="section-header">
-                <span class="section-eyebrow">Explore</span>
-                <h2>Where to next</h2>
+                <h2>The group</h2>
             </div>
-            <div class="quick-nav-grid">
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="research.html">Research</a></h3>
-                    <p>Four focus areas: solid-state and anode-free Li metal batteries, operando spectroscopy, X-ray tomography.</p>
-                    <span class="card-arrow">See research <span aria-hidden="true">→</span></span>
-                </div>
-
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15 19c.2-2 1.5-3.5 3.5-3.5S22 17 22 19"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="people.html">People</a></h3>
-                    <p>Meet the PI and the group members. See Join for open positions.</p>
-                    <span class="card-arrow">Meet the team <span aria-hidden="true">→</span></span>
-                </div>
-
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3V4z"/><path d="M4 17a3 3 0 013-3h12"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="publications.html">Publications</a></h3>
-                    <p>Peer-reviewed articles on battery materials and synchrotron characterization, with citation metrics.</p>
-                    <span class="card-arrow">Read publications <span aria-hidden="true">→</span></span>
-                </div>
-
-                <div class="quick-nav-card">
-                    <span class="card-icon" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/></svg>
-                    </span>
-                    <h3><a class="card-link" href="join.html">Join</a></h3>
-                    <p>PhD (monthly stipend) and master's openings for 2027; undergraduate research year-round.</p>
-                    <span class="card-arrow">See positions <span aria-hidden="true">→</span></span>
+            <div class="group-layout">
+                <figure class="group-photo">
+                    <img loading="lazy" decoding="async" src="image/group-2026.jpg" width="1274" height="849"
+                         alt="Prof. Huang with the group's five founding members in the lab">
+                </figure>
+                <div class="group-text">
+                    <p>Prof. Huang and the five master's students who founded the group in August 2026. We build cells at the bench and study them at synchrotron beamlines, including NSRRC in Taiwan and the APS in the US.</p>
+                    <p>We're recruiting for fall 2027: PhD students (monthly stipend), master's students, and undergraduate researchers.</p>
+                    <div class="group-actions">
+                        <a href="join.html" class="btn btn-primary">Join the group <span class="btn-arrow" aria-hidden="true">→</span></a>
+                        <a href="people.html" class="btn-link">Meet the team <span class="btn-arrow" aria-hidden="true">→</span></a>
+                    </div>
                 </div>
             </div>
         </section>
