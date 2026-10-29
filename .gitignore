@@ -1,3 +1,8 @@
 # macOS Finder metadata
 .DS_Store
 **/.DS_Store
+
+# Full-size image backups stay local (already-tracked files are unaffected)
+image/_originals/
+# Local design-review snapshots
+.impeccable/

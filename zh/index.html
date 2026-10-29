@@ -92,6 +92,9 @@
                     <span class="btn-arrow" aria-hidden="true">→</span>
                 </a>
             </div>
+            <p class="hero-recruit">
+                <a href="join.html">116 學年度招生中：博士班（學雜費＋研究獎助學金）、碩士班、大學部專題生 <span aria-hidden="true">→</span></a>
+            </p>
         </div>
     </section>
 
@@ -113,38 +116,50 @@
 
             <!-- Research preview cards -->
             <div class="research-grid">
-                <article class="research-card" data-href="research.html#assb">
+                <article class="research-card">
                     <div class="research-image research-image--zoom">
                         <img loading="lazy" decoding="async" src="../image/research-assb.jpg" alt="全固態電池測試治具的 3D 渲染圖"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
                         <span class="research-eyebrow">研究方向 01</span>
-                        <h3>全固態電池</h3>
+                        <h3><a class="card-link" href="research.html#assb">全固態電池</a></h3>
                         <p>為更安全、更高能量密度的電池設計電極與電解質架構，並透過界面工程延長電池壽命。</p>
                     </div>
                 </article>
 
-                <article class="research-card" data-href="research.html#operando">
+                <article class="research-card">
+                    <div class="research-image">
+                        <img loading="lazy" decoding="async" src="../image/research-anodefree.jpg" alt="Li||Li、Li||Cu、正極||Li 與正極||Cu 電池架構比較及其分析特徵"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-eyebrow">研究方向 02</span>
+                        <h3><a class="card-link" href="research.html#anode-free">無負極鋰金屬電池</a></h3>
+                        <p>不使用負極活性材料，鋰金屬在首次充電時直接沉積於集流體上。我們設計電池與電解質，讓鋰均勻沉積、可逆剝除。</p>
+                    </div>
+                </article>
+
+                <article class="research-card">
                     <div class="research-image">
                         <img loading="lazy" decoding="async" src="../image/research-operando.jpg?v=2" alt="六種原位與臨場電池設計：X 光吸收、X 光繞射、光學顯微鏡、拉曼光譜與穿透式 X 光顯微術"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">研究方向 02</span>
-                        <h3>臨場與原位分析技術</h3>
+                        <span class="research-eyebrow">研究方向 03</span>
+                        <h3><a class="card-link" href="research.html#operando">臨場與原位分析技術</a></h3>
                         <p>即時觀察反應進行：在電池實際運作下，進行同步輻射 X 光光譜與繞射分析。</p>
                     </div>
                 </article>
 
-                <article class="research-card" data-href="research.html#xct">
+                <article class="research-card">
                     <div class="research-image">
                         <img loading="lazy" decoding="async" src="../image/research-xct.jpg?v=2" alt="全固態軟包電池的同步輻射 X 光電腦斷層掃描：µ-Si 負極與複合正極的俯視切片與三維重建"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">研究方向 03</span>
-                        <h3>三維 X 光斷層掃描</h3>
+                        <span class="research-eyebrow">研究方向 04</span>
+                        <h3><a class="card-link" href="research.html#xct">三維 X 光斷層掃描</a></h3>
                         <p>重建運作中電池的內部結構：解析失效模式與微結構形貌，並回饋於電池設計。</p>
                     </div>
                 </article>
@@ -187,7 +202,6 @@
                     <option value="announcement">公告</option>
                     <option value="award">獲獎與計畫</option>
                     <option value="publication">論文發表</option>
-                    <option value="activity">活動</option>
                 </select>
             </div>
 
@@ -228,7 +242,7 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="award">
+                <article class="news-item news-item--older" data-category="award">
                     <div class="news-date">2026 年 8 月</div>
                     <div>
                         <h3>獲選教育部玉山青年學者</h3>
@@ -237,7 +251,7 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="announcement">
+                <article class="news-item news-item--older" data-category="announcement">
                     <div class="news-date">2026 年 8 月</div>
                     <div>
                         <h3>加入臺科大擔任助理教授</h3>
@@ -246,7 +260,7 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="announcement">
+                <article class="news-item news-item--older" data-category="announcement">
                     <div class="news-date">2026 年 2 月</div>
                     <div>
                         <h3>實驗室網站上線</h3>
@@ -255,15 +269,16 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="publication">
+                <article class="news-item news-item--older" data-category="publication">
                     <div class="news-date">2025 年 1 月</div>
                     <div>
                         <h3>論文發表於 <i>ACS Energy Letters</i></h3>
-                        <p>〈X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State Battery at Pouch Cell Level〉：於軟包電池尺度，完整應用 X 光微電腦斷層掃描分析運作中的全固態電池。</p>
+                        <p>〈X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State Battery at Pouch Cell Level〉：於軟包電池尺度，完整應用 X 光微電腦斷層掃描分析運作中的全固態電池。<a href="https://doi.org/10.1021/acsenergylett.5c00956" target="_blank" rel="noopener">閱讀論文</a></p>
                         <span class="badge-cat pub-label">論文</span>
                     </div>
                 </article>
             </div>
+            <button type="button" class="news-more" id="news-more" hidden>顯示較早的消息（4 則）</button>
         </section>
 
         <!-- ── Quick nav ────────────────────────────────── -->
@@ -273,39 +288,39 @@
                 <h2>繼續瀏覽</h2>
             </div>
             <div class="quick-nav-grid">
-                <div class="quick-nav-card" data-href="research.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
                     </span>
-                    <h3>研究</h3>
-                    <p>三大研究主軸：全固態電池、臨場光譜分析、X 光斷層掃描。</p>
+                    <h3><a class="card-link" href="research.html">研究</a></h3>
+                    <p>四大研究主軸：全固態電池、無負極鋰金屬電池、臨場光譜分析、X 光斷層掃描。</p>
                     <span class="card-arrow">查看研究 <span aria-hidden="true">→</span></span>
                 </div>
 
-                <div class="quick-nav-card" data-href="people.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15 19c.2-2 1.5-3.5 3.5-3.5S22 17 22 19"/></svg>
                     </span>
-                    <h3>成員</h3>
+                    <h3><a class="card-link" href="people.html">成員</a></h3>
                     <p>認識實驗室主持人與成員。招生資訊請見「加入我們」。</p>
                     <span class="card-arrow">認識團隊 <span aria-hidden="true">→</span></span>
                 </div>
 
-                <div class="quick-nav-card" data-href="../publications.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3V4z"/><path d="M4 17a3 3 0 013-3h12"/></svg>
                     </span>
-                    <h3>論文</h3>
-                    <p>65 篇以上期刊論文，涵蓋電池材料與同步輻射分析（英文頁面）。</p>
+                    <h3><a class="card-link" href="../publications.html">論文</a></h3>
+                    <p>期刊論文與引用指標，涵蓋電池材料與同步輻射分析（英文頁面）。</p>
                     <span class="card-arrow">閱讀論文 <span aria-hidden="true">→</span></span>
                 </div>
 
-                <div class="quick-nav-card" data-href="join.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/></svg>
                     </span>
-                    <h3>加入我們</h3>
-                    <p>招收碩博士班研究生與大學部專題生。</p>
+                    <h3><a class="card-link" href="join.html">加入我們</a></h3>
+                    <p>116 學年度招收博士班（提供獎助）與碩士班；大學部專題生全年招收。</p>
                     <span class="card-arrow">查看招生資訊 <span aria-hidden="true">→</span></span>
                 </div>
             </div>

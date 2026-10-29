@@ -183,6 +183,9 @@
                     <span class="btn-arrow" aria-hidden="true">→</span>
                 </a>
             </div>
+            <p class="hero-recruit">
+                <a href="join.html">Now recruiting for fall 2027: funded PhD students, master's students, and undergraduate researchers <span aria-hidden="true">→</span></a>
+            </p>
         </div>
     </section>
 
@@ -209,38 +212,50 @@
 
             <!-- Research preview cards -->
             <div class="research-grid">
-                <article class="research-card" data-href="research.html#assb">
+                <article class="research-card">
                     <div class="research-image research-image--zoom">
                         <img loading="lazy" decoding="async" src="image/research-assb.jpg" alt="3D rendering of an all-solid-state battery test cell"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
                         <span class="research-eyebrow">Area 01</span>
-                        <h3>All-solid-state batteries</h3>
+                        <h3><a class="card-link" href="research.html#assb">All-solid-state batteries</a></h3>
                         <p>Electrode and electrolyte architectures for safer, denser cells, with the interface engineering to make them last.</p>
                     </div>
                 </article>
 
-                <article class="research-card" data-href="research.html#operando">
+                <article class="research-card">
+                    <div class="research-image">
+                        <img loading="lazy" decoding="async" src="image/research-anodefree.jpg" alt="Comparison of Li||Li, Li||Cu, Cathode||Li and Cathode||Cu cells with characterization features"
+                             onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
+                    </div>
+                    <div class="research-content">
+                        <span class="research-eyebrow">Area 02</span>
+                        <h3><a class="card-link" href="research.html#anode-free">Anode-free lithium metal batteries</a></h3>
+                        <p>No anode material: lithium plates onto the current collector on first charge. We design cells and electrolytes so it plates evenly and strips reversibly.</p>
+                    </div>
+                </article>
+
+                <article class="research-card">
                     <div class="research-image">
                         <img loading="lazy" decoding="async" src="image/research-operando.jpg?v=2" alt="Six in-situ and operando battery cell designs: X-ray absorption, X-ray diffraction, optical microscopy, Raman spectroscopy, and transmission X-ray microscopy"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">Area 02</span>
-                        <h3><i>Operando</i> &amp; <i>in-situ</i> techniques</h3>
+                        <span class="research-eyebrow">Area 03</span>
+                        <h3><a class="card-link" href="research.html#operando"><i>Operando</i> &amp; <i>in-situ</i> techniques</a></h3>
                         <p>Watching reactions happen: synchrotron X-ray spectroscopy and diffraction during real cell operation.</p>
                     </div>
                 </article>
 
-                <article class="research-card" data-href="research.html#xct">
+                <article class="research-card">
                     <div class="research-image">
                         <img loading="lazy" decoding="async" src="image/research-xct.jpg?v=2" alt="Synchrotron X-ray computed tomography of an all-solid-state pouch cell: top-view slices and 3D reconstructions of µ-Si anode and composite cathode"
                              onerror="this.style.display='none'; this.parentElement.classList.add('img-fallback')">
                     </div>
                     <div class="research-content">
-                        <span class="research-eyebrow">Area 03</span>
-                        <h3>3D X-ray tomography</h3>
+                        <span class="research-eyebrow">Area 04</span>
+                        <h3><a class="card-link" href="research.html#xct">3D X-ray tomography</a></h3>
                         <p>Reconstructing the inside of a working cell: the failure modes, the morphology, the design feedback loop.</p>
                     </div>
                 </article>
@@ -283,7 +298,6 @@
                     <option value="announcement">Announcements</option>
                     <option value="award">Awards &amp; Grants</option>
                     <option value="publication">Publications</option>
-                    <option value="activity">Activities</option>
                 </select>
             </div>
 
@@ -324,7 +338,7 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="award">
+                <article class="news-item news-item--older" data-category="award">
                     <div class="news-date">Aug 2026</div>
                     <div>
                         <h3>Yushan Young Fellow</h3>
@@ -333,7 +347,7 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="announcement">
+                <article class="news-item news-item--older" data-category="announcement">
                     <div class="news-date">Aug 2026</div>
                     <div>
                         <h3>Joining Taiwan Tech as Assistant Professor</h3>
@@ -342,7 +356,7 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="announcement">
+                <article class="news-item news-item--older" data-category="announcement">
                     <div class="news-date">Feb 2026</div>
                     <div>
                         <h3>Group website launched</h3>
@@ -351,15 +365,16 @@
                     </div>
                 </article>
 
-                <article class="news-item" data-category="publication">
+                <article class="news-item news-item--older" data-category="publication">
                     <div class="news-date">Jan 2025</div>
                     <div>
                         <h3>Paper out in <i>ACS Energy Letters</i></h3>
-                        <p>"X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State Battery at Pouch Cell Level": pouch-level XCT applied end-to-end on a working ASSB.</p>
+                        <p>"X-ray Micro-Computed Tomography for Structural Analysis of All-Solid-State Battery at Pouch Cell Level": pouch-level XCT applied end-to-end on a working ASSB. <a href="https://doi.org/10.1021/acsenergylett.5c00956" target="_blank" rel="noopener">Read the paper</a></p>
                         <span class="badge-cat pub-label">Publication</span>
                     </div>
                 </article>
             </div>
+            <button type="button" class="news-more" id="news-more" hidden>Show earlier news (4)</button>
         </section>
 
         <!-- ── Quick nav ────────────────────────────────── -->
@@ -369,39 +384,39 @@
                 <h2>Where to next</h2>
             </div>
             <div class="quick-nav-grid">
-                <div class="quick-nav-card" data-href="research.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></svg>
                     </span>
-                    <h3>Research</h3>
-                    <p>Three focus areas: solid-state cells, operando spectroscopy, X-ray tomography.</p>
+                    <h3><a class="card-link" href="research.html">Research</a></h3>
+                    <p>Four focus areas: solid-state and anode-free Li metal batteries, operando spectroscopy, X-ray tomography.</p>
                     <span class="card-arrow">See research <span aria-hidden="true">→</span></span>
                 </div>
 
-                <div class="quick-nav-card" data-href="people.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 19c0-3 2.7-5 6-5s6 2 6 5"/><circle cx="17" cy="9" r="2.5"/><path d="M15 19c.2-2 1.5-3.5 3.5-3.5S22 17 22 19"/></svg>
                     </span>
-                    <h3>People</h3>
+                    <h3><a class="card-link" href="people.html">People</a></h3>
                     <p>Meet the PI and the group members. See Join for open positions.</p>
                     <span class="card-arrow">Meet the team <span aria-hidden="true">→</span></span>
                 </div>
 
-                <div class="quick-nav-card" data-href="publications.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><path d="M4 4h12a3 3 0 013 3v13H7a3 3 0 01-3-3V4z"/><path d="M4 17a3 3 0 013-3h12"/></svg>
                     </span>
-                    <h3>Publications</h3>
-                    <p>65+ peer-reviewed articles on battery materials and synchrotron characterization.</p>
+                    <h3><a class="card-link" href="publications.html">Publications</a></h3>
+                    <p>Peer-reviewed articles on battery materials and synchrotron characterization, with citation metrics.</p>
                     <span class="card-arrow">Read publications <span aria-hidden="true">→</span></span>
                 </div>
 
-                <div class="quick-nav-card" data-href="join.html">
+                <div class="quick-nav-card">
                     <span class="card-icon" aria-hidden="true">
                         <svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11v5c0 1.5 2.2 3 5 3s5-1.5 5-3v-5"/></svg>
                     </span>
-                    <h3>Join</h3>
-                    <p>Open positions for graduate students and undergraduate researchers.</p>
+                    <h3><a class="card-link" href="join.html">Join</a></h3>
+                    <p>Funded PhD and master's openings for 2027; undergraduate research year-round.</p>
                     <span class="card-arrow">See positions <span aria-hidden="true">→</span></span>
                 </div>
             </div>

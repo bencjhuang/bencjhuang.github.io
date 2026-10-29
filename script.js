@@ -139,17 +139,18 @@
         });
     });
 
-    /* ── Quick-nav cards (replaces inline onclick) ──────────── */
-    document.querySelectorAll('[data-href]').forEach(card => {
-        card.style.cursor = 'pointer';
-        card.setAttribute('role', 'link');
-        card.setAttribute('tabindex', '0');
-        const go = () => { window.location.href = card.dataset.href; };
-        card.addEventListener('click', go);
-        card.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); }
-        });
-    });
+    /* ── News: show the latest items, older ones behind a button ── */
+    const newsGrid = document.getElementById('news-grid');
+    const newsMore = document.getElementById('news-more');
+    const expandNews = () => {
+        newsGrid?.classList.remove('is-collapsed');
+        if (newsMore) newsMore.hidden = true;
+    };
+    if (newsGrid && newsMore && newsGrid.querySelector('.news-item--older')) {
+        newsGrid.classList.add('is-collapsed');
+        newsMore.hidden = false;
+        newsMore.addEventListener('click', expandNews);
+    }
 
     /* ── Animated news filter ───────────────────────────────── */
     const filterSelect = document.getElementById('news-category-filter');
@@ -158,6 +159,7 @@
 
         filterSelect.addEventListener('change', function () {
             const cat = this.value;
+            if (cat !== 'all') expandNews();
 
             // Phase 1: fade out non-matching
             items.forEach(item => {
@@ -364,7 +366,8 @@
 
     /* ── Animate stat numbers counting up on scroll ─────────── */
     const statNumbers = document.querySelectorAll('.stat-number[data-count]');
-    if (statNumbers.length && 'IntersectionObserver' in window) {
+    const reduceStatMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (statNumbers.length && 'IntersectionObserver' in window && !reduceStatMotion) {
         const easeOut = (t) => 1 - Math.pow(1 - t, 3);
         const animateNumber = (el) => {
             const target = parseInt(el.dataset.count, 10);
