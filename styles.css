@@ -1188,35 +1188,6 @@ section:last-child { margin-bottom: 0; }
     .scrolly-step:last-child { min-height: 40vh; }
 }
 
-/* ── Homepage "at a glance" numbers band ────────────────────── */
-.numbers-band {
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--rule);
-}
-.numbers-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-.number-cell {
-    padding: 2.25rem 1.5rem 2rem;
-    border-left: 1px solid var(--rule);
-}
-.number-cell:first-child { border-left: none; padding-left: 0; }
-.numbers-band .stat-number { font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 400; }
-.numbers-band .stat-number--text { font-style: italic; color: var(--accent); }
-.numbers-source {
-    margin-top: 0.75rem;
-    font-size: var(--fs-xs);
-    color: var(--muted);
-}
-.numbers-source a { color: inherit; }
-@media (max-width: 768px) {
-    .numbers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .number-cell { padding: 1.5rem 1rem; }
-    .number-cell:nth-child(odd) { border-left: none; padding-left: 0; }
-    .number-cell:nth-child(n+3) { border-top: 1px solid var(--rule); }
-}
-
 @media (max-width: 900px) {
     .research-layout {
         grid-template-columns: 1fr;

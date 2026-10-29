@@ -19,7 +19,7 @@ No build process. Edit files directly, then push:
 
 | File | Purpose |
 |------|---------|
-| `index.html` | Homepage: hero (+ recruiting line), mission + 4 research cards, XCT before/after compare, stats band, news (latest 4, older behind a button), group photo + join CTA |
+| `index.html` | Homepage: hero (+ recruiting line), mission + 4 research cards, XCT before/after compare, news (latest 4, older behind a button), group photo + join CTA |
 | `research.html` | 4 research areas: ASSBs, anode-free Li metal, operando/in-situ, X-ray tomography (µXCT) |
 | `people.html` | Tabbed: PI profile (bio, education, experience, honors), Members, Alumni |
 | `publications.html` | ~65 publications with impact factors, filter chips, citation stats |
@@ -71,7 +71,7 @@ update the visible HTML **and** the matching JSON-LD on both pages, then re-vali
 - **Mobile breakpoint**: 768px (hamburger menu)
 - **Navigation**: hardcoded in every HTML file — update all pages when adding a nav item
 - **Bilingual pages**: `index`, `research`, `people`, `join` each have a `zh/` twin. When you change
-  content on one, update the other (news, stats band, positions, PI facts). Each pair is linked by
+  content on one, update the other (news, positions, PI facts). Each pair is linked by
   `hreflang` tags in `<head>` and the `.nav-lang` / `.mobile-lang` switch in the nav; zh pages use
   `../` paths and load Noto Sans/Serif TC. Chinese copy uses 臺 (國立臺灣科技大學) and ROC 學年度.
 
@@ -84,7 +84,6 @@ update the visible HTML **and** the matching JSON-LD on both pages, then re-vali
 **Add a publication** (`publications.html`):
 - Find the correct `.year-group`, copy an existing `.publication` entry, update all fields
 - Update the citation stats block (h-index, citations) and the "last checked" date
-- Also update the homepage "at a glance" band (`#numbers` in `index.html` **and** `zh/index.html`) — same numbers, plus the "as of" date in `.numbers-source` below it
 
 **Update PI facts** (title, honors, research interests, stats):
 - Edit the visible HTML **and** the JSON-LD on `index.html` + `people.html`
@@ -117,7 +116,8 @@ Ph.D. Candidate Scholarship (NSRRC, 2019/2020) · HERCULES Program (MOST/NSTC, 2
 Global Networking Talent 3.0 (MOE, 2016, Hongjie Dai Lab @ Stanford).
 
 **Citation stats change** — as of 2026-07: h-index 44 / 5,644 citations / 65 papers.
-Re-check the Scholar page when updating; don't reuse old numbers.
+Re-check the Scholar page when updating; don't reuse old numbers. Citation metrics live only on
+`publications.html` (the homepage stats band was removed 2026-10-29 as too self-promotional).
 
 ## Ongoing: Google Authority / Knowledge Panel
 
